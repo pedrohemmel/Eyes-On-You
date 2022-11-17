@@ -13,6 +13,11 @@
 		161959D229256BFC00E2CC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D029256BFC00E2CC45 /* Main.storyboard */; };
 		161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 161959D329256BFF00E2CC45 /* Assets.xcassets */; };
 		161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D529256BFF00E2CC45 /* LaunchScreen.storyboard */; };
+		9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524E9CD29257D4E007AFBB2 /* Obstacle.swift */; };
+		9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */; };
+		956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */; };
+		956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960722926B56D00CF81EA /* GhostObstacle.swift */; };
+		956960752926B63D00CF81EA /* HandObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960742926B63D00CF81EA /* HandObstacle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,11 @@
 		161959D129256BFC00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		161959D329256BFF00E2CC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		161959D629256BFF00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9524E9CD29257D4E007AFBB2 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdObstacle.swift; sourceTree = "<group>"; };
+		9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TombstoneObstacle.swift; sourceTree = "<group>"; };
+		956960722926B56D00CF81EA /* GhostObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostObstacle.swift; sourceTree = "<group>"; };
+		956960742926B63D00CF81EA /* HandObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandObstacle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +76,7 @@
 		161959DD29256C0900E2CC45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				956960712926B3A200CF81EA /* Obstacle */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,6 +106,18 @@
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		956960712926B3A200CF81EA /* Obstacle */ = {
+			isa = PBXGroup;
+			children = (
+				9524E9CD29257D4E007AFBB2 /* Obstacle.swift */,
+				9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */,
+				9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */,
+				956960722926B56D00CF81EA /* GhostObstacle.swift */,
+				956960742926B63D00CF81EA /* HandObstacle.swift */,
+			);
+			path = Obstacle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +193,12 @@
 			files = (
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
+				9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
+				956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */,
+				956960752926B63D00CF81EA /* HandObstacle.swift in Sources */,
+				956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */,
+				9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

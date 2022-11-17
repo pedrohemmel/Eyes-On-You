@@ -10,9 +10,13 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    private var obstacle: Obstacle = BirdObstacle()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
