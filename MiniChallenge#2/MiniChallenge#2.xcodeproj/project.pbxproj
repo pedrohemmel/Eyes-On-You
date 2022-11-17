@@ -18,6 +18,9 @@
 		956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */; };
 		956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960722926B56D00CF81EA /* GhostObstacle.swift */; };
 		956960752926B63D00CF81EA /* HandObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960742926B63D00CF81EA /* HandObstacle.swift */; };
+		161959E42925782E00E2CC45 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959E32925782E00E2CC45 /* Character.swift */; };
+		161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959E72926B5A200E2CC45 /* PhysicsCategory.swift */; };
+		161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959EB2926C80300E2CC45 /* AnimatedObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TombstoneObstacle.swift; sourceTree = "<group>"; };
 		956960722926B56D00CF81EA /* GhostObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostObstacle.swift; sourceTree = "<group>"; };
 		956960742926B63D00CF81EA /* HandObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandObstacle.swift; sourceTree = "<group>"; };
+		161959E32925782E00E2CC45 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		161959E72926B5A200E2CC45 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		161959EB2926C80300E2CC45 /* AnimatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				956960712926B3A200CF81EA /* Obstacle */,
+				161959E32925782E00E2CC45 /* Character.swift */,
+				161959E72926B5A200E2CC45 /* PhysicsCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 			children = (
 				161959CC29256BFC00E2CC45 /* GameScene.swift */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
+				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +208,10 @@
 				956960752926B63D00CF81EA /* HandObstacle.swift in Sources */,
 				956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */,
 				9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */,
+				161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */,
+				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
+				161959E42925782E00E2CC45 /* Character.swift in Sources */,
+				161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
