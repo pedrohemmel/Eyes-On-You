@@ -48,7 +48,7 @@ public class Character {
     //Setting properties of collision and contact
     func characterToCollide(character: SKSpriteNode) -> SKSpriteNode {
         character.physicsBody?.categoryBitMask = PhysicsCategory.character
-        character.physicsBody?.contactTestBitMask = PhysicsCategory.ground | PhysicsCategory.obstacle
+        character.physicsBody?.contactTestBitMask = PhysicsCategory.obstacle
         character.physicsBody?.collisionBitMask = PhysicsCategory.ground | PhysicsCategory.obstacle
         
         return character

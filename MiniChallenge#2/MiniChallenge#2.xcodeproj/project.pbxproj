@@ -100,18 +100,10 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				161959ED2926CD5400E2CC45 /* marcio.atlas */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		161959ED2926CD5400E2CC45 /* marcio.atlas */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = marcio.atlas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
