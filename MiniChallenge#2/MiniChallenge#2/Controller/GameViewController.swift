@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //test
-        Character.character.characterToCollide(character: AnimatedObject("marcio"))
+        Character.character.characterToCollide(character: AnimatedObject(""))
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'

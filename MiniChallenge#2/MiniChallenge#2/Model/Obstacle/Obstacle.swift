@@ -18,9 +18,14 @@ class Obstacle {
         self.obstacle = obstacle
     }
     
-    func setObstacleProperties(obstacle: SKSpriteNode) -> SKSpriteNode {
-        obstacle.setScale(0.85)
-        obstacle.zPosition = 5.0
+    func obstacleToSetProperties(obstacle: SKSpriteNode) -> SKSpriteNode {
+        return obstacle
+    }
+    
+    func obstacleToCollide(obstacle: SKSpriteNode) -> SKSpriteNode {
+        obstacle.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
+        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.character
+        obstacle.physicsBody?.collisionBitMask = PhysicsCategory.character
         
         return obstacle
     }
