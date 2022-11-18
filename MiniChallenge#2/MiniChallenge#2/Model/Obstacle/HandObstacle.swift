@@ -11,19 +11,7 @@ import SpriteKit
 class HandObstacle: Obstacle {
     init(){
         super.init(day: false, obstacle: SKSpriteNode(imageNamed: ""))
-    }
-    
-    override func obstacleToSetProperties(obstacle: SKSpriteNode) -> SKSpriteNode {
         
-        obstacle.zPosition = 5
-        //temporario
-        obstacle.size = CGSize(width: 100, height: 100)
-        obstacle.position = CGPoint(x: 0, y: 0)
-
-        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.frame.size)
-        obstacle.physicsBody?.affectedByGravity = false
-        obstacle.physicsBody?.isDynamic = false
-        
-        return obstacle
+        self.obstacle = obstacleToSetSize(obstacle: self.obstacle, obSize: self.obstacle.size, obZPosition: 4)
     }
 }

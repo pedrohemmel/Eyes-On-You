@@ -10,15 +10,27 @@ import GameplayKit
 
 class Obstacle {
     
-    private var obstacle: SKSpriteNode
+    public var obstacle: SKSpriteNode
     private var day: Bool
     
     init(day: Bool, obstacle: SKSpriteNode) {
         self.day = day
         self.obstacle = obstacle
+        
+        self.obstacle = obstacleToSetPhysics(obstacle: self.obstacle)
     }
     
-    func obstacleToSetProperties(obstacle: SKSpriteNode) -> SKSpriteNode {
+    func obstacleToSetSize(obstacle: SKSpriteNode, obSize: CGSize, obZPosition: CGFloat) -> SKSpriteNode {
+        obstacle.zPosition = obZPosition
+        obstacle.size = obSize
+        return obstacle
+    }
+    
+    func obstacleToSetPhysics(obstacle: SKSpriteNode) -> SKSpriteNode {
+        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.frame.size)
+        obstacle.physicsBody?.affectedByGravity = true
+        obstacle.physicsBody?.isDynamic = true
+        
         return obstacle
     }
     
