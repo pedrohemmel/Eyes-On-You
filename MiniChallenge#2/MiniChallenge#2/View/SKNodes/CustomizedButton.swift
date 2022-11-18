@@ -1,31 +1,31 @@
 import SpriteKit
 
 public class CustomizedButton: SKNode {
-    var button: SKSpriteNode
+    var buttonView: SKSpriteNode
     private var mask: SKSpriteNode
     private var cropNode:  SKCropNode
     private var action: () -> Void
-    var isEnable = true
+    var enable = true
     
     init(imageName: String, buttonAction: @escaping () -> Void) {
-        button = SKSpriteNode(imageNamed: imageName)
+        self.buttonView = SKSpriteNode(imageNamed: imageName)
         
-        mask = SKSpriteNode(color: SKColor.black, size: button.size)
-        mask.alpha = 0
+        self.mask = SKSpriteNode(color: SKColor.black, size: buttonView.size)
+        self.mask.alpha = 0
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = button
-        cropNode.zPosition = 3
-        cropNode.addChild(mask)
+        self.cropNode = SKCropNode()
+        self.cropNode.maskNode = buttonView
+        self.cropNode.zPosition = 3
+        self.cropNode.addChild(mask)
         
-        action = buttonAction
+        self.action = buttonAction
         
         super.init()
         
         isUserInteractionEnabled = true
         
-        setupNodes()
-        addNodes()
+        self.setupNodes()
+        self.addNodes()
         
     }
     
@@ -34,28 +34,28 @@ public class CustomizedButton: SKNode {
     }
     
     func setupNodes() {
-        button.zPosition = 0
+        self.buttonView.zPosition = 0
     }
     
     func addNodes() {
-        addChild(button)
-        addChild(cropNode)
+        self.addChild(buttonView)
+        self.addChild(cropNode)
     }
     
     //Botao se mexendo
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isEnable {
-            mask.alpha = 0.5
+        if self.enable {
+            self.mask.alpha = 0.5
             run(SKAction.scale(by: 1.05, duration: 0.05))
         }
     }
     
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isEnable {
+        if enable {
             for touch in touches {
                 let location: CGPoint = touch.location(in: self)
                 
-                if button.contains(location) {
+                if buttonView.contains(location) {
                     mask.alpha = 0.5
                 } else {
                     mask.alpha = 0.0
@@ -65,15 +65,15 @@ public class CustomizedButton: SKNode {
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isEnable {
+        if self.enable {
             for touch in touches {
                 let location: CGPoint = touch.location(in: self)
                 
-                if button.contains(location) {
-                    disable()
-                    action()
+                if self.buttonView.contains(location) {
+                    self.disableButton()
+                    self.action()
                     run(SKAction.sequence([SKAction.wait(forDuration: 0.2), SKAction.run({
-                        self.enable()
+                        self.enableButton()
                     })]))
                 }
             }
@@ -83,17 +83,17 @@ public class CustomizedButton: SKNode {
     
     
     //Nao permitir duplo clique e deixar botao transparente ao clicar
-    func disable() {
-        isEnable = false
-        mask.alpha = 0.0
-        button.alpha = 0.5
+    func disableButton() {
+        self.enable = false
+        self.mask.alpha = 0.0
+        self.buttonView.alpha = 0.5
         
     }
     
-    func enable() {
-        isEnable = true
-        mask.alpha = 0.0
-        button.alpha = 1.0
+    func enableButton() {
+        self.enable = true
+        self.mask.alpha = 0.0
+        self.buttonView.alpha = 1.0
     }
     
     
