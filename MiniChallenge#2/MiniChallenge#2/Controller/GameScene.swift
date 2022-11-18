@@ -10,10 +10,32 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    lazy var infoButton: InformationButton = {
+        var button = InformationButton(imageName: "exclamation", buttonAction: {
+            print("Funcionou")
+        })
+        button.zPosition = 1
+        return button
+    }()
+
+    
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+  
     
     override func didMove(to view: SKView) {
+        
+        self.backgroundColor = UIColor.blue
+        
+    
+        
+        var backgroundImage: SKSpriteNode = SKSpriteNode()
+        
+        //Adicionando o Botao a cena
+        infoButton.position = CGPoint.zero
+        addChild(infoButton)
+        
+        
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -62,10 +84,11 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
         if let label = self.label {
             label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         }
-        
+
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
