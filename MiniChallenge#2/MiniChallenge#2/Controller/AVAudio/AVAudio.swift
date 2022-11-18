@@ -7,12 +7,17 @@
 
 import AVFoundation
 
-open class SKAudio {
+public let AVAudioInstance = AVAudio()
+
+open class AVAudio {
+
     open var backgroundMusicPlayer: AVAudioPlayer?
     open var soundEffectPlayer: AVAudioPlayer?
-    open class func sharedInstance() -> SKAudio {
-        return SKAudioInstance
+    
+    open class func sharedInstance() -> AVAudio {
+        return AVAudioInstance
     }
+    
     open func playBackgroundMusic(_ filename: String) {
         let url = Bundle.main.url(forResource: filename,
                                   withExtension: nil)
@@ -20,14 +25,17 @@ open class SKAudio {
             print("Could not find file: \(filename)")
             return
         }
+        
         var error: NSError? = nil
+        
         do {
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf:
                 url!)
-        } catch let error1 as NSError {
-            error = error1
+        } catch let undefinedBackgroundMusic as NSError {
+            error = undefinedBackgroundMusic
             backgroundMusicPlayer = nil
         }
+        
         if let player = backgroundMusicPlayer {
             player.numberOfLoops = -1
             player.prepareToPlay()
@@ -35,7 +43,9 @@ open class SKAudio {
         } else {
             print("Could not create audio player: \(error!)")
         }
+        
     }
+    
     open func pauseBackgroundMusic() {
         if let player = backgroundMusicPlayer {
             if player.isPlaying {
@@ -43,6 +53,7 @@ open class SKAudio {
             }
         }
     }
+    
     open func resumeBackgroundMusic() {
         if let player = backgroundMusicPlayer {
             if !player.isPlaying {
@@ -50,6 +61,7 @@ open class SKAudio {
             }
         }
     }
+    
     open func playSoundEffect(_ filename: String) {
         let url = Bundle.main.url(forResource: filename,
                                   withExtension: nil)
@@ -60,8 +72,8 @@ open class SKAudio {
         var error: NSError? = nil
         do {
             soundEffectPlayer = try AVAudioPlayer(contentsOf: url!)
-        } catch let error1 as NSError {
-            error = error1
+        } catch let undefinedSoundEffect as NSError {
+            error = undefinedSoundEffect
             soundEffectPlayer = nil
         }
         if let player = soundEffectPlayer {
@@ -73,4 +85,4 @@ open class SKAudio {
         }
     }
 }
-private let SKAudioInstance = SKAudio()
+

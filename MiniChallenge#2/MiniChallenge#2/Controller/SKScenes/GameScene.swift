@@ -40,7 +40,7 @@ class GameScene: SKScene {
             if self.audioStatus == true{
             
                 self.audioStatus = false
-                SKAudio.sharedInstance().pauseBackgroundMusic()
+                AVAudio.sharedInstance().pauseBackgroundMusic()
                 
                 print(self.audioStatus)
                 
@@ -51,7 +51,7 @@ class GameScene: SKScene {
     
                 self.audioStatus = true
                 
-                SKAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+                AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
                 
                 
                 print(self.audioStatus)
@@ -69,8 +69,8 @@ class GameScene: SKScene {
         
         self.backgroundColor = UIColor.blue
         
-        SKAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
-        SKAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+        AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
+        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
         
         
         //Adicionando o Botao a cena

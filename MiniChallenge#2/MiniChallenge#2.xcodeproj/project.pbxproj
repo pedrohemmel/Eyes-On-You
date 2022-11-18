@@ -16,7 +16,7 @@
 		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
-		B9B3C84B29272E4100403187 /* SKAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* SKAudio.swift */; };
+		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
-		B9B3C84A29272E4100403187 /* SKAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAudio.swift; sourceTree = "<group>"; };
+		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B3C84C2927306900403187 /* Storyboard */,
-				6172C3CF2926C71E003C21FE /* SKButtonNode */,
+				6172C3CF2926C71E003C21FE /* SKNodes */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,10 +90,10 @@
 		161959DF29256C1600E2CC45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				161959CC29256BFC00E2CC45 /* GameScene.swift */,
+				B98E2041292827A90022E94F /* AVAudio */,
+				B98E2040292827060022E94F /* Score */,
+				B98E203E292824D10022E94F /* SKScenes */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
-				B9B3C84A29272E4100403187 /* SKAudio.swift */,
-				B98E203A292806CB0022E94F /* Score.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -101,19 +101,51 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B98E203829273F030022E94F /* pipo.mp3 */,
+				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		6172C3CF2926C71E003C21FE /* SKButtonNode */ = {
+		6172C3CF2926C71E003C21FE /* SKNodes */ = {
 			isa = PBXGroup;
 			children = (
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 			);
-			path = SKButtonNode;
+			path = SKNodes;
+			sourceTree = "<group>";
+		};
+		B98E203C292824280022E94F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B98E203829273F030022E94F /* pipo.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		B98E203E292824D10022E94F /* SKScenes */ = {
+			isa = PBXGroup;
+			children = (
+				161959CC29256BFC00E2CC45 /* GameScene.swift */,
+			);
+			path = SKScenes;
+			sourceTree = "<group>";
+		};
+		B98E2040292827060022E94F /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				B98E203A292806CB0022E94F /* Score.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
+		B98E2041292827A90022E94F /* AVAudio */ = {
+			isa = PBXGroup;
+			children = (
+				B9B3C84A29272E4100403187 /* AVAudio.swift */,
+			);
+			path = AVAudio;
 			sourceTree = "<group>";
 		};
 		B9B3C84C2927306900403187 /* Storyboard */ = {
@@ -200,7 +232,7 @@
 				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
-				B9B3C84B29272E4100403187 /* SKAudio.swift in Sources */,
+				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,
 				B98E203B292806CB0022E94F /* Score.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
 			);
