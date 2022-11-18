@@ -13,8 +13,9 @@
 		161959D229256BFC00E2CC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D029256BFC00E2CC45 /* Main.storyboard */; };
 		161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 161959D329256BFF00E2CC45 /* Assets.xcassets */; };
 		161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D529256BFF00E2CC45 /* LaunchScreen.storyboard */; };
-		6172C3D12926CFBA003C21FE /* InformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* InformationButton.swift */; };
+		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
+		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* SKAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* SKAudio.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,8 +27,9 @@
 		161959D129256BFC00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		161959D329256BFF00E2CC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		161959D629256BFF00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6172C3D02926CFBA003C21FE /* InformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationButton.swift; sourceTree = "<group>"; };
+		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
+		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* SKAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				161959CC29256BFC00E2CC45 /* GameScene.swift */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
 				B9B3C84A29272E4100403187 /* SKAudio.swift */,
+				B98E203A292806CB0022E94F /* Score.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -108,7 +111,7 @@
 		6172C3CF2926C71E003C21FE /* SKButtonNode */ = {
 			isa = PBXGroup;
 			children = (
-				6172C3D02926CFBA003C21FE /* InformationButton.swift */,
+				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 			);
 			path = SKButtonNode;
 			sourceTree = "<group>";
@@ -194,10 +197,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6172C3D12926CFBA003C21FE /* InformationButton.swift in Sources */,
+				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
 				B9B3C84B29272E4100403187 /* SKAudio.swift in Sources */,
+				B98E203B292806CB0022E94F /* Score.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

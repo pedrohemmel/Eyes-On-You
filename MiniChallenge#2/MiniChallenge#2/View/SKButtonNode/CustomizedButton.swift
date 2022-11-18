@@ -1,6 +1,6 @@
 import SpriteKit
 
-public class InformationButton: SKNode {
+public class CustomizedButton: SKNode {
     var button: SKSpriteNode
     private var mask: SKSpriteNode
     private var cropNode:  SKCropNode

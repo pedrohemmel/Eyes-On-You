@@ -8,30 +8,37 @@
 import SpriteKit
 import GameplayKit
 
+//Score.shared.addScore() usar essa func para adicionar score quando tiver
+//Score.shared.trySaveHighScore() usar essa func para salvar o highscore
+
+
 class GameScene: SKScene {
     
     var audioStatus: Bool = true
     
     let startText = SKLabelNode(fontNamed: "") //inserir a font quando definido a tipografia
+    let highScoreText = SKLabelNode(fontNamed: "")
     
-    
-    lazy var infoButton: InformationButton = {
-        var button = InformationButton(imageName: "exclamation", buttonAction: {
-            print("Funcionou")
+    lazy var infoButton: CustomizedButton = {
+        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+            
         })
         button.zPosition = 1
         return button
     }()
 
-    lazy var audioButton: InformationButton = {
+    
+    
+    lazy var audioButton: CustomizedButton = {
         
         var volumeImage = "volumeBt"
         
-        var button = InformationButton(imageName: volumeImage , buttonAction: {
+        var button = CustomizedButton(imageName: volumeImage , buttonAction: {
             print("to aqui")
+         
             
             if self.audioStatus == true{
-                
+            
                 self.audioStatus = false
                 SKAudio.sharedInstance().pauseBackgroundMusic()
                 
@@ -50,8 +57,6 @@ class GameScene: SKScene {
                 print(self.audioStatus)
                 volumeImage = "exclamation"
             }
-        
-            
         })
         
         button.zPosition = 1
@@ -70,13 +75,16 @@ class GameScene: SKScene {
         
         //Adicionando o Botao a cena
         
+        highScoreText.text = ("\(Score.shared.highScore)") //mostra o highscore
+        highScoreText.fontColor = UIColor.white
+        highScoreText.fontSize = CGFloat(25)
+        highScoreText.position = CGPoint(x: frame.maxX-95, y: frame.maxY-45)
+        self.addChild(highScoreText)
+        
         infoButton.position = CGPoint(x: frame.maxX-60, y: frame.maxY-25)
-       
         self.addChild(infoButton)
         
         audioButton.position = CGPoint(x: frame.maxX-750, y: frame.maxY-25)
-        
-        
         self.addChild(audioButton)
 
         startText.text = "TOQUE NA TELA PARA INICIAR"
@@ -84,9 +92,6 @@ class GameScene: SKScene {
         startText.horizontalAlignmentMode = .center
         startText.verticalAlignmentMode = .bottom
         startText.position = CGPoint(x: frame.minX+430, y: frame.minY+30)
-        
-        
-        
         self.addChild(startText)
     }
     
