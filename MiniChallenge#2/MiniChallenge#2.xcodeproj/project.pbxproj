@@ -13,8 +13,8 @@
 		161959D229256BFC00E2CC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D029256BFC00E2CC45 /* Main.storyboard */; };
 		161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 161959D329256BFF00E2CC45 /* Assets.xcassets */; };
 		161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D529256BFF00E2CC45 /* LaunchScreen.storyboard */; };
-		6172C3CE2926B30C003C21FE /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = 6172C3CD2926B30C003C21FE /* exclamation.png */; };
 		6172C3D12926CFBA003C21FE /* InformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* InformationButton.swift */; };
+		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B9B3C84B29272E4100403187 /* SKAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* SKAudio.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,8 +26,8 @@
 		161959D129256BFC00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		161959D329256BFF00E2CC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		161959D629256BFF00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6172C3CD2926B30C003C21FE /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		6172C3D02926CFBA003C21FE /* InformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationButton.swift; sourceTree = "<group>"; };
+		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* SKAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +98,7 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6172C3CD2926B30C003C21FE /* exclamation.png */,
+				B98E203829273F030022E94F /* pipo.mp3 */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
@@ -182,8 +182,8 @@
 			files = (
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
+				B98E203929273F030022E94F /* pipo.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
-				6172C3CE2926B30C003C21FE /* exclamation.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

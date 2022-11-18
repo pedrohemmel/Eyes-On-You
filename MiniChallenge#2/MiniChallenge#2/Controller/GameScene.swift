@@ -10,6 +10,11 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var audioStatus: Bool = true
+    
+    let startText = SKLabelNode(fontNamed: "") //inserir a font quando definido a tipografia
+    
+    
     lazy var infoButton: InformationButton = {
         var button = InformationButton(imageName: "exclamation", buttonAction: {
             print("Funcionou")
@@ -18,21 +23,71 @@ class GameScene: SKScene {
         return button
     }()
 
+    lazy var audioButton: InformationButton = {
+        
+        var volumeImage = "volumeBt"
+        
+        var button = InformationButton(imageName: volumeImage , buttonAction: {
+            print("to aqui")
+            
+            if self.audioStatus == true{
+                
+                self.audioStatus = false
+                SKAudio.sharedInstance().pauseBackgroundMusic()
+                
+                print(self.audioStatus)
+                
+                volumeImage = "volumeBt"
+            }
+            
+            else if self.audioStatus == false {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-  
+                self.audioStatus = true
+                
+                SKAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+                
+                
+                print(self.audioStatus)
+                volumeImage = "exclamation"
+            }
+        
+            
+        })
+        
+        button.zPosition = 1
+        return button
+        
+    }()
+      
     
     override func didMove(to view: SKView) {
         
         self.backgroundColor = UIColor.blue
+        
+        SKAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
+        SKAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+        
         
         //Adicionando o Botao a cena
         
         infoButton.position = CGPoint(x: frame.maxX-60, y: frame.maxY-25)
        
         self.addChild(infoButton)
+        
+        audioButton.position = CGPoint(x: frame.maxX-750, y: frame.maxY-25)
+        
+        
+        self.addChild(audioButton)
 
+        startText.text = "TOQUE NA TELA PARA INICIAR"
+        startText.fontColor = UIColor.white
+        startText.horizontalAlignmentMode = .center
+        startText.verticalAlignmentMode = .bottom
+        startText.position = CGPoint(x: frame.minX+430, y: frame.minY+30)
+        
+        
+        
+        self.addChild(startText)
     }
     
     
