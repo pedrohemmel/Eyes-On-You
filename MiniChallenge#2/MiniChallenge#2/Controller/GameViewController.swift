@@ -15,37 +15,34 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AppUtility.lockOrientation(.landscape) //calling struct
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
+        //creating my SKView
+        let myView:SKView = SKView(frame: self.view.frame)
+        self.view = myView
+        
+        // creating scene and presenting on SKView
+        let GameScene: GameScene = GameScene(size: myView.frame.size)
+        myView.contentMode = .scaleAspectFill
+        myView.presentScene(GameScene)
+        myView.ignoresSiblingOrder = false //sobreposicao de item
+        myView.showsFPS = true
+        myView.showsNodeCount = true
+        myView.showsPhysics = true
+     
+    }
+}
 
-                // Present the scene
-                view.presentScene(scene)
-            }
-
-            view.ignoresSiblingOrder = true
-
-            view.showsFPS = true
-            view.showsNodeCount = true
+struct AppUtility {
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask){
+        if let delegate = UIApplication.shared.delegate as? AppDelegate{
+            delegate.orientationLock = orientation
         }
     }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        self.lockOrientation(orientation)
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
     }
 }

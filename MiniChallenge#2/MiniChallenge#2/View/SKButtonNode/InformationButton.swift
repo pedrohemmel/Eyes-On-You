@@ -1,6 +1,6 @@
 import SpriteKit
 
-class InformationButton: SKNode {
+public class InformationButton: SKNode {
     var button: SKSpriteNode
     private var mask: SKSpriteNode
     private var cropNode:  SKCropNode
@@ -27,8 +27,6 @@ class InformationButton: SKNode {
         setupNodes()
         addNodes()
         
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,14 +43,14 @@ class InformationButton: SKNode {
     }
     
     //Botao se mexendo
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isEnable {
             mask.alpha = 0.5
             run(SKAction.scale(by: 1.05, duration: 0.05))
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isEnable {
             for touch in touches {
                 let location: CGPoint = touch.location(in: self)
@@ -66,7 +64,7 @@ class InformationButton: SKNode {
         }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isEnable {
             for touch in touches {
                 let location: CGPoint = touch.location(in: self)
