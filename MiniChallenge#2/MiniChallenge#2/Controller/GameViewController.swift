@@ -16,6 +16,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //test
+        
+        AppUtility.orientationLock(.landscape)
+        
         Character.character.characterToCollide(character: AnimatedObject(""))
         
         if let view = self.view as! SKView? {
