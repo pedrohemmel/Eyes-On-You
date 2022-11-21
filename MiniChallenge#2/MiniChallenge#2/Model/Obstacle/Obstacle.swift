@@ -10,14 +10,14 @@ import GameplayKit
 
 class Obstacle {
     
-    public var obstacle: SKSpriteNode
+    public var obstacleView: SKSpriteNode
     private var day: Bool
     
     init(day: Bool, obstacle: SKSpriteNode) {
         self.day = day
-        self.obstacle = obstacle
+        self.obstacleView = obstacle
         
-        self.obstacle = obstacleToSetPhysics(obstacle: self.obstacle)
+        self.obstacleView = obstacleToSetPhysics(obstacle: self.obstacleView)
     }
     
     func obstacleToSetSize(obstacle: SKSpriteNode, obSize: CGSize, obZPosition: CGFloat) -> SKSpriteNode {
@@ -36,8 +36,8 @@ class Obstacle {
     
     func obstacleToCollide(obstacle: SKSpriteNode) -> SKSpriteNode {
         obstacle.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.character
-        obstacle.physicsBody?.collisionBitMask = PhysicsCategory.character
+        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.ground
+        obstacle.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.ground
         
         return obstacle
     }

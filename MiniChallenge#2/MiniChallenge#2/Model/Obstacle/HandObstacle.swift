@@ -12,6 +12,6 @@ class HandObstacle: Obstacle {
     init(){
         super.init(day: false, obstacle: SKSpriteNode(imageNamed: ""))
         
-        self.obstacle = obstacleToSetSize(obstacle: self.obstacle, obSize: self.obstacle.size, obZPosition: 4)
+        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: self.obstacleView.size, obZPosition: 4)
     }
 }

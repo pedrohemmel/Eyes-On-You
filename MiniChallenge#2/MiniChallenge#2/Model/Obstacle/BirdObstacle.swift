@@ -12,6 +12,6 @@ class BirdObstacle: Obstacle {
     init() {
         super.init(day: true, obstacle: SKSpriteNode(imageNamed: ""))
         
-        self.obstacle = obstacleToSetSize(obstacle: self.obstacle, obSize: self.obstacle.size, obZPosition: 4)
+        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: CGSize(width: 100, height: 100), obZPosition: 4)
     }
 }

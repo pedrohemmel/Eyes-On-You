@@ -17,25 +17,21 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         //test
         
-        AppUtility.orientationLock(.landscape)
+        AppUtility.lockOrientation(.landscape)
+        let myView: SKView = SKView(frame: self.view.frame)
+        self.view = myView
         
-        Character.character.characterToCollide(character: AnimatedObject(""))
+        let gameScene: GameScene = GameScene(size: myView.frame.size)
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
+        // Set the scale mode to scale to fit the window
+        // Present the scene
+        myView.presentScene(gameScene)
+        
+        myView.ignoresSiblingOrder = true
             
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        myView.showsFPS = true
+        myView.showsNodeCount = true
+        
     }
 
     override var shouldAutorotate: Bool {
@@ -52,5 +48,19 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+struct AppUtility {
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask){
+        if let delegate = UIApplication.shared.delegate as? AppDelegate{
+            delegate.orientationLock = orientation
+        }
+    }
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        self.lockOrientation(orientation)
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
     }
 }
