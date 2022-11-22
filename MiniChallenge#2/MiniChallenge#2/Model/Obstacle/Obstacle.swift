@@ -36,8 +36,8 @@ class Obstacle {
     
     func obstacleToCollide(obstacle: SKSpriteNode) -> SKSpriteNode {
         obstacle.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.ground
         obstacle.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.ground
+        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.ground
         
         return obstacle
     }
