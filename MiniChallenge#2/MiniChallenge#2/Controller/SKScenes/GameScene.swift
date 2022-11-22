@@ -6,11 +6,9 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 //Score.shared.addScore() usar essa func para adicionar score quando tiver
 //Score.shared.trySaveHighScore() usar essa func para salvar o highscore
-
 
 class GameScene: SKScene {
     
