@@ -15,9 +15,13 @@ public class Character {
     
     public var characterView: SKSpriteNode
     
+    public var characterLife: [SKSpriteNode] = []
+    
     //Initializing class and applying an init of SKSpriteNode to the characterView
     init() { 
         self.characterView = SKSpriteNode()
+        
+        characterLife = [SKSpriteNode(imageNamed: "morte"), SKSpriteNode(imageNamed: "morte"), SKSpriteNode(imageNamed: "morte")]
     }
     
     //Setting SpriteKit properties to a var and returning it
@@ -52,5 +56,24 @@ public class Character {
         character.physicsBody?.contactTestBitMask = PhysicsCategory.obstacle
         
         return character
+    }
+    
+    func characterLifeToSetProperties(characterLife: [SKSpriteNode], view: SKScene) -> [SKSpriteNode] {
+        var cont: CGFloat = 30
+        
+        var characterLifeAux = [SKSpriteNode]()
+        
+        for life in characterLife {
+            //Properties of size and position
+            life.size = CGSize(width: 20, height: 20)
+            life.position = CGPoint(x: view.frame.width - cont, y: view.frame.height - 20.0)
+            life.zPosition = 7
+            
+            cont = cont + 30
+            
+            characterLifeAux.append(life)
+        }
+        
+        return characterLifeAux
     }
 }

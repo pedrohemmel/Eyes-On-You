@@ -30,10 +30,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Criando o objeto solo
         self.ground = groundToCreate(ground: self.ground)
         
+        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+        
         //Adicionando os filhos à autoclasse
         self.addChild(character.characterView)
         self.addChild(obstacle.obstacleView)
         self.addChild(ground)
+        
+        for life in self.character.characterLife {
+            self.addChild(life)
+        }
     }
     
     //Função que detecta o contato dos corpos
@@ -43,6 +49,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Estrutura condicional que verifica os corpos de contato
         if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
+            
+            //Decrementando itens da lista de vidas do jogo
+            if !self.character.characterLife.isEmpty {
+                self.character.characterLife.last?.removeFromParent()
+                self.character.characterLife.removeLast()
+            }
             self.character.characterView = character.characterToFly(character: self.character.characterView)
         }
     }
