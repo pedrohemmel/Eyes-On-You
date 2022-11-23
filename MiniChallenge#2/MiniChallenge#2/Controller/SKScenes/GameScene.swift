@@ -14,85 +14,87 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var audioStatus: Bool = true
+    let menu = Menu()
     
-    let startText = SKLabelNode(fontNamed: "") //inserir a font quando definido a tipografia
-    let highScoreText = SKLabelNode(fontNamed: "")
-    
-    lazy var infoButton: CustomizedButton = {
-        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
-            
-        })
-        button.zPosition = 1
-        return button
-    }()
-
-    
-    
-    lazy var audioButton: CustomizedButton = {
-        
-        var volumeImage = "volumeBt"
-        
-        var button = CustomizedButton(imageName: volumeImage , buttonAction: {
-            print("to aqui")
-         
-            
-            if self.audioStatus == true{
-            
-                self.audioStatus = false
-                AVAudio.sharedInstance().pauseBackgroundMusic()
-                
-                print(self.audioStatus)
-                
-                volumeImage = "volumeBt"
-            }
-            
-            else if self.audioStatus == false {
-    
-                self.audioStatus = true
-                
-                AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
-                
-                
-                print(self.audioStatus)
-                volumeImage = "exclamation"
-            }
-        })
-        
-        button.zPosition = 1
-        return button
-        
-    }()
-      
+//    var audioStatus: Bool = true
+//
+//    let startText = SKLabelNode(fontNamed: "") //inserir a font quando definido a tipografia
+//    let highScoreText = SKLabelNode(fontNamed: "")
+//
+//    lazy var infoButton: CustomizedButton = {
+//        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+//
+//        })
+//        button.zPosition = 1
+//        return button
+//    }()
+//
+//
+//
+//    lazy var audioButton: CustomizedButton = {
+//
+//        var volumeImage = "volumeBt"
+//
+//        var button = CustomizedButton(imageName: volumeImage , buttonAction: {
+//            print("to aqui")
+//
+//
+//            if self.audioStatus == true{
+//
+//                self.audioStatus = false
+//                AVAudio.sharedInstance().pauseBackgroundMusic()
+//
+//                print(self.audioStatus)
+//
+//                volumeImage = "volumeBt"
+//            }
+//
+//            else if self.audioStatus == false {
+//
+//                self.audioStatus = true
+//
+//                AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+//
+//
+//                print(self.audioStatus)
+//                volumeImage = "exclamation"
+//            }
+//        })
+//
+//        button.zPosition = 1
+//        return button
+//
+//    }()
+//
     
     override func didMove(to view: SKView) {
         
         self.backgroundColor = UIColor.blue
-        
-        AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
-        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
-        
-        
-        //Adicionando o Botao a cena
-        
-        highScoreText.text = ("\(Score.shared.highScore)") //mostra o highscore
-        highScoreText.fontColor = UIColor.white
-        highScoreText.fontSize = CGFloat(25)
-        highScoreText.position = CGPoint(x: frame.maxX-95, y: frame.maxY-45)
-        self.addChild(highScoreText)
-        
-        infoButton.position = CGPoint(x: frame.maxX-60, y: frame.maxY-25)
-        self.addChild(infoButton)
-        
-        audioButton.position = CGPoint(x: frame.maxX-750, y: frame.maxY-25)
-        self.addChild(audioButton)
-
-        startText.text = "TOQUE NA TELA PARA INICIAR"
-        startText.fontColor = UIColor.white
-        startText.horizontalAlignmentMode = .center
-        startText.verticalAlignmentMode = .bottom
-        startText.position = CGPoint(x: frame.minX+430, y: frame.minY+30)
-        self.addChild(startText)
+//        
+//        AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
+//        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+//        
+//        
+//        //Adicionando o Botao a cena
+//        
+//        highScoreText.text = ("\(Score.shared.highScore)") //mostra o highscore
+//        highScoreText.fontColor = UIColor.white
+//        highScoreText.fontSize = CGFloat(25)
+//        highScoreText.position = CGPoint(x: frame.maxX-95, y: frame.maxY-45)
+//        self.addChild(highScoreText)
+//        
+//        infoButton.position = CGPoint(x: frame.maxX-60, y: frame.maxY-25)
+//        self.addChild(infoButton)
+//        
+//        audioButton.position = CGPoint(x: frame.maxX-750, y: frame.maxY-25)
+//        self.addChild(audioButton)
+//
+//        startText.text = "TOQUE NA TELA PARA INICIAR"
+//        startText.fontColor = UIColor.white
+//        startText.horizontalAlignmentMode = .center
+//        startText.verticalAlignmentMode = .bottom
+//        startText.position = CGPoint(x: frame.minX+430, y: frame.minY+30)
+        self.addChild(self.menu)
     }
     
     
