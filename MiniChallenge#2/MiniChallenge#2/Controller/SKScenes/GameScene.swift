@@ -14,6 +14,9 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    //Variável pra chamar a classe
+    private var characterLifeScene: LifeCharacter?
+    
     var audioStatus: Bool = true
     
     let startText = SKLabelNode(fontNamed: "") //inserir a font quando definido a tipografia
@@ -66,6 +69,11 @@ class GameScene: SKScene {
       
     
     override func didMove(to view: SKView) {
+        
+        //Adicionando a imagem a cena
+        characterLifeScene = LifeCharacter()
+        addChild(characterLifeScene!)
+        
         
         self.backgroundColor = UIColor.blue
         

@@ -14,6 +14,7 @@
 		161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 161959D329256BFF00E2CC45 /* Assets.xcassets */; };
 		161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161959D529256BFF00E2CC45 /* LaunchScreen.storyboard */; };
 		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
+		61A7319C292D3CF700B13B40 /* LifeCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7319B292D3CF700B13B40 /* LifeCharacter.swift */; };
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
@@ -28,6 +29,9 @@
 		161959D329256BFF00E2CC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		161959D629256BFF00E2CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
+		61A7319B292D3CF700B13B40 /* LifeCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCharacter.swift; sourceTree = "<group>"; };
+		61A7319E292D487400B13B40 /* OldLondon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldLondon.ttf; sourceTree = "<group>"; };
+		61A7319F292D48FC00B13B40 /* MiniChallenge-2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MiniChallenge-2-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
@@ -63,6 +67,7 @@
 		161959C529256BFC00E2CC45 /* MiniChallenge#2 */ = {
 			isa = PBXGroup;
 			children = (
+				61A7319F292D48FC00B13B40 /* MiniChallenge-2-Info.plist */,
 				161959E029256C8100E2CC45 /* Utils */,
 				161959DD29256C0900E2CC45 /* Model */,
 				161959DE29256C1100E2CC45 /* View */,
@@ -74,6 +79,7 @@
 		161959DD29256C0900E2CC45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61A7319B292D3CF700B13B40 /* LifeCharacter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +107,7 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				61A7319D292D47F400B13B40 /* Fonts */,
 				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
@@ -114,6 +121,14 @@
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 			);
 			path = SKNodes;
+			sourceTree = "<group>";
+		};
+		61A7319D292D47F400B13B40 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				61A7319E292D487400B13B40 /* OldLondon.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B98E203C292824280022E94F /* Sounds */ = {
@@ -230,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
+				61A7319C292D3CF700B13B40 /* LifeCharacter.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
 				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,
@@ -383,6 +399,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UFS93RKF34;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MiniChallenge-2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -414,6 +431,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UFS93RKF34;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MiniChallenge-2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
