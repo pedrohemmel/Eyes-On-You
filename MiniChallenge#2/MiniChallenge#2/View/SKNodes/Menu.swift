@@ -30,9 +30,6 @@ class Menu: SKNode {
         super.init()
         
         self.audioButton = menuToCreateAudioButton()
-        
-        self.menuToStruct()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,19 +65,19 @@ class Menu: SKNode {
         })
     }
     //MARK: - Funções de estruturação da classe
-    func menuToStruct() {
+    func menuToStruct(sizeView: CGSize) {
         self.menuToPlayMusicBackground()
         
-        self.menuHighScoreToSetProperties()
+        self.menuHighScoreToSetProperties(sizeView: sizeView)
         self.addChild(self.highScoreText)
         
-        self.menuInfoButtonToSetProperties()
+        self.menuInfoButtonToSetProperties(sizeView: sizeView)
         self.addChild(self.infoButton)
         
-        self.menuAudioButtonToSetProperties()
+        self.menuAudioButtonToSetProperties(sizeView: sizeView)
         self.addChild(self.audioButton!)
 
-        self.menuStartTextToSetProperties()
+        self.menuStartTextToSetProperties(sizeView: sizeView)
         self.addChild(self.startText)
     }
     
@@ -89,27 +86,27 @@ class Menu: SKNode {
         AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
     }
     
-    func menuStartTextToSetProperties() {
+    func menuStartTextToSetProperties(sizeView: CGSize) {
         self.startText.text = "TOQUE NA TELA PARA INICIAR"
         self.startText.fontColor = UIColor.white
         self.startText.horizontalAlignmentMode = .center
         self.startText.verticalAlignmentMode = .bottom
-        self.startText.position = CGPoint(x: frame.minX+430, y: frame.minY+30)
+        self.startText.position = CGPoint(x: sizeView.width / 2, y: 40)
     }
     
-    func menuAudioButtonToSetProperties() {
-        self.audioButton!.position = CGPoint(x: frame.maxX+20, y: frame.maxY+200)
+    func menuAudioButtonToSetProperties(sizeView: CGSize) {
+        self.audioButton!.position = CGPoint(x: 40, y: sizeView.height - 40)
     }
     
-    func menuInfoButtonToSetProperties() {
-        self.infoButton.position = CGPoint(x: frame.maxX+400, y: frame.maxY+200)
+    func menuInfoButtonToSetProperties(sizeView: CGSize) {
+        self.infoButton.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
     }
     
-    func menuHighScoreToSetProperties() {
-        self.highScoreText.text = ("\(Score.shared.highScore)") //mostra o highscore
+    func menuHighScoreToSetProperties(sizeView: CGSize) {
+        self.highScoreText.text = ("High Score: \(Score.shared.highScore)") //mostra o highscore
         self.highScoreText.fontColor = UIColor.white
         self.highScoreText.fontSize = CGFloat(25)
-        self.highScoreText.position = CGPoint(x: frame.maxX-95, y: frame.maxY-45)
+        self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)
     }
       
     
