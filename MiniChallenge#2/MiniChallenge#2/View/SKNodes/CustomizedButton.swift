@@ -35,19 +35,12 @@ public class CustomizedButton: SKNode {
     
     func setupNodes() {
         self.buttonView.zPosition = 0
+        buttonView.setScale(1.2)
     }
     
     func addNodes() {
         self.addChild(buttonView)
         self.addChild(cropNode)
-    }
-    
-    //Botao se mexendo
-    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.enable {
-            self.mask.alpha = 0.5
-            run(SKAction.scale(by: 1.05, duration: 0.05))
-        }
     }
     
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -68,7 +61,7 @@ public class CustomizedButton: SKNode {
         if self.enable {
             for touch in touches {
                 let location: CGPoint = touch.location(in: self)
-                
+
                 if self.buttonView.contains(location) {
                     self.disableButton()
                     self.action()
