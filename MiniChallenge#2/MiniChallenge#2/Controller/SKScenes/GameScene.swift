@@ -12,9 +12,13 @@ import GameplayKit
 //Score.shared.trySaveHighScore() usar essa func para salvar o highscore
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let menu = Menu()
+    
+    private let character = Character.character
+    private let obstacle = BirdObstacle()
+    private var ground = SKSpriteNode(imageNamed: "")
     
     override func didMove(to view: SKView) {
         
@@ -24,7 +28,65 @@ class GameScene: SKScene {
         menu.menuToStruct(sizeView: self.size)
         
         self.addChild(self.menu)
+        
+        //Relacionando o SKPhysicsContactDelegate à classe self
+        self.physicsWorld.contactDelegate = self
+        
+        //Criando e chamando as funções que fazem a estrutura do personagem
+        character.characterView = SKSpriteNode(imageNamed: "examploOfCharacter")
+        character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
+        character.characterView = character.characterToCollide(character: character.characterView)
+        
+        //Criando e chamando as funções que fazem a estrutura do obstáculo
+        obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
+        obstacle.obstacleView.position = CGPoint(x: self.frame.width / 2 - obstacle.obstacleView.frame.width, y: self.frame.height / 2)
+        
+        //Criando o objeto solo
+        self.ground = groundToCreate(ground: self.ground)
+        
+        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+        
+        //Adicionando os filhos à autoclasse
+        self.addChild(character.characterView)
+        self.addChild(obstacle.obstacleView)
+        self.addChild(ground)
+        
+        for life in self.character.characterLife {
+            self.addChild(life)
+        }
     }
+    
+    //Função que detecta o contato dos corpos
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody = contact.bodyA
+        let secondBody = contact.bodyB
+        
+        //Estrutura condicional que verifica os corpos de contato
+        if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
+            
+            //Decrementando itens da lista de vidas do jogo
+            if !self.character.characterLife.isEmpty {
+                self.character.characterLife.last?.removeFromParent()
+                self.character.characterLife.removeLast()
+            }
+            self.character.characterView = character.characterToFly(character: self.character.characterView)
+        }
+    }
+    
+    //MARK: - Criando objetos da cena principal
+        func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
+            ground.size = CGSize(width: self.frame.width, height: 100)
+            ground.position = CGPoint(x: 0, y: 0)
+            ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
+            ground.physicsBody?.isDynamic = false
+            ground.physicsBody?.affectedByGravity = false
+            
+            ground.physicsBody?.categoryBitMask = PhysicsCategory.ground
+            ground.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
+            ground.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
+            
+            return ground
+        }
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -43,10 +105,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-        
-        
-        
+        self.character.characterView = self.character.characterToFly(character: self.character.characterView)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
