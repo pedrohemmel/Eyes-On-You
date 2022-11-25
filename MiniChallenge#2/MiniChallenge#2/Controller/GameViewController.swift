@@ -13,10 +13,10 @@ class GameViewController: UIViewController {
     
     private var obstacle: Obstacle = BirdObstacle()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //test
-        
         AppUtility.lockOrientation(.landscape)
         let myView: SKView = SKView(frame: self.view.frame)
         self.view = myView

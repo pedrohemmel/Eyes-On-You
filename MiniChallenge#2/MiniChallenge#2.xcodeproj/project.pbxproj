@@ -21,6 +21,11 @@
 		956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */; };
 		956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960722926B56D00CF81EA /* GhostObstacle.swift */; };
 		956960752926B63D00CF81EA /* HandObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960742926B63D00CF81EA /* HandObstacle.swift */; };
+		1656686D292EAD8A00D0F52A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656686C292EAD8A00D0F52A /* Menu.swift */; };
+		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
+		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
+		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
+		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TombstoneObstacle.swift; sourceTree = "<group>"; };
 		956960722926B56D00CF81EA /* GhostObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostObstacle.swift; sourceTree = "<group>"; };
 		956960742926B63D00CF81EA /* HandObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandObstacle.swift; sourceTree = "<group>"; };
+		1656686C292EAD8A00D0F52A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
+		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
+		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +102,8 @@
 		161959DE29256C1100E2CC45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				161959D029256BFC00E2CC45 /* Main.storyboard */,
-				161959D529256BFF00E2CC45 /* LaunchScreen.storyboard */,
+				B9B3C84C2927306900403187 /* Storyboard */,
+				6172C3CF2926C71E003C21FE /* SKNodes */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,7 +111,9 @@
 		161959DF29256C1600E2CC45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				161959CC29256BFC00E2CC45 /* GameScene.swift */,
+				B98E2041292827A90022E94F /* AVAudio */,
+				B98E2040292827060022E94F /* Score */,
+				B98E203E292824D10022E94F /* SKScenes */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
 				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
 			);
@@ -111,6 +123,7 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
@@ -127,6 +140,56 @@
 				956960742926B63D00CF81EA /* HandObstacle.swift */,
 			);
 			path = Obstacle;
+            sourceTree = "<group>";
+        };
+		6172C3CF2926C71E003C21FE /* SKNodes */ = {
+			isa = PBXGroup;
+			children = (
+				1656686C292EAD8A00D0F52A /* Menu.swift */,
+				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
+			);
+			path = SKNodes;
+			sourceTree = "<group>";
+		};
+		B98E203C292824280022E94F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B98E203829273F030022E94F /* pipo.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		B98E203E292824D10022E94F /* SKScenes */ = {
+			isa = PBXGroup;
+			children = (
+				161959CC29256BFC00E2CC45 /* GameScene.swift */,
+			);
+			path = SKScenes;
+			sourceTree = "<group>";
+		};
+		B98E2040292827060022E94F /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				B98E203A292806CB0022E94F /* Score.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
+		B98E2041292827A90022E94F /* AVAudio */ = {
+			isa = PBXGroup;
+			children = (
+				B9B3C84A29272E4100403187 /* AVAudio.swift */,
+			);
+			path = AVAudio;
+			sourceTree = "<group>";
+		};
+		B9B3C84C2927306900403187 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				161959D529256BFF00E2CC45 /* LaunchScreen.storyboard */,
+				161959D029256BFC00E2CC45 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +252,7 @@
 			files = (
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
+				B98E203929273F030022E94F /* pipo.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,9 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
+				1656686D292EAD8A00D0F52A /* Menu.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
 				9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */,
+				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,
+				B98E203B292806CB0022E94F /* Score.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
 				956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */,
 				956960752926B63D00CF81EA /* HandObstacle.swift in Sources */,
@@ -287,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -341,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -367,6 +435,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,9 +444,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pnimoveis.MiniChallenge-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -396,6 +469,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,9 +478,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pnimoveis.MiniChallenge-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
