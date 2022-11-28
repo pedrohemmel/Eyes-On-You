@@ -35,7 +35,7 @@ public class CustomizedButton: SKNode {
     
     func setupNodes() {
         self.buttonView.zPosition = 0
-        buttonView.setScale(1.2)
+        buttonView.setScale(2.2)
     }
     
     func addNodes() {

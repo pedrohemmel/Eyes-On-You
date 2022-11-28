@@ -16,16 +16,17 @@
 		161959E42925782E00E2CC45 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959E32925782E00E2CC45 /* Character.swift */; };
 		161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959E72926B5A200E2CC45 /* PhysicsCategory.swift */; };
 		161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959EB2926C80300E2CC45 /* AnimatedObject.swift */; };
+		1656686D292EAD8A00D0F52A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656686C292EAD8A00D0F52A /* Menu.swift */; };
+		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
 		9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524E9CD29257D4E007AFBB2 /* Obstacle.swift */; };
 		9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */; };
 		956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */; };
 		956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960722926B56D00CF81EA /* GhostObstacle.swift */; };
 		956960752926B63D00CF81EA /* HandObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960742926B63D00CF81EA /* HandObstacle.swift */; };
-		1656686D292EAD8A00D0F52A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656686C292EAD8A00D0F52A /* Menu.swift */; };
-		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
+		B9E6427529315D0E00E8C3F3 /* personagem.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E6427429315D0E00E8C3F3 /* personagem.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,16 +40,17 @@
 		161959E32925782E00E2CC45 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		161959E72926B5A200E2CC45 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		161959EB2926C80300E2CC45 /* AnimatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedObject.swift; sourceTree = "<group>"; };
+		1656686C292EAD8A00D0F52A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
 		9524E9CD29257D4E007AFBB2 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdObstacle.swift; sourceTree = "<group>"; };
 		9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TombstoneObstacle.swift; sourceTree = "<group>"; };
 		956960722926B56D00CF81EA /* GhostObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostObstacle.swift; sourceTree = "<group>"; };
 		956960742926B63D00CF81EA /* HandObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandObstacle.swift; sourceTree = "<group>"; };
-		1656686C292EAD8A00D0F52A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
+		B9E6427429315D0E00E8C3F3 /* personagem.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = personagem.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,11 +125,21 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B9E6427429315D0E00E8C3F3 /* personagem.atlas */,
 				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		6172C3CF2926C71E003C21FE /* SKNodes */ = {
+			isa = PBXGroup;
+			children = (
+				1656686C292EAD8A00D0F52A /* Menu.swift */,
+				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
+			);
+			path = SKNodes;
 			sourceTree = "<group>";
 		};
 		956960712926B3A200CF81EA /* Obstacle */ = {
@@ -140,15 +152,6 @@
 				956960742926B63D00CF81EA /* HandObstacle.swift */,
 			);
 			path = Obstacle;
-            sourceTree = "<group>";
-        };
-		6172C3CF2926C71E003C21FE /* SKNodes */ = {
-			isa = PBXGroup;
-			children = (
-				1656686C292EAD8A00D0F52A /* Menu.swift */,
-				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
-			);
-			path = SKNodes;
 			sourceTree = "<group>";
 		};
 		B98E203C292824280022E94F /* Sounds */ = {
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
+				B9E6427529315D0E00E8C3F3 /* personagem.atlas in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				B98E203929273F030022E94F /* pipo.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
@@ -428,15 +432,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 76KNCX7A8A;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,15 +465,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 76KNCX7A8A;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

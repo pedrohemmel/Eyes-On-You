@@ -28,14 +28,16 @@ public class Character {
     func characterToApplyProperties(character: SKSpriteNode, view: SKScene) -> SKSpriteNode {
         
         //Properties of size and position
-        character.size = CGSize(width: 100, height: 100)
-        character.position = CGPoint(x: view.frame.width / 2 - character.frame.width, y: view.frame.height / 2)
+//        character.size = CGSize(width: 100, height: 100)
+        character.setScale(0.13)
+        character.position = CGPoint(x: 100, y: 100)
         character.zPosition = 5
         
         //Physics properties
         character.physicsBody = SKPhysicsBody(rectangleOf: character.frame.size)
         character.physicsBody?.affectedByGravity = true
         character.physicsBody?.isDynamic = true
+        character.physicsBody?.allowsRotation = false
         
         return character
     }

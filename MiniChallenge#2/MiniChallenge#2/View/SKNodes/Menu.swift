@@ -12,12 +12,20 @@ class Menu: SKNode {
     
     //MARK: - Criando as variáveis principais
     var audioStatus: Bool = true
+    var startGame: Bool = false
+    var endGame: Bool = false
+    var restartGame: Bool = false
+    
+    var testeBg: Int = 1
     
     let startText = SKLabelNode(fontNamed: "")
     let highScoreText = SKLabelNode(fontNamed: "")
     
+    
+    
     var infoButton: CustomizedButton = {
         var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+            
             
         })
         return button
@@ -109,5 +117,25 @@ class Menu: SKNode {
         self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)
     }
       
+    func tapToStart(){
+        
+        if !startGame {
+            
+            startText.isHidden = true
+            highScoreText.isHidden = true
+            infoButton.isHidden = true
+            audioButton?.isHidden = true
+            startGame = true
+            
+            testeBg = 2
+            
+            print(testeBg)
+            
+        }
+        
+        
+        
+    }
+    
     
 }
