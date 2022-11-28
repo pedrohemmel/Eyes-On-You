@@ -158,15 +158,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Called before each frame is rendered
         
         if menu.testeBg == 1{
-            
             backgroundImage = SKSpriteNode(imageNamed: "bg2")
-            
-            
         }
         
-        
         else if menu.testeBg == 2 {
-           
             backgroundImage = SKSpriteNode(imageNamed: "bg1")
             
         }
