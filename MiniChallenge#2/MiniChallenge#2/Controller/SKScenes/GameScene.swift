@@ -24,75 +24,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let moveAction = SKAction.moveTo(x: -100, duration: 5)
     let removeAction = SKAction.removeFromParent()
     
-    //---------
-    
-  
-    
-    
     override func didMove(to view: SKView) {
-        
-//        self.backgroundColor = UIColor.blue
-        
-        let moveBackground = SKAction.moveBy(x: -self.size.width, y: 0, duration: 5)
-        let resizeBackground = SKAction.moveBy(x: self.size.width, y: 0, duration: 0)
-        let reDo = SKAction.repeatForever(SKAction.sequence([moveBackground,resizeBackground]))
-        
-        for i in 0..<2 {
-            
-                
-            backgroundImage = SKSpriteNode(imageNamed: "bg2")
-                
-                
-        
-            
-             //change???
-            backgroundImage.anchorPoint = CGPoint(x: 0, y:0)
-            
-            backgroundImage.size.width = self.size.width //get the right pixel on phone
-            backgroundImage.size.height = self.size.height
-            backgroundImage.zPosition = -1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
-            backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
-            backgroundImage.run(reDo)
-            
-            objectDummy.addChild(backgroundImage) //add image to scene
-            
-        }
-        
-        self.addChild(objectDummy)
-        objectDummy.speed = 1
-        
-    
-//        print(self.size)
-        menu.menuToStruct(sizeView: self.size)
-        
-        self.addChild(self.menu)
         
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
         
+        //Chamando a função que estrutura o menu principal
+        self.menu.menuToStruct(sizeView: self.size)
+        
+        
+        self.creatingAnimatedBackground()
+        
         //Criando e chamando as funções que fazem a estrutura do personagem
-        character.characterView = AnimatedObject("personagem")
-        character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
-        character.characterView = character.characterToCollide(character: character.characterView)
+        self.character.characterView = AnimatedObject("personagem")
+        self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
+        self.character.characterView = character.characterToCollide(character: character.characterView)
         
-        
-        
-        //Obstacucucuc
         //Criando e chamando as funções que fazem a estrutura do obstáculo
-//        obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
-//        obstacle.obstacleView.position = CGPoint(x: self.frame.width / 2 - obstacle.obstacleView.frame.width, y: self.frame.height / 2)
-        
+        //obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
+        //obstacle.obstacleView.position = CGPoint(x: self.frame.width / 2 - obstacle.obstacleView.frame.width, y: self.frame.height / 2)
         
         //Criando o objeto solo
         self.ground = groundToCreate(ground: self.ground)
-        
         self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
         //Adicionando os filhos à autoclasse
-        self.addChild(character.characterView)
+        self.addChild(self.menu)
+        self.addChild(self.character.characterView)
 //        self.addChild(obstacle.obstacleView)
-        self.addChild(ground)
-        
+        self.addChild(self.ground)
+        self.addChild(objectDummy)
         for life in self.character.characterLife {
             self.addChild(life)
         }
@@ -128,6 +89,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ground.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
             
             return ground
+        }
+    
+        //Função que estrutura toda a parte do background animado
+        func creatingAnimatedBackground() {
+            let moveBackground = SKAction.moveBy(x: -self.size.width, y: 0, duration: 5)
+            let resizeBackground = SKAction.moveBy(x: self.size.width, y: 0, duration: 0)
+            let reDo = SKAction.repeatForever(SKAction.sequence([moveBackground, resizeBackground]))
+            
+            for i in 0..<2 {
+                self.backgroundImage = SKSpriteNode(imageNamed: "bg")
+                
+                self.backgroundImage.anchorPoint = CGPoint(x: 0, y:0)
+                
+                self.backgroundImage.size.width = self.size.width //get the right pixel on phone
+                self.backgroundImage.size.height = self.size.height
+                self.backgroundImage.zPosition = -1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
+                self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
+                self.backgroundImage.run(reDo)
+                
+                self.objectDummy.addChild(backgroundImage)
+            }
+            
+            self.objectDummy.speed = 1
         }
     
     
