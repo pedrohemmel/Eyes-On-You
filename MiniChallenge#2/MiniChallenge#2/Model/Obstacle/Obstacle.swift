@@ -11,14 +11,17 @@ import GameplayKit
 class Obstacle {
     
     public var obstacleView: SKSpriteNode
+    public var actionObstacle: SKAction = SKAction.moveBy(x: 0, y: 0, duration: 0.004)
     private var day: Bool
     
     init(day: Bool, obstacle: SKSpriteNode) {
         self.day = day
         self.obstacleView = obstacle
         
-        self.obstacleView = obstacleToSetPhysics(obstacle: self.obstacleView)
+        self.obstacleView = self.obstacleToSetPhysics(obstacle: self.obstacleView)
     }
+    
+    
     
     func obstacleToSetSize(obstacle: SKSpriteNode, obSize: CGSize, obZPosition: CGFloat) -> SKSpriteNode {
         obstacle.zPosition = obZPosition

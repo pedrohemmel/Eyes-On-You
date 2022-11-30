@@ -12,6 +12,6 @@ class TombstoneObstacle: Obstacle {
     init() {
         super.init(day: true , obstacle: SKSpriteNode(imageNamed: ""))
         
-        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: self.obstacleView.size, obZPosition: 4)
+        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: self.obstacleView.size, obZPosition: 8)
     }
 }
