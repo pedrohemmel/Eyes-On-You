@@ -10,7 +10,11 @@ import SpriteKit
 
 class BirdObstacle: Obstacle {
     init() {
-        super.init(day: true, obstacle: SKSpriteNode(imageNamed: ""))
+        super.init(day: true, obstacle: {
+            let animatedObject = AnimatedObject("corvo")
+            animatedObject.setScale(0.13)
+            return animatedObject
+        }())
         
         self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: CGSize(width: 100, height: 100), obZPosition: 8)
     }
