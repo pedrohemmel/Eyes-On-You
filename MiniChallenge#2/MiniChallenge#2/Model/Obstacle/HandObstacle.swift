@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class HandObstacle: Obstacle {
-    init(){
+    init() {
         super.init(day: false)
     }
 }

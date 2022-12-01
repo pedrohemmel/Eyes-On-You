@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class GhostObstacle: Obstacle {
-    init(){
+    init() {
         super.init(day: false)
     }
 }

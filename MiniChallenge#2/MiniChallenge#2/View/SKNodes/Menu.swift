@@ -11,6 +11,7 @@ import SpriteKit
 class Menu: SKNode {
     
     //MARK: - Criando as variáveis principais
+   
     var audioStatus: Bool = true
     var startGame: Bool = false
     var endGame: Bool = false
@@ -111,7 +112,7 @@ class Menu: SKNode {
     }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
-        self.highScoreText.text = ("High Score: \(Score.shared.highScore)") //mostra o highscore
+        self.highScoreText.text = ("High Score: \(Score.shared.highScore)")
         self.highScoreText.fontColor = UIColor.white
         self.highScoreText.fontSize = CGFloat(25)
         self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)
@@ -126,14 +127,22 @@ class Menu: SKNode {
             infoButton.isHidden = true
             audioButton?.isHidden = true
             startGame = true
+            Score.shared.scoreLabel.isHidden = false
+        }
+        
+        func restart(){
+            //colocar oq acontece para restart
             
-            testeBg = 2
             
-            print(testeBg)
             
         }
         
-        
+        func endGame(){
+            
+            
+            
+            
+        }
         
     }
     
