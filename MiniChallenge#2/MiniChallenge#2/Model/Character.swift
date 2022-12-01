@@ -29,7 +29,7 @@ public class Character {
         
         //Properties of size and position
 //        character.size = CGSize(width: 100, height: 100)
-        character.setScale(0.13)
+        character.setScale(0.10)
         character.position = CGPoint(x: 100, y: 100)
         character.zPosition = 5
         

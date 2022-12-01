@@ -27,9 +27,9 @@
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
 		B9E6427529315D0E00E8C3F3 /* personagem.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E6427429315D0E00E8C3F3 /* personagem.atlas */; };
-		BB03AECA2937F58B002662DD /* fantasmas.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AEC92937F58B002662DD /* fantasmas.atlas */; };
-		BB03AECC2937F5D0002662DD /* corvo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AECB2937F5D0002662DD /* corvo.atlas */; };
-		BB03AED02937F870002662DD /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AECF2937F870002662DD /* maos.atlas */; };
+		BB03AED42938D929002662DD /* fantasma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED12938D929002662DD /* fantasma.atlas */; };
+		BB03AED52938D929002662DD /* corvo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED22938D929002662DD /* corvo.atlas */; };
+		BB03AED62938D929002662DD /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED32938D929002662DD /* maos.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,9 +54,9 @@
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
 		B9E6427429315D0E00E8C3F3 /* personagem.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = personagem.atlas; sourceTree = "<group>"; };
-		BB03AEC92937F58B002662DD /* fantasmas.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = fantasmas.atlas; path = "../../../../../../Downloads/images/Obstáculos/fantasmas.atlas"; sourceTree = "<group>"; };
-		BB03AECB2937F5D0002662DD /* corvo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = corvo.atlas; path = "../../../../../../Downloads/images/Obstáculos/corvo.atlas"; sourceTree = "<group>"; };
-		BB03AECF2937F870002662DD /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = ../../../../../../.Trash/maos.atlas; sourceTree = "<group>"; };
+		BB03AED12938D929002662DD /* fantasma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = fantasma.atlas; path = "../../../../../../Downloads/Obstáculos/fantasma.atlas"; sourceTree = "<group>"; };
+		BB03AED22938D929002662DD /* corvo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = corvo.atlas; path = "../../../../../../Downloads/Obstáculos/corvo.atlas"; sourceTree = "<group>"; };
+		BB03AED32938D929002662DD /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = "../../../../../../Downloads/Obstáculos/maos.atlas"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +131,9 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BB03AECF2937F870002662DD /* maos.atlas */,
-				BB03AECB2937F5D0002662DD /* corvo.atlas */,
-				BB03AEC92937F58B002662DD /* fantasmas.atlas */,
+				BB03AED22938D929002662DD /* corvo.atlas */,
+				BB03AED12938D929002662DD /* fantasma.atlas */,
+				BB03AED32938D929002662DD /* maos.atlas */,
 				B9E6427429315D0E00E8C3F3 /* personagem.atlas */,
 				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
@@ -264,12 +264,12 @@
 			files = (
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
 				B9E6427529315D0E00E8C3F3 /* personagem.atlas in Resources */,
-				BB03AECA2937F58B002662DD /* fantasmas.atlas in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				B98E203929273F030022E94F /* pipo.mp3 in Resources */,
-				BB03AED02937F870002662DD /* maos.atlas in Resources */,
+				BB03AED42938D929002662DD /* fantasma.atlas in Resources */,
+				BB03AED62938D929002662DD /* maos.atlas in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
-				BB03AECC2937F5D0002662DD /* corvo.atlas in Resources */,
+				BB03AED52938D929002662DD /* corvo.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

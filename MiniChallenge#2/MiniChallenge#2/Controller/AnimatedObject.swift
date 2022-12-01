@@ -33,10 +33,15 @@ class AnimatedObject: SKSpriteNode {
         var image: [SKTexture] = []
         let atlas: SKTextureAtlas = SKTextureAtlas(named: nameOfAtlas!)
         
+        
+        
         //Loop to make the "gif"
         for i in 1...atlas.textureNames.count {
+            print(i)
             image.append(SKTexture(imageNamed: "\(self.nameOfAtlas!)\(i)"))
         }
+        
+        
         
         //Properties that start the animation
         let animation: SKAction = SKAction.animate(with: image, timePerFrame: 0.1, resize: true, restore: true)

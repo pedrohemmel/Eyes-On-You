@@ -10,8 +10,6 @@ import SpriteKit
 
 class TombstoneObstacle: Obstacle {
     init() {
-        super.init(day: true , obstacle: SKSpriteNode(imageNamed: "lapide1"))
-        
-        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: self.obstacleView.size, obZPosition: 8)
+        super.init(day: true)
     }
 }

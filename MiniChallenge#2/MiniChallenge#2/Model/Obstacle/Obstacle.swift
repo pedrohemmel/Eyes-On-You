@@ -14,18 +14,13 @@ class Obstacle {
     public var actionObstacle: SKAction = SKAction.moveBy(x: 0, y: 0, duration: 0.004)
     private var day: Bool
     
-    init(day: Bool, obstacle: SKSpriteNode) {
+    init(day: Bool) {
         self.day = day
-        self.obstacleView = obstacle
-        
-        self.obstacleView = self.obstacleToSetPhysics(obstacle: self.obstacleView)
+        self.obstacleView = SKSpriteNode()
     }
     
-    
-    
-    func obstacleToSetSize(obstacle: SKSpriteNode, obSize: CGSize, obZPosition: CGFloat) -> SKSpriteNode {
+    func obstacleToSetSize(obstacle: SKSpriteNode, obZPosition: CGFloat) -> SKSpriteNode {
         obstacle.zPosition = obZPosition
-        obstacle.size = obSize
         return obstacle
     }
     
