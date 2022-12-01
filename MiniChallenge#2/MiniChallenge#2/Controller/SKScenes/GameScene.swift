@@ -39,18 +39,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.creatingAnimatedBackground()
         
         //Criando e chamando as funções que fazem a estrutura do personagem
-        self.character.characterView = AnimatedObject("personagem")
+        self.character.characterView = AnimatedObject("personagem_alma")
         self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
         self.character.characterView = character.characterToCollide(character: character.characterView)
+        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
         //Criando o objeto solo
-        self.ground = groundToCreate(ground: self.ground)
-        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+        self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
         
         //Adicionando os filhos à autoclasse
         self.addChild(self.menu)
         self.addChild(self.character.characterView)
-//        self.addChild(obstacle.obstacleView)
         self.addChild(self.ground)
         self.addChild(objectDummy)
         for life in self.character.characterLife {
@@ -71,14 +70,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.character.characterLife.last?.removeFromParent()
                 self.character.characterLife.removeLast()
             }
-            self.character.characterView = character.characterToFly(character: self.character.characterView)
         }
     }
     
     //MARK: - Criando objetos da cena principal
         func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
-            ground.size = CGSize(width: self.frame.width, height: 100)
-            ground.position = CGPoint(x: 0, y: 0)
+            ground.size = CGSize(width: self.frame.width, height: 60)
+            ground.position = CGPoint(x: self.frame.width / 2, y: 30)
             ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
             ground.physicsBody?.isDynamic = false
             ground.physicsBody?.affectedByGravity = false
@@ -113,8 +111,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.objectDummy.speed = 1
         }
     
+        //Função utilizada para organizar melhor o código no switch case
         func settingPropertiesObstacle(obstacle: Obstacle, obstacleView: SKSpriteNode, zPosition: CGFloat) -> SKSpriteNode {
             obstacle.obstacleView = obstacleView
+        
             obstacle.obstacleView = obstacle.obstacleToSetSize(obstacle: obstacle.obstacleView, obZPosition: zPosition)
             obstacle.obstacleView = obstacle.obstacleToSetPhysics(obstacle: obstacle.obstacleView)
             obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
@@ -122,76 +122,70 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return obstacleView
         }
     
+        //
         func sortObstacle() -> Obstacle {
             let obstacleSorted = Int.random(in: 0...3)
             
+            //Criando os objetos do tipo do obstaculo sorteado e setando as devidas propriedades
             switch obstacleSorted {
             case 0:
                 let birdObstacle = BirdObstacle()
-                
-                birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: AnimatedObject("corvo"), zPosition: 9)
+                birdObstacle.obstacleView = AnimatedObject("corvo")
+                birdObstacle.obstacleView.setScale(0.15)
+                birdObstacle.obstacleView.size = CGSize(width: 100, height: 50)
+                birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView, zPosition: 9)
                 
                 let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-                birdObstacle.actionObstacle = SKAction.moveBy(x: 0, y: -self.frame.height / 2, duration: 0.004 * distance)
-                birdObstacle.obstacleView.position.y = self.frame.height
+                birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 1...250)), duration: 0.004 * distance)
+                birdObstacle.obstacleView.position.y = self.frame.height - CGFloat(Int.random(in: 50...100))
                 return birdObstacle
             case 1:
                 let tombstoneObstacle = TombstoneObstacle()
+                tombstoneObstacle.obstacleView = SKSpriteNode(imageNamed: "lapide1")
+                tombstoneObstacle.obstacleView.setScale(0.15)
+                tombstoneObstacle.obstacleView.size = CGSize(width: 150, height: 75)
+                tombstoneObstacle.obstacleView = settingPropertiesObstacle(obstacle: tombstoneObstacle, obstacleView: tombstoneObstacle.obstacleView, zPosition: 9)
                 
-                tombstoneObstacle.obstacleView = settingPropertiesObstacle(obstacle: tombstoneObstacle, obstacleView: SKSpriteNode(imageNamed: "lapide1"), zPosition: 9)
-                
-                tombstoneObstacle.obstacleView.position.y = 0 + 20 //mudar 20 pelo tamanho do chão
+                tombstoneObstacle.obstacleView.position.y = self.ground.frame.height + (tombstoneObstacle.obstacleView.frame.height / 2)
                 return tombstoneObstacle
             case 2:
                 let ghostObstacle = GhostObstacle()
-                
-                ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: AnimatedObject("fantasma"), zPosition: 9)
+                ghostObstacle.obstacleView = AnimatedObject("fantasma")
+                ghostObstacle.obstacleView.setScale(0.15)
+                ghostObstacle.obstacleView.size =  CGSize(width: 100, height: 100)
+                ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView, zPosition: 9)
                 
                 let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-                ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: -self.frame.height / 1.5, duration: 0.004 * distance)
+                ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -50...150)), duration: 0.004 * distance)
                 ghostObstacle.obstacleView.position.y = self.frame.height
                 return ghostObstacle
             case 3:
                 let handObstacle = HandObstacle()
-                
-                handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: AnimatedObject("maos"), zPosition: 9)
+                handObstacle.obstacleView = AnimatedObject("maos")
+                handObstacle.obstacleView.setScale(0.15)
+                handObstacle.obstacleView.size = CGSize(width: 100, height: 50)
+                handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView , zPosition: 9)
                 
                 let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
                 handObstacle.actionObstacle = SKAction.moveBy(x: 0, y: self.frame.height / 6, duration: 0.004 * distance)
-                handObstacle.obstacleView.position.y = 0 + 20 //mudar 20 pelo tamanho do chão
+                handObstacle.obstacleView.position.y = self.ground.frame.height //mudar 20 pelo tamanho do chão
                 return handObstacle
             default:
+                //Obstaculo poadrão
                 let birdObstacle = BirdObstacle()
                 birdObstacle.obstacleView.position.y = self.frame.height * 2
                 return birdObstacle
             }
         }
     
+        //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
         func generatingNewObstacle() {
             
             self.obstaclesInAction = SKNode()
             
             let sortedObstacle = self.sortObstacle()
-//
-//            //Sorteando obstáculos para cada obstaculo presente na tela de forma com que não se repitam
-//            var secondObstacle = self.sortObstacle()
-//            repeat {
-//                secondObstacle = self.sortObstacle()
-//            } while(firstObstacle.obstacleView == secondObstacle.obstacleView)
-//
-//            //Sorteando obstáculos para cada obstaculo presente na tela de forma com que não se repitam
-//            var tertiaryObstacle = self.sortObstacle()
-//            repeat {
-//                tertiaryObstacle = self.sortObstacle()
-//            } while(firstObstacle.obstacleView == tertiaryObstacle.obstacleView || secondObstacle.obstacleView == tertiaryObstacle.obstacleView)
                     
             sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
-//            secondObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 2)
-//            tertiaryObstacle.obstacleView.position.x = self.frame.width + self.frame.width
-                    
-            sortedObstacle.obstacleView.setScale(0.15)
-//            secondObstacle.obstacleView.setScale(0.15)
-//            tertiaryObstacle.obstacleView.setScale(0.15)
                     
             sortedObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: sortedObstacle.obstacleView.size)
             sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
@@ -200,28 +194,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             sortedObstacle.obstacleView.physicsBody?.affectedByGravity = false
             sortedObstacle.obstacleView.physicsBody?.isDynamic = false
                     
-//            secondObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: secondObstacle.obstacleView.size)
-//            secondObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-//            secondObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
-//            secondObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
-//            secondObstacle.obstacleView.physicsBody?.affectedByGravity = false
-//            secondObstacle.obstacleView.physicsBody?.isDynamic = false
-//
-//            tertiaryObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: tertiaryObstacle.obstacleView.size)
-//            tertiaryObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-//            tertiaryObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
-//            tertiaryObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
-//            tertiaryObstacle.obstacleView.physicsBody?.affectedByGravity = false
-//            tertiaryObstacle.obstacleView.physicsBody?.isDynamic = false
-                    
             self.obstaclesInAction.zPosition = 7
                     
             sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
-//            secondObstacle.obstacleView.run(secondObstacle.actionObstacle)
-//            tertiaryObstacle.obstacleView.run(tertiaryObstacle.actionObstacle)
             self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
-//            self.obstaclesInAction.addChild(secondObstacle.obstacleView)
-//            self.obstaclesInAction.addChild(tertiaryObstacle.obstacleView)
             self.obstaclesInAction.run(self.movedActionOfObstacles)
             self.addChild(obstaclesInAction)
         }

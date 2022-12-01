@@ -26,10 +26,12 @@
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
-		B9E6427529315D0E00E8C3F3 /* personagem.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E6427429315D0E00E8C3F3 /* personagem.atlas */; };
+		B9E6427529315D0E00E8C3F3 /* personagem_alma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */; };
 		BB03AED42938D929002662DD /* fantasma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED12938D929002662DD /* fantasma.atlas */; };
 		BB03AED52938D929002662DD /* corvo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED22938D929002662DD /* corvo.atlas */; };
 		BB03AED62938D929002662DD /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED32938D929002662DD /* maos.atlas */; };
+		BB03AEDA2939235C002662DD /* personagem_vivo1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED82939235C002662DD /* personagem_vivo1.png */; };
+		BB03AEDB2939235C002662DD /* personagem_vivo2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED92939235C002662DD /* personagem_vivo2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,10 +55,12 @@
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
-		B9E6427429315D0E00E8C3F3 /* personagem.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = personagem.atlas; sourceTree = "<group>"; };
+		B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = personagem_alma.atlas; sourceTree = "<group>"; };
 		BB03AED12938D929002662DD /* fantasma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = fantasma.atlas; path = "../../../../../../Downloads/Obstáculos/fantasma.atlas"; sourceTree = "<group>"; };
 		BB03AED22938D929002662DD /* corvo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = corvo.atlas; path = "../../../../../../Downloads/Obstáculos/corvo.atlas"; sourceTree = "<group>"; };
 		BB03AED32938D929002662DD /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = "../../../../../../Downloads/Obstáculos/maos.atlas"; sourceTree = "<group>"; };
+		BB03AED82939235C002662DD /* personagem_vivo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo1.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo1.png"; sourceTree = "<group>"; };
+		BB03AED92939235C002662DD /* personagem_vivo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo2.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +138,8 @@
 				BB03AED22938D929002662DD /* corvo.atlas */,
 				BB03AED12938D929002662DD /* fantasma.atlas */,
 				BB03AED32938D929002662DD /* maos.atlas */,
-				B9E6427429315D0E00E8C3F3 /* personagem.atlas */,
+				BB03AED729392338002662DD /* personagem_vivo.atlas */,
+				B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */,
 				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
@@ -204,6 +209,15 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		BB03AED729392338002662DD /* personagem_vivo.atlas */ = {
+			isa = PBXGroup;
+			children = (
+				BB03AED82939235C002662DD /* personagem_vivo1.png */,
+				BB03AED92939235C002662DD /* personagem_vivo2.png */,
+			);
+			path = personagem_vivo.atlas;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,9 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
-				B9E6427529315D0E00E8C3F3 /* personagem.atlas in Resources */,
+				B9E6427529315D0E00E8C3F3 /* personagem_alma.atlas in Resources */,
+				BB03AEDA2939235C002662DD /* personagem_vivo1.png in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				B98E203929273F030022E94F /* pipo.mp3 in Resources */,
+				BB03AEDB2939235C002662DD /* personagem_vivo2.png in Resources */,
 				BB03AED42938D929002662DD /* fantasma.atlas in Resources */,
 				BB03AED62938D929002662DD /* maos.atlas in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,

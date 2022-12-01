@@ -11,25 +11,27 @@ import SpriteKit
 public class Character {
     
     //Creating a static var to the manegement of the class
-    static let character = Character()
+    static let character = Character(exemploParam: "exemplo")
     
     public var characterView: SKSpriteNode
     
     public var characterLife: [SKSpriteNode] = []
     
+    public var exemplo: String
+    
     //Initializing class and applying an init of SKSpriteNode to the characterView
-    init() { 
+    init(exemploParam: String) {
         self.characterView = SKSpriteNode()
         
-        characterLife = [SKSpriteNode(imageNamed: "morte"), SKSpriteNode(imageNamed: "morte"), SKSpriteNode(imageNamed: "morte")]
+        self.exemplo = exemploParam
+        
+        characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
     }
     
     //Setting SpriteKit properties to a var and returning it
     func characterToApplyProperties(character: SKSpriteNode, view: SKScene) -> SKSpriteNode {
         
-        //Properties of size and position
-//        character.size = CGSize(width: 100, height: 100)
-        character.setScale(0.10)
+        character.setScale(0.13)
         character.position = CGPoint(x: 100, y: 100)
         character.zPosition = 5
         
@@ -46,7 +48,7 @@ public class Character {
     func characterToFly(character: SKSpriteNode) -> SKSpriteNode {
         
         character.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        character.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 250))
+        character.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 150))
         
         return character
     }
@@ -54,24 +56,25 @@ public class Character {
     //Setting properties of collision and contact
     func characterToCollide(character: SKSpriteNode) -> SKSpriteNode {
         character.physicsBody?.categoryBitMask = PhysicsCategory.character
-        character.physicsBody?.collisionBitMask = PhysicsCategory.ground | PhysicsCategory.obstacle
+        character.physicsBody?.collisionBitMask = PhysicsCategory.ground
         character.physicsBody?.contactTestBitMask = PhysicsCategory.obstacle
         
         return character
     }
     
+    //Criando e posicionando os icones de vida
     func characterLifeToSetProperties(characterLife: [SKSpriteNode], view: SKScene) -> [SKSpriteNode] {
-        var cont: CGFloat = 30
+        var cont: CGFloat = 40
         
         var characterLifeAux = [SKSpriteNode]()
         
         for life in characterLife {
             //Properties of size and position
-            life.size = CGSize(width: 20, height: 20)
-            life.position = CGPoint(x: view.frame.width - cont, y: view.frame.height - 20.0)
+            life.size = CGSize(width: 50, height: 50)
+            life.position = CGPoint(x: cont, y: view.frame.height - 30.0)
             life.zPosition = 7
             
-            cont = cont + 30
+            cont = cont + 35
             
             characterLifeAux.append(life)
         }

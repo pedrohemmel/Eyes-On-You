@@ -37,7 +37,6 @@ class AnimatedObject: SKSpriteNode {
         
         //Loop to make the "gif"
         for i in 1...atlas.textureNames.count {
-            print(i)
             image.append(SKTexture(imageNamed: "\(self.nameOfAtlas!)\(i)"))
         }
         
