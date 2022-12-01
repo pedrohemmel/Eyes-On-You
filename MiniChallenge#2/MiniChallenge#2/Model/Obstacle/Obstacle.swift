@@ -20,9 +20,9 @@ class Obstacle {
         self.obstacleView = obstacleToSetPhysics(obstacle: self.obstacleView)
     }
     
-    func obstacleToSetSize(obstacle: SKSpriteNode, obSize: CGSize, obZPosition: CGFloat) -> SKSpriteNode {
+    func obstacleToSetSize(obstacle: SKSpriteNode, obZPosition: CGFloat) -> SKSpriteNode {
         obstacle.zPosition = obZPosition
-        obstacle.size = obSize
+//        obstacle.setScale(0.3)
         return obstacle
     }
     

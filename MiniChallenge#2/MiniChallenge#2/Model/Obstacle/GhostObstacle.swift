@@ -12,6 +12,6 @@ class GhostObstacle: Obstacle {
     init(){
         super.init(day: false, obstacle: SKSpriteNode(imageNamed: ""))
         
-        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obSize: self.obstacleView.size, obZPosition: 4)
+        self.obstacleView = obstacleToSetSize(obstacle: self.obstacleView, obZPosition: 4)
     }
 }

@@ -8,7 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-//Score.shared.addScore() usar essa func para adicionar score quando tiver
 //Score.shared.trySaveHighScore() usar essa func para salvar o highscore
 
 
@@ -25,9 +24,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let removeAction = SKAction.removeFromParent()
     
     override func didMove(to view: SKView) {
-        
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
+        
+        Score.shared.scoreLabel.fontSize = 25
+        Score.shared.scoreLabel.position = CGPoint(x: 150, y: 150)
+        Score.shared.scoreLabel.text = ""
+        self.addChild(Score.shared.scoreLabel)
         
         //Chamando a função que estrutura o menu principal
         self.menu.menuToStruct(sizeView: self.size)
@@ -41,8 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.characterView = character.characterToCollide(character: character.characterView)
         
         //Criando e chamando as funções que fazem a estrutura do obstáculo
-        //obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
-        //obstacle.obstacleView.position = CGPoint(x: self.frame.width / 2 - obstacle.obstacleView.frame.width, y: self.frame.height / 2)
+        //        obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
+        //        obstacle.obstacleView.position = CGPoint(x: self.frame.width / 2 - obstacle.obstacleView.frame.width, y: self.frame.height / 2)
         
         //Criando o objeto solo
         self.ground = groundToCreate(ground: self.ground)
@@ -51,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Adicionando os filhos à autoclasse
         self.addChild(self.menu)
         self.addChild(self.character.characterView)
-//        self.addChild(obstacle.obstacleView)
+        //        self.addChild(obstacle.obstacleView)
         self.addChild(self.ground)
         self.addChild(objectDummy)
         for life in self.character.characterLife {
@@ -75,44 +78,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.character.characterView = character.characterToFly(character: self.character.characterView)
         }
     }
-    
     //MARK: - Criando objetos da cena principal
-        func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
-            ground.size = CGSize(width: self.frame.width, height: 100)
-            ground.position = CGPoint(x: 0, y: 0)
-            ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
-            ground.physicsBody?.isDynamic = false
-            ground.physicsBody?.affectedByGravity = false
-            
-            ground.physicsBody?.categoryBitMask = PhysicsCategory.ground
-            ground.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
-            ground.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
-            
-            return ground
-        }
+    func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
+        ground.size = CGSize(width: self.frame.width, height: 100)
+        ground.position = CGPoint(x: 0, y: 0)
+        ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
+        ground.physicsBody?.isDynamic = false
+        ground.physicsBody?.affectedByGravity = false
+        
+        ground.physicsBody?.categoryBitMask = PhysicsCategory.ground
+        ground.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
+        ground.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
+        
+        return ground
+    }
     
-        //Função que estrutura toda a parte do background animado
-        func creatingAnimatedBackground() {
-            let moveBackground = SKAction.moveBy(x: -self.size.width, y: 0, duration: 5)
-            let resizeBackground = SKAction.moveBy(x: self.size.width, y: 0, duration: 0)
-            let reDo = SKAction.repeatForever(SKAction.sequence([moveBackground, resizeBackground]))
+    //Função que estrutura toda a parte do background animado
+    func creatingAnimatedBackground() {
+        let moveBackground = SKAction.moveBy(x: -self.size.width, y: 0, duration: 5)
+        let resizeBackground = SKAction.moveBy(x: self.size.width, y: 0, duration: 0)
+        let reDo = SKAction.repeatForever(SKAction.sequence([moveBackground, resizeBackground]))
+        
+        for i in 0..<2 {
+            self.backgroundImage = SKSpriteNode(imageNamed: "bg")
             
-            for i in 0..<2 {
-                self.backgroundImage = SKSpriteNode(imageNamed: "bg")
-                
-                self.backgroundImage.anchorPoint = CGPoint(x: 0, y:0)
-                
-                self.backgroundImage.size.width = self.size.width //get the right pixel on phone
-                self.backgroundImage.size.height = self.size.height
-                self.backgroundImage.zPosition = -1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
-                self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
-                self.backgroundImage.run(reDo)
-                
-                self.objectDummy.addChild(backgroundImage)
-            }
+            self.backgroundImage.anchorPoint = CGPoint(x: 0, y:0)
             
-            self.objectDummy.speed = 1
+            self.backgroundImage.size.width = self.size.width //get the right pixel on phone
+            self.backgroundImage.size.height = self.size.height
+            self.backgroundImage.zPosition = -1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
+            self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
+            self.backgroundImage.run(reDo)
+            
+            self.objectDummy.addChild(backgroundImage)
         }
+        
+        self.objectDummy.speed = 1
+    }
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -121,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-       
+        
         
     }
     
@@ -156,17 +158,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        
-        if menu.testeBg == 1{
-            backgroundImage = SKSpriteNode(imageNamed: "bg2")
+        if menu.startGame == true{
+            if currentTime > Score.shared.renderTime{
+                Score.shared.addScore()
+                Score.shared.trySaveHighScore()
+                Score.shared.scoreLabel.text = "Pontos: \(Score.shared.gameScore)"
+                menu.highScoreText.text = "HighScore: \(Score.shared.highScore)"
+                Score.shared.renderTime = currentTime + Score.shared.changeTime
+            }
         }
-        
-        else if menu.testeBg == 2 {
-            backgroundImage = SKSpriteNode(imageNamed: "bg1")
-            
-        }
-        
-        
-        
     }
 }
