@@ -37,12 +37,12 @@ class GameOver: SKNode {
         self.gameOverEscope.color = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.gameOverEscope.size = view.size
         self.gameOverEscope.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
-        self.gameOverEscope.zPosition = 1
+        self.gameOverEscope.zPosition = 4
         
         self.titleGameOver.text = "Game Over"
         self.titleGameOver.fontColor = UIColor.white
         self.titleGameOver.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
-        self.titleGameOver.zPosition = 2
+        self.titleGameOver.zPosition = 4
        
         self.addChild(self.titleGameOver)
         self.addChild(self.gameOverEscope)
@@ -55,7 +55,7 @@ class GameOver: SKNode {
         })
         self.btnRestart!.setScale(0.5)
         self.btnRestart!.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 3)
-        self.btnRestart!.zPosition = 2
+        self.btnRestart!.zPosition = 4
         
         self.addChild(self.btnRestart!)
     }

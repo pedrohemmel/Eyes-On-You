@@ -33,7 +33,7 @@ public class Character {
         
         character.setScale(0.13)
         character.position = CGPoint(x: 100, y: 100)
-        character.zPosition = 5
+        character.zPosition = 3
         
         //Physics properties
         character.physicsBody = SKPhysicsBody(rectangleOf: character.frame.size)
@@ -72,7 +72,7 @@ public class Character {
             //Properties of size and position
             life.size = CGSize(width: 50, height: 50)
             life.position = CGPoint(x: cont, y: view.frame.height - 30.0)
-            life.zPosition = 7
+            life.zPosition = 2
             
             cont = cont + 35
             

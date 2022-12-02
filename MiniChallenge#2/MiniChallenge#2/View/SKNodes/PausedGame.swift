@@ -58,12 +58,12 @@ class PausedGame: SKNode {
         self.pausedGameEscope.color = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.pausedGameEscope.size = view.size
         self.pausedGameEscope.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
-        self.pausedGameEscope.zPosition = 1
+        self.pausedGameEscope.zPosition = 4
         
         self.titlePaused.text = "Pausado"
         self.titlePaused.fontColor = UIColor.white
         self.titlePaused.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
-        self.titlePaused.zPosition = 2
+        self.titlePaused.zPosition = 5
        
         self.addChild(self.titlePaused)
         self.addChild(self.pausedGameEscope)
@@ -76,14 +76,14 @@ class PausedGame: SKNode {
         })
         self.btnGiveUp!.setScale(0.5)
         self.btnGiveUp!.position = CGPoint(x: view.frame.width / 5, y: view.frame.height / 3)
-        self.btnGiveUp!.zPosition = 2
+        self.btnGiveUp!.zPosition = 5
         
         self.btnContinue = CustomizedButton(imageName: "btnRetomar", buttonAction: {
             actionOfBtnContinue()
         })
         self.btnContinue!.setScale(0.5)
         self.btnContinue!.position = CGPoint(x: view.frame.width / 1.25, y: view.frame.height / 3)
-        self.btnContinue!.zPosition = 2
+        self.btnContinue!.zPosition = 5
         
         self.addChild(self.btnGiveUp!)
         self.addChild(self.btnContinue!)
