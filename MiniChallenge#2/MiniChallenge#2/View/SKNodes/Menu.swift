@@ -26,13 +26,17 @@ class Menu: SKNode {
     
     
     
+    
     var infoButton: CustomizedButton = {
         var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+            
             
             
         })
         return button
     }()
+    
+    
     
     var audioButton: CustomizedButton?
     
@@ -142,8 +146,6 @@ class Menu: SKNode {
         self.isHidden = true
         startGame = true
         Score.shared.scoreLabel.isHidden = false
-
     }
-    
     
 }

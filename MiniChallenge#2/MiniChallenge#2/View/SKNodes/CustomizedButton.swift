@@ -72,7 +72,6 @@ public class CustomizedButton: SKNode {
     }
     
     
-    
     //Nao permitir duplo clique e deixar botao transparente ao clicar
     func disableButton() {
         self.enable = false

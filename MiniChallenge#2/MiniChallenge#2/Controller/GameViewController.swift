@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
         let myView: SKView = SKView(frame: self.view.frame)
         self.view = myView
         
-        let gameScene: GameScene = GameScene(size: myView.frame.size)
+        let gameScene: Info = Info(size: myView.frame.size)
         
         // Set the scale mode to scale to fit the window
         myView.contentMode = .scaleAspectFill
