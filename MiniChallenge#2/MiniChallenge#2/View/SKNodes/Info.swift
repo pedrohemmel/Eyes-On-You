@@ -43,7 +43,7 @@ extension Info {
         let back = CustomizedButton(imageName: "back", buttonAction: {
             //volta inicio
         })
-        back.setScale(0.3)
+        back.setScale(0.25)
         back.zPosition = 10.0
         back.position = CGPoint(x: frame.minX + 70, y: frame.maxY - 50)
         addChild(back)

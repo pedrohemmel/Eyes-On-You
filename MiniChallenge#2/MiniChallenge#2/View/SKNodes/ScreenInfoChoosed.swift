@@ -60,7 +60,7 @@ class ScreenInfoChoosed : SKScene {
                 info.scaleMode = .aspectFill
                 self.view?.presentScene(info, transition: SKTransition.fade(with: .green, duration: 1))
             })
-            back.setScale(0.3)
+            back.setScale(0.25)
             back.zPosition = 10.0
             back.position = CGPoint(x: frame.minX + 70, y: frame.maxY - 50)
             addChild(back)
@@ -104,17 +104,105 @@ class ScreenInfoChoosed : SKScene {
             icon.position = CGPoint(x: frame.midX, y: frame.height - 50 )
             addChild(icon)
             
+            let illustrations = SKLabelNode(fontNamed: "")
+            illustrations.text = "Ilustrações e design"
+            illustrations.fontSize = 20
+            illustrations.position = CGPoint(x: frame.minX + 180, y: frame.height - 120)
+            addChild(illustrations)
+            
+            let design = SKLabelNode(fontNamed: "")
+            design.text = "Aline Reis Silva"
+            design.fontSize = 16
+            design.position = CGPoint(x: frame.minX + 149, y: frame.height - 150)
+            addChild(design)
+            
+            let development = SKLabelNode(fontNamed: "")
+            development.text = "Desenvolvimento"
+            development.fontSize = 20
+            development.position = CGPoint(x: frame.maxX - 260, y: frame.height - 120)
+            addChild(development)
+            
+            let devs = SKLabelNode(fontNamed: "")
+            devs.text = """
+                        Gustavo Assis, Higor Crisostomo,
+                        Marcelo Araujo e Pedro Hemmel.
+                        """
+            devs.fontSize = 16
+            devs.preferredMaxLayoutWidth = 500
+            devs.numberOfLines = 0
+            devs.position = CGPoint(x: frame.midX + 205, y: frame.height - 173)
+            addChild(devs)
+            
+            let soundTrack = SKLabelNode(fontNamed: "")
+            soundTrack.text = "Soundtrack"
+            soundTrack.fontSize = 20
+            soundTrack.position = CGPoint(x: frame.minX + 140, y: frame.midY - 15)
+            addChild(soundTrack)
             
             
-            let texto = SKLabelNode()
-            texto.text = "TESTE222"
-            texto.fontSize = 20
-            texto.position = CGPoint(x: frame.midX, y: frame.midY)
-            addChild(texto)
+            let firstLine = createLineSoundTrack(ccPos: CGPoint(x: frame.minX + 100, y: frame.midY - 50),
+                                                 firstIconName: "cc_icon",
+                                                 zeroPos: CGPoint(x: frame.minX + 135, y: frame.midY - 50),
+                                                 secIconName: "zero_icon",
+                                                 text: "052216 matsushima cemetery of pflanigan is licenced under CC0 1.0 Universal",
+                                                 textPos: CGPoint(x: frame.midX + 18, y: frame.midY - 57))
+            self.addChild(firstLine)
+            
+            
+            let secLine = createLineSoundTrack(ccPos: CGPoint(x: frame.minX + 100, y: frame.midY - 80),
+                                               firstIconName: "cc_icon",
+                                               zeroPos: CGPoint(x: frame.minX + 135, y: frame.midY - 80),
+                                               secIconName: "zero_icon",
+                                               text: "Ghost Scream of onderwish is licenced under CC0 1.0 Universal",
+                                               textPos: CGPoint(x: frame.midX - 33, y: frame.midY - 87))
+            self.addChild(secLine)
+            
+            
+            let terLine =  createLineSoundTrack(ccPos: CGPoint(x: frame.minX + 100, y: frame.midY - 110),
+                                                firstIconName: "cc_icon",
+                                                zeroPos: CGPoint(x: frame.minX + 135, y: frame.midY - 110),
+                                                secIconName: "zero_icon",
+                                                text: "Impacts of Anuj_Shrestha1 is licenced under CC0 1.0 Universal",
+                                                textPos: CGPoint(x: frame.midX - 33, y: frame.midY - 117))
+             self.addChild(terLine)
+            
+            
+            let forLine = createLineSoundTrack(ccPos: CGPoint(x: frame.minX + 100, y: frame.midY - 140),
+                                               firstIconName: "cc_icon",
+                                               zeroPos: CGPoint(x: frame.minX + 135, y: frame.midY - 140),
+                                               secIconName: "person_icon",
+                                               text: "The Cemetery of TheRedLetterDay is licenced under CC BY 4.0",
+                                               textPos: CGPoint(x: frame.midX - 33, y: frame.midY - 147))
+            self.addChild(forLine)
+
         }
         
+        func iconsCC(firstIcon: CGPoint, firstIconName: String, secIcon: CGPoint, secIconName: String ) -> [SKSpriteNode] {
+            let ccIcon = SKSpriteNode(imageNamed: firstIconName)
+            ccIcon.setScale(0.85)
+            ccIcon.zPosition = 10.0
+            ccIcon.position = firstIcon
+            
+            let zeroIcon = SKSpriteNode(imageNamed: secIconName)
+            zeroIcon.setScale(0.85)
+            zeroIcon.zPosition = 10.0
+            zeroIcon.position = secIcon
+            return [ccIcon, zeroIcon]
+        }
         
-        
+        func createLineSoundTrack(ccPos: CGPoint, firstIconName: String, zeroPos: CGPoint, secIconName: String, text: String, textPos: CGPoint) -> SKNode {
+            let line = SKNode()
+            for i in iconsCC(firstIcon: ccPos, firstIconName: firstIconName, secIcon: zeroPos, secIconName: secIconName) {
+                line.addChild(i)
+            }
+            
+            let txt = SKLabelNode(fontNamed: "")
+            txt.text = text
+            txt.fontSize = 15
+            txt.position = textPos
+            line.addChild(txt)
+            return line
+        }
         
     }
     
