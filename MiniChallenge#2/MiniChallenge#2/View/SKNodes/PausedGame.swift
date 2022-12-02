@@ -44,6 +44,8 @@ class PausedGame: SKNode {
     init(view: SKScene) {
         super.init()
         self.pausedGameToCreate(view: view)
+        
+        //Mudar para true no momento em que eu quiser que a tela pausada apareça
         self.isHidden = true
     }
     
@@ -60,88 +62,34 @@ class PausedGame: SKNode {
         
         self.titlePaused.text = "Pausado"
         self.titlePaused.fontColor = UIColor.white
-        self.titlePaused.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
+        self.titlePaused.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
         self.titlePaused.zPosition = 2
-        
-//        self.btnGiveUp = CustomizedButton(imageName: <#T##String#>, buttonAction: <#T##() -> Void#>)
-        
+       
         self.addChild(self.titlePaused)
         self.addChild(self.pausedGameEscope)
 
     }
-    //MARK: - Funções de estruturação da classe
-    func menuToStruct(sizeView: CGSize) {
-        self.menuToPlayMusicBackground()
+    
+    func creatingAllButtons(view: SKScene, actionOfBtnGiveUp: @escaping() -> Void, actionOfBtnContinue: @escaping() -> Void) -> Void {
+        self.btnGiveUp = CustomizedButton(imageName: "btnDesistir", buttonAction: {
+            actionOfBtnGiveUp()
+        })
+        self.btnGiveUp!.setScale(0.5)
+        self.btnGiveUp!.position = CGPoint(x: view.frame.width / 5, y: view.frame.height / 3)
+        self.btnGiveUp!.zPosition = 2
         
-        self.menuHighScoreToSetProperties(sizeView: sizeView)
-        self.addChild(self.highScoreText)
+        self.btnContinue = CustomizedButton(imageName: "btnRetomar", buttonAction: {
+            actionOfBtnContinue()
+        })
+        self.btnContinue!.setScale(0.5)
+        self.btnContinue!.position = CGPoint(x: view.frame.width / 1.25, y: view.frame.height / 3)
+        self.btnContinue!.zPosition = 2
         
-        self.menuInfoButtonToSetProperties(sizeView: sizeView)
-        self.addChild(self.infoButton)
-        
-        self.menuAudioButtonToSetProperties(sizeView: sizeView)
-        self.addChild(self.audioButton!)
+        self.addChild(self.btnGiveUp!)
+        self.addChild(self.btnContinue!)
+    }
+    
 
-        self.menuStartTextToSetProperties(sizeView: sizeView)
-//        self.addChild(self.startText)
-    }
-    
-    func menuToPlayMusicBackground() {
-        AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
-        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
-    }
-    
-    func menuStartTextToSetProperties(sizeView: CGSize) {
-//        self.startText.text = "TOQUE NA TELA PARA INICIAR"
-//        self.startText.fontColor = UIColor.white
-//        self.startText.horizontalAlignmentMode = .center
-//        self.startText.verticalAlignmentMode = .bottom
-//        self.startText.position = CGPoint(x: sizeView.width / 2, y: 40)
-    }
-    
-    func menuAudioButtonToSetProperties(sizeView: CGSize) {
-        self.audioButton!.position = CGPoint(x: 40, y: sizeView.height - 40)
-    }
-    
-    func menuInfoButtonToSetProperties(sizeView: CGSize) {
-        self.infoButton.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
-    }
-    
-    func menuHighScoreToSetProperties(sizeView: CGSize) {
-        self.highScoreText.text = ("High Score: \(Score.shared.highScore)")
-        self.highScoreText.fontColor = UIColor.white
-        self.highScoreText.fontSize = CGFloat(25)
-        self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)
-    }
-      
-    func tapToStart(){
-
-//        if !startGame {
-//
-//            startText.isHidden = true
-//            highScoreText.isHidden = true
-//            infoButton.isHidden = true
-//            audioButton?.isHidden = true
-//            startGame = true
-//            Score.shared.scoreLabel.isHidden = false
-//        }
-//
-//        func restart(){
-//            //colocar oq acontece para restart
-//
-//
-//
-//        }
-//
-//        func endGame(){
-//
-//
-//
-//
-//        }
-        self.isHidden = true
-
-    }
     
     
 }

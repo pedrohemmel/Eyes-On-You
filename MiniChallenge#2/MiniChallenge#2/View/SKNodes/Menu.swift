@@ -92,7 +92,7 @@ class Menu: SKNode {
     
     func menuToPlayMusicBackground() {
         AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
-        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+//        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
     }
     
     func menuStartTextToSetProperties(sizeView: CGSize) {
@@ -117,32 +117,14 @@ class Menu: SKNode {
         self.highScoreText.fontSize = CGFloat(25)
         self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)
     }
+    
+    func tapToRestart() {
+        self.isHidden = false
+        startGame = false
+        Score.shared.scoreLabel.isHidden = true
+    }
       
     func tapToStart(){
-
-//        if !startGame {
-//
-//            startText.isHidden = true
-//            highScoreText.isHidden = true
-//            infoButton.isHidden = true
-//            audioButton?.isHidden = true
-//            startGame = true
-//
-//        }
-//
-//        func restart(){
-//            //colocar oq acontece para restart
-//
-//
-//
-//        }
-//
-//        func endGame(){
-//
-//
-//
-//
-//        }
         self.isHidden = true
         startGame = true
         Score.shared.scoreLabel.isHidden = false

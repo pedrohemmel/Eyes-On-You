@@ -33,6 +33,7 @@
 		BB03AEDA2939235C002662DD /* personagem_vivo1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED82939235C002662DD /* personagem_vivo1.png */; };
 		BB03AEDB2939235C002662DD /* personagem_vivo2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED92939235C002662DD /* personagem_vivo2.png */; };
 		BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDC29397CD0002662DD /* PausedGame.swift */; };
+		BB03AEDF2939CE7B002662DD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDE2939CE7B002662DD /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		BB03AED82939235C002662DD /* personagem_vivo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo1.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo1.png"; sourceTree = "<group>"; };
 		BB03AED92939235C002662DD /* personagem_vivo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo2.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo2.png"; sourceTree = "<group>"; };
 		BB03AEDC29397CD0002662DD /* PausedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedGame.swift; sourceTree = "<group>"; };
+		BB03AEDE2939CE7B002662DD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				1656686C292EAD8A00D0F52A /* Menu.swift */,
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 				BB03AEDC29397CD0002662DD /* PausedGame.swift */,
+				BB03AEDE2939CE7B002662DD /* GameOver.swift */,
 			);
 			path = SKNodes;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				1656686D292EAD8A00D0F52A /* Menu.swift in Sources */,
+				BB03AEDF2939CE7B002662DD /* GameOver.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
 				9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */,
 				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,

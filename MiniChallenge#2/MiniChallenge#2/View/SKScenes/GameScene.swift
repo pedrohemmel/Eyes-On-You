@@ -13,13 +13,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let menu = Menu()
     private var pausedGameScreen: PausedGame? = nil
+    private var gameOverScreen: GameOver? = nil
     private let character = Character.character
     
     private var gameStarted = false
+    private var gameOver = false
     private var pausedGame = false
+    private var givedUpGame = false
     
     //Sprites do ambiente de jogo
-    private var startedButton: CustomizedButton? = nil
+    private var pausedButton: CustomizedButton? = nil
     private var ground: SKSpriteNode = SKSpriteNode()
     private var backgroundImage: SKSpriteNode = SKSpriteNode()
     
@@ -36,18 +39,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Score.shared.scoreLabel.fontSize = 25
         Score.shared.scoreLabel.position = CGPoint(x: 150, y: 150)
-        Score.shared.scoreLabel.text = ""
-        
-        self.startedButton = CustomizedButton(imageName: "pause.fill", buttonAction: {
-            self.pausedGame = true
-        })
-        
+
         //Chamando a função que estrutura o menu principal
         self.menu.menuToStruct(sizeView: self.size)
         
+        //criando botão de pausar o game
+        pauseButtonToCreate()
         self.pausedGameScreen = PausedGame(view: self)
+        self.buttonsOfPausedScreenToCreate()
+        
+        self.gameOverScreen = GameOver(view: self)
+        self.gameOverScreen?.creatingRestartButton(view: self, actionOfBtnRestart: {
+            self.givedUpGame = true
+    
+            self.obstaclesInAction.removeAllChildren()
+            self.movedActionOfObstacles = SKAction.removeFromParent()
+            self.obstaclesInAction.removeAllActions()
+            self.removeAllActions()
+            
+            self.mostraMenu()
+        })
         
         self.creatingAnimatedBackground()
+        
+        //Criando o objeto solo
+        self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
         
         //Criando e chamando as funções que fazem a estrutura do personagem
         self.character.characterView = AnimatedObject("personagem_alma")
@@ -55,27 +71,93 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.characterView = character.characterToCollide(character: character.characterView)
         self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
-        //Criando o objeto solo
-        self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
         
-        //setand tamanho da SKNode que vai rodar o jogo
+        self.hideLifeScoreAndPauseButton()
         
         //Adicionando os filhos para a gameSKNode
         self.gameSKNode.addChild(Score.shared.scoreLabel)
-        self.gameSKNode.addChild(self.menu)
+        
         self.gameSKNode.addChild(self.character.characterView)
         self.gameSKNode.addChild(self.ground)
-        self.gameSKNode.addChild(objectDummy)
+        self.gameSKNode.addChild(self.objectDummy)
+        
+        self.gameSKNode.addChild(self.pausedButton!)
         for life in self.character.characterLife {
             self.gameSKNode.addChild(life)
         }
         
         //Adicionando a SKNode do jogo na cena
+        self.addChild(self.menu)
         self.addChild(self.gameSKNode)
         self.addChild(self.pausedGameScreen!)
+        self.addChild(self.gameOverScreen!)
     }
     
     //MARK: - Criando objetos da cena principal
+    
+    func restartLifeAndScore() -> Void {
+        Score.shared.gameScore = 0
+        
+        for life in self.character.characterLife {
+            life.removeFromParent()
+        }
+        self.character.characterLife.removeAll()
+        self.character.characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
+        self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+        for life in self.character.characterLife {
+            self.gameSKNode.addChild(life)
+        }
+        
+    }
+    
+    func hideLifeScoreAndPauseButton() -> Void {
+        Score.shared.scoreLabel.isHidden = true
+        
+        for life in self.character.characterLife {
+            life.isHidden = true
+        }
+        
+        self.pausedButton?.isHidden = true
+    }
+    
+    func appearLifeScoreAndPauseButton() -> Void {
+        Score.shared.scoreLabel.isHidden = false
+        
+        for life in self.character.characterLife {
+            life.isHidden = false
+        }
+        
+        self.pausedButton?.isHidden = false
+    }
+    
+    func pauseButtonToCreate() -> Void {
+        self.pausedButton = CustomizedButton(imageName: "pause.fill", buttonAction: {
+            if !self.pausedGame {
+                self.pausedGame = true
+                self.pauseGameSKNode()
+                self.pausedGameScreen!.isHidden = false
+            }
+            
+        })
+        self.pausedButton?.setScale(0.5)
+        self.pausedButton?.zPosition = 2
+        self.pausedButton?.position = CGPoint(x: self.frame.width - 40, y: self.frame.height - 40)
+    }
+    
+    func pauseGameSKNode() -> Void {
+        self.gameSKNode.isPaused = true
+        
+        self.character.characterView.physicsBody?.affectedByGravity = false
+        self.character.characterView.physicsBody?.isDynamic = false
+    }
+    
+    func continueGameSKNode() -> Void {
+        self.gameSKNode.isPaused = false
+        
+        self.character.characterView.physicsBody?.affectedByGravity = true
+        self.character.characterView.physicsBody?.isDynamic = true
+    }
+    
     func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
         ground.size = CGSize(width: self.frame.width, height: 60)
         ground.position = CGPoint(x: self.frame.width / 2, y: 30)
@@ -88,6 +170,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ground.physicsBody?.contactTestBitMask = PhysicsCategory.character | PhysicsCategory.obstacle
         
         return ground
+    }
+    
+    func buttonsOfPausedScreenToCreate() {
+        self.pausedGameScreen!.creatingAllButtons(
+            view: self,
+            actionOfBtnGiveUp: {
+                self.givedUpGame = true
+        
+                self.obstaclesInAction.removeAllChildren()
+                self.movedActionOfObstacles = SKAction.removeFromParent()
+                self.obstaclesInAction.removeAllActions()
+                self.removeAllActions()
+                
+                self.mostraMenu()
+            },
+            actionOfBtnContinue: {
+                self.pausedGame = false
+                self.continueGameSKNode()
+                self.pausedGameScreen!.isHidden = true
+            })
+    }
+    
+    func mostraMenu() {
+        self.menu.tapToRestart()
+        
+        self.gameStarted = false
+        
+        self.continueGameSKNode()
+        self.pausedGame = false
+        self.pausedGameScreen!.isHidden = true
+        
+        self.gameOverScreen?.isHidden = true
+        
+        self.restartLifeAndScore()
+        self.hideLifeScoreAndPauseButton()
     }
     
     //Função que estrutura toda a parte do background animado
@@ -182,26 +299,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
     func generatingNewObstacle() {
-        
-        self.obstaclesInAction = SKNode()
-        
-        let sortedObstacle = self.sortObstacle()
-                
-        sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
-                
-        sortedObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: sortedObstacle.obstacleView.size)
-        sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-        sortedObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
-        sortedObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
-        sortedObstacle.obstacleView.physicsBody?.affectedByGravity = false
-        sortedObstacle.obstacleView.physicsBody?.isDynamic = false
-                
-        self.obstaclesInAction.zPosition = 7
-                
-        sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
-        self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
-        self.obstaclesInAction.run(self.movedActionOfObstacles)
-        self.gameSKNode.addChild(obstaclesInAction)
+        if !givedUpGame {
+            self.obstaclesInAction = SKNode()
+            let sortedObstacle = self.sortObstacle()
+                        
+            sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
+                    
+            sortedObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: sortedObstacle.obstacleView.size)
+            sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
+            sortedObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
+            sortedObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
+            sortedObstacle.obstacleView.physicsBody?.affectedByGravity = false
+            sortedObstacle.obstacleView.physicsBody?.isDynamic = false
+                    
+            sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
+            self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
+            
+            self.obstaclesInAction.zPosition = 7
+            self.obstaclesInAction.run(self.movedActionOfObstacles)
+            self.gameSKNode.addChild(obstaclesInAction)
+        }
     }
     
     func creatingMoveOfObstacle() {
@@ -218,6 +335,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movePipes = SKAction.moveBy(x: -distance - 300, y: 0, duration: 0.004 * distance)
         let removePipes = SKAction.removeFromParent()
         self.movedActionOfObstacles = SKAction.sequence([movePipes, removePipes])
+        
     }
     
     //Função que detecta o contato dos corpos
@@ -225,21 +343,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
-        //Estrutura condicional que verifica os corpos de contato
-        if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-            
-            //Decrementando itens da lista de vidas do jogo
-            if !(self.character.characterLife.count <= 1) {
-                self.character.characterLife.last?.removeFromParent()
-                self.character.characterLife.removeLast()
-            } else {
-                self.pausedGame = true
-                self.gameSKNode.isPaused = true
+        if !givedUpGame {
+            //Estrutura condicional que verifica os corpos de contato
+            if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
                 
-                self.character.characterLife.last?.removeFromParent()
-                self.character.characterLife.removeLast()
+                //Decrementando itens da lista de vidas do jogo
+                if !(self.character.characterLife.count <= 1) {
+                    self.character.characterLife.last?.removeFromParent()
+                    self.character.characterLife.removeLast()
+                } else {
+                    if !gameOver {
+                        self.character.characterLife.last?.removeFromParent()
+                        self.character.characterLife.removeLast()
+                        
+                        gameOver = true
+                        
+                        self.pausedGame = true
+                        self.pauseGameSKNode()
+                        self.gameOverScreen!.isHidden = false
+                        
+                    }
+                    
+                }
             }
         }
+        
     }
     
 
@@ -264,7 +392,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !self.gameStarted {
             self.gameStarted = true
+            self.givedUpGame = false
             
+            self.appearLifeScoreAndPauseButton()
             self.menu.tapToStart()
             self.creatingMoveOfObstacle()
         } else {
