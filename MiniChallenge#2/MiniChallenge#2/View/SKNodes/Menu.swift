@@ -24,6 +24,8 @@ class Menu: SKNode {
     let startText = SKLabelNode(fontNamed: "")
     let highScoreText = SKLabelNode(fontNamed: "")
     
+    var imageHighScoreText = SKSpriteNode()
+    
     
     
     
@@ -71,7 +73,7 @@ class Menu: SKNode {
     
                 self.audioStatus = true
                 
-                AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+                AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
                 
                 
                 print(self.audioStatus)
@@ -93,6 +95,8 @@ class Menu: SKNode {
         
         self.menuHighScoreToSetProperties(sizeView: sizeView)
         self.highScoreText.zPosition = 5
+        self.imageHighScoreText.zPosition = 5
+        self.addChild(self.imageHighScoreText)
         self.addChild(self.highScoreText)
         
         self.menuInfoButtonToSetProperties(sizeView: sizeView)
@@ -110,7 +114,7 @@ class Menu: SKNode {
     
     func menuToPlayMusicBackground() {
         AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
-//        AVAudio.sharedInstance().playBackgroundMusic("pipo.mp3")
+        AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
     }
     
     func menuStartTextToSetProperties(sizeView: CGSize) {
@@ -130,7 +134,12 @@ class Menu: SKNode {
     }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
-        self.highScoreText.text = ("High Score: \(Score.shared.highScore)")
+        
+        self.imageHighScoreText = SKSpriteNode(imageNamed: "highscore_icon")
+        self.imageHighScoreText.setScale(0.5)
+        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
+        
+        self.highScoreText.text = ("\(Score.shared.highScore)")
         self.highScoreText.fontColor = UIColor.white
         self.highScoreText.fontSize = CGFloat(25)
         self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)

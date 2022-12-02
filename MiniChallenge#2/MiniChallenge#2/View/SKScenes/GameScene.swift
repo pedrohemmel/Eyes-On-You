@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Score.shared.scoreLabel.fontSize = 25
         Score.shared.scoreLabel.fontColor = .red
         Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 80, y: self.frame.height - 50)
+        Score.shared.scoreLabel.zPosition = 2
         
         self.gameOverScreen = GameOver(view: self)
         self.gameOverScreen?.creatingRestartButton(view: self, actionOfBtnRestart: {
@@ -65,6 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Criando o objeto solo
         self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
+        self.ground.zPosition = 2
         
         //Criando e chamando as funções que fazem a estrutura do personagem
         self.character.characterView = AnimatedObject("personagem_alma")
@@ -252,7 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let birdObstacle = BirdObstacle()
             birdObstacle.obstacleView = AnimatedObject("corvo")
             birdObstacle.obstacleView.setScale(0.15)
-            birdObstacle.obstacleView.size = CGSize(width: 100, height: 50)
+            birdObstacle.obstacleView.size = CGSize(width: 80, height: 45)
             birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
@@ -262,8 +264,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case 1:
             let tombstoneObstacle = TombstoneObstacle()
             tombstoneObstacle.obstacleView = SKSpriteNode(imageNamed: "lapide1")
-            tombstoneObstacle.obstacleView.setScale(0.15)
-            tombstoneObstacle.obstacleView.size = CGSize(width: 150, height: 75)
+            tombstoneObstacle.obstacleView.setScale(0.2)
+            tombstoneObstacle.obstacleView.size = CGSize(width: 150, height: 90)
             tombstoneObstacle.obstacleView = settingPropertiesObstacle(obstacle: tombstoneObstacle, obstacleView: tombstoneObstacle.obstacleView)
             
             tombstoneObstacle.obstacleView.position.y = self.ground.frame.height + (tombstoneObstacle.obstacleView.frame.height / 2)
@@ -272,7 +274,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let ghostObstacle = GhostObstacle()
             ghostObstacle.obstacleView = AnimatedObject("fantasma")
             ghostObstacle.obstacleView.setScale(0.15)
-            ghostObstacle.obstacleView.size =  CGSize(width: 100, height: 100)
+            ghostObstacle.obstacleView.size =  CGSize(width: 80, height: 80)
             ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
@@ -282,8 +284,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case 3:
             let handObstacle = HandObstacle()
             handObstacle.obstacleView = AnimatedObject("maos")
-            handObstacle.obstacleView.setScale(0.15)
-            handObstacle.obstacleView.size = CGSize(width: 100, height: 50)
+            handObstacle.obstacleView.setScale(0.4)
+            handObstacle.obstacleView.size = CGSize(width: 150, height: 150)
             handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
@@ -347,13 +349,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !givedUpGame {
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-                print(self.character.characterLife.count)
+                
+                if menu.audioStatus {
+                    AVAudio.sharedInstance().playSoundEffect("impacto.wav")
+                }
+                
                 //Decrementando itens da lista de vidas do jogo
                 if !(self.character.characterLife.count <= 1) {
                     self.character.characterLife.last?.removeFromParent()
                     self.character.characterLife.removeLast()
                 } else {
                     if !gameOver {
+                        
+                        if menu.audioStatus {
+                            AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
+                        }
+                        
+                        
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
                         
@@ -365,6 +377,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                     }
                     
+                }
+                
+                if firstBody.categoryBitMask == PhysicsCategory.obstacle {
+                    firstBody.node?.removeFromParent()
+                } else {
+                    secondBody.node?.removeFromParent()
                 }
             }
         }
@@ -435,7 +453,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Score.shared.addScore()
                 Score.shared.trySaveHighScore()
                 Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
-                menu.highScoreText.text = "HighScore: \(Score.shared.highScore)"
+                menu.highScoreText.text = "\(Score.shared.highScore)"
                 Score.shared.renderTime = currentTime + Score.shared.changeTime
             }
         }
