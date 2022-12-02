@@ -29,10 +29,10 @@ class GameViewController: UIViewController {
         myView.presentScene(gameScene)
         
         myView.ignoresSiblingOrder = true
-            
-        myView.showsPhysics = true
-        myView.showsFPS = true
-        myView.showsNodeCount = true
+//            
+//        myView.showsPhysics = true
+//        myView.showsFPS = true
+//        myView.showsNodeCount = true
         
         
     }

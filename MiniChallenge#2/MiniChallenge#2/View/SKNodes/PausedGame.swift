@@ -75,14 +75,14 @@ class PausedGame: SKNode {
             actionOfBtnGiveUp()
         })
         self.btnGiveUp!.setScale(0.5)
-        self.btnGiveUp!.position = CGPoint(x: view.frame.width / 5, y: view.frame.height / 3)
+        self.btnGiveUp!.position = CGPoint(x: view.frame.width / 3, y: view.frame.height / 3)
         self.btnGiveUp!.zPosition = 5
         
         self.btnContinue = CustomizedButton(imageName: "btnRetomar", buttonAction: {
             actionOfBtnContinue()
         })
         self.btnContinue!.setScale(0.5)
-        self.btnContinue!.position = CGPoint(x: view.frame.width / 1.25, y: view.frame.height / 3)
+        self.btnContinue!.position = CGPoint(x: view.frame.width / 1.5, y: view.frame.height / 3)
         self.btnContinue!.zPosition = 5
         
         self.addChild(self.btnGiveUp!)

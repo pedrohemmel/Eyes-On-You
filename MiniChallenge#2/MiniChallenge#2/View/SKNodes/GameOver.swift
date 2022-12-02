@@ -11,7 +11,7 @@ import SpriteKit
 class GameOver: SKNode {
     //MARK: - Criando as variáveis principais
     
-    private var gameOverEscope: SKSpriteNode = SKSpriteNode()
+    private var gameOverEscope: SKSpriteNode = SKSpriteNode(imageNamed: "gameover_background")
 
     private var btnRestart: CustomizedButton? = nil
     
@@ -42,7 +42,7 @@ class GameOver: SKNode {
         self.titleGameOver.text = "Game Over"
         self.titleGameOver.fontColor = UIColor.white
         self.titleGameOver.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
-        self.titleGameOver.zPosition = 4
+        self.titleGameOver.zPosition = 5
        
         self.addChild(self.titleGameOver)
         self.addChild(self.gameOverEscope)
@@ -50,12 +50,12 @@ class GameOver: SKNode {
     }
     
     func creatingRestartButton(view: SKScene, actionOfBtnRestart: @escaping() -> Void) -> Void {
-        self.btnRestart = CustomizedButton(imageName: "btnDesistir", buttonAction: {
+        self.btnRestart = CustomizedButton(imageName: "btnReiniciar", buttonAction: {
             actionOfBtnRestart()
         })
         self.btnRestart!.setScale(0.5)
         self.btnRestart!.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 3)
-        self.btnRestart!.zPosition = 4
+        self.btnRestart!.zPosition = 5
         
         self.addChild(self.btnRestart!)
     }
