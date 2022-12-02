@@ -23,6 +23,9 @@
 		956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */; };
 		956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960722926B56D00CF81EA /* GhostObstacle.swift */; };
 		956960752926B63D00CF81EA /* HandObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960742926B63D00CF81EA /* HandObstacle.swift */; };
+		95ADC8C22937E13F00F9B9C5 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C12937E13F00F9B9C5 /* Info.swift */; };
+		95ADC8C42938105500F9B9C5 /* ScreenInfoChoosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */; };
+		95ADC8C629381D4900F9B9C5 /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */; };
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
@@ -47,6 +50,9 @@
 		9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TombstoneObstacle.swift; sourceTree = "<group>"; };
 		956960722926B56D00CF81EA /* GhostObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostObstacle.swift; sourceTree = "<group>"; };
 		956960742926B63D00CF81EA /* HandObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandObstacle.swift; sourceTree = "<group>"; };
+		95ADC8C12937E13F00F9B9C5 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInfoChoosed.swift; sourceTree = "<group>"; };
+		95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButtonNode.swift; sourceTree = "<group>"; };
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
@@ -136,8 +142,11 @@
 		6172C3CF2926C71E003C21FE /* SKNodes */ = {
 			isa = PBXGroup;
 			children = (
+				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
+				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
 				1656686C292EAD8A00D0F52A /* Menu.swift */,
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
+				95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */,
 			);
 			path = SKNodes;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
+				95ADC8C629381D4900F9B9C5 /* SKButtonNode.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				1656686D292EAD8A00D0F52A /* Menu.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
@@ -276,6 +286,7 @@
 				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,
 				B98E203B292806CB0022E94F /* Score.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
+				95ADC8C42938105500F9B9C5 /* ScreenInfoChoosed.swift in Sources */,
 				956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */,
 				956960752926B63D00CF81EA /* HandObstacle.swift in Sources */,
 				956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */,
@@ -284,6 +295,7 @@
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
 				161959E42925782E00E2CC45 /* Character.swift in Sources */,
 				161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */,
+				95ADC8C22937E13F00F9B9C5 /* Info.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
