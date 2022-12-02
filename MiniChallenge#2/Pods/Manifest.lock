@@ -1,0 +1,16 @@
+PODS:
+  - SwiftySKScrollView (2.5.0)
+
+DEPENDENCIES:
+  - SwiftySKScrollView
+
+SPEC REPOS:
+  trunk:
+    - SwiftySKScrollView
+
+SPEC CHECKSUMS:
+  SwiftySKScrollView: 4b97885320626688f94dc8212ad25376c6899108
+
+PODFILE CHECKSUM: a4e0fc0204ae27e777f9a6c1ceca7eacaa1ea453
+
+COCOAPODS: 1.11.3

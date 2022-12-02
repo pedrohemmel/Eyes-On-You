@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E9EDD67F2C74430A518A2EA5BD89A8 /* Pods-MiniChallenge#2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD2FFE8F2F06CF266F6A96313EC9C9B /* Pods-MiniChallenge#2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C4ED73E2D8CAED7DE6AA28F1D581613 /* SwiftySKScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C0CA83BA7545B493CFBF9802D90CB /* SwiftySKScrollView.swift */; };
+		523DEEED5EA2A33A0169A76D7EA0CE4B /* SwiftySKScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C7D39C87DA0FE96F15B88720736BE6 /* SwiftySKScrollView-dummy.m */; };
+		8259E0E10B538C14D9C0B8810D66AADE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		CADE099EF7394CB284C3E3900D8E3450 /* Pods-MiniChallenge#2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8AD91FF40F999B154F88C8AE85E850 /* Pods-MiniChallenge#2-dummy.m */; };
+		DFDE86F309FEC4B42C9A933BC88DE765 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		E343B6986BE8B4BE3F5EB19FF3EEEBF0 /* SwiftySKScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AA17BA8726200C31E445FFE6A9BF5CB5 /* SwiftySKScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A4A12C325D21E02547E61D0FBC15E29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF9EBCC9B14B878A23AEC46FD426F171;
+			remoteInfo = SwiftySKScrollView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0328352F3FD8802AE3E28F8AB651BFD2 /* SwiftySKScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftySKScrollView.modulemap; sourceTree = "<group>"; };
+		128777E49863A34DC9FE0C4B01A40DEA /* Pods-MiniChallenge#2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MiniChallenge#2-frameworks.sh"; sourceTree = "<group>"; };
+		1C1E1545C36B7A4D52973F1FF9FD79EC /* Pods-MiniChallenge#2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MiniChallenge#2.modulemap"; sourceTree = "<group>"; };
+		2DD2FFE8F2F06CF266F6A96313EC9C9B /* Pods-MiniChallenge#2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MiniChallenge#2-umbrella.h"; sourceTree = "<group>"; };
+		31C7D39C87DA0FE96F15B88720736BE6 /* SwiftySKScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftySKScrollView-dummy.m"; sourceTree = "<group>"; };
+		3F0C0CA83BA7545B493CFBF9802D90CB /* SwiftySKScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftySKScrollView.swift; path = Sources/SwiftySKScrollView.swift; sourceTree = "<group>"; };
+		6D41E1CA46D4CE598B6F664E0B145A06 /* SwiftySKScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftySKScrollView.release.xcconfig; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		99E205E55544302D4780766CC74AA2D3 /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A1EB8931787810BE6B6EC87086B7C0FF /* Pods-MiniChallenge#2 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MiniChallenge#2"; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA17BA8726200C31E445FFE6A9BF5CB5 /* SwiftySKScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySKScrollView-umbrella.h"; sourceTree = "<group>"; };
+		AD99B6FCD926BD801E6B40A4E94F6729 /* Pods-MiniChallenge#2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MiniChallenge#2.release.xcconfig"; sourceTree = "<group>"; };
+		AF839BEFAF71D4F79EDEEDE82B8C0A14 /* SwiftySKScrollView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftySKScrollView-Info.plist"; sourceTree = "<group>"; };
+		BAB881ECC16206B7F5BC90603338D621 /* SwiftySKScrollView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftySKScrollView; path = SwiftySKScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB8AD91FF40F999B154F88C8AE85E850 /* Pods-MiniChallenge#2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MiniChallenge#2-dummy.m"; sourceTree = "<group>"; };
+		D6CA9F928CCDC85616737DAB7CFDD6CD /* Pods-MiniChallenge#2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MiniChallenge#2-acknowledgements.plist"; sourceTree = "<group>"; };
+		D7BCBD3F714B976E3E3EE3EDEC463DAF /* Pods-MiniChallenge#2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MiniChallenge#2-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DC9417634E2F774EF29DEA1C851787B7 /* SwiftySKScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftySKScrollView.debug.xcconfig; sourceTree = "<group>"; };
+		E9130788F436B3B82EA811B25D8EC3C3 /* Pods-MiniChallenge#2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MiniChallenge#2-Info.plist"; sourceTree = "<group>"; };
+		FB04FA13790F23E0598582C2E38609B0 /* SwiftySKScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySKScrollView-prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		443EF6D4BD4F9BDCE9F4C2CEE81C586F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFDE86F309FEC4B42C9A933BC88DE765 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA134A2D63FD7B7AFD23134E6B5AE4BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8259E0E10B538C14D9C0B8810D66AADE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		225FD9B403BE36225AA77C11B6EE13C4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0328352F3FD8802AE3E28F8AB651BFD2 /* SwiftySKScrollView.modulemap */,
+				31C7D39C87DA0FE96F15B88720736BE6 /* SwiftySKScrollView-dummy.m */,
+				AF839BEFAF71D4F79EDEEDE82B8C0A14 /* SwiftySKScrollView-Info.plist */,
+				FB04FA13790F23E0598582C2E38609B0 /* SwiftySKScrollView-prefix.pch */,
+				AA17BA8726200C31E445FFE6A9BF5CB5 /* SwiftySKScrollView-umbrella.h */,
+				DC9417634E2F774EF29DEA1C851787B7 /* SwiftySKScrollView.debug.xcconfig */,
+				6D41E1CA46D4CE598B6F664E0B145A06 /* SwiftySKScrollView.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftySKScrollView";
+			sourceTree = "<group>";
+		};
+		4CA9B1F65518AD0D1AEEED489CE45A31 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A544562C9D6CFC65451296484D9D3517 /* Pods-MiniChallenge#2 */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7E4074D2A944AE3F5DA18C38C4F6C487 /* SwiftySKScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				3F0C0CA83BA7545B493CFBF9802D90CB /* SwiftySKScrollView.swift */,
+				225FD9B403BE36225AA77C11B6EE13C4 /* Support Files */,
+			);
+			name = SwiftySKScrollView;
+			path = SwiftySKScrollView;
+			sourceTree = "<group>";
+		};
+		A544562C9D6CFC65451296484D9D3517 /* Pods-MiniChallenge#2 */ = {
+			isa = PBXGroup;
+			children = (
+				1C1E1545C36B7A4D52973F1FF9FD79EC /* Pods-MiniChallenge#2.modulemap */,
+				D7BCBD3F714B976E3E3EE3EDEC463DAF /* Pods-MiniChallenge#2-acknowledgements.markdown */,
+				D6CA9F928CCDC85616737DAB7CFDD6CD /* Pods-MiniChallenge#2-acknowledgements.plist */,
+				BB8AD91FF40F999B154F88C8AE85E850 /* Pods-MiniChallenge#2-dummy.m */,
+				128777E49863A34DC9FE0C4B01A40DEA /* Pods-MiniChallenge#2-frameworks.sh */,
+				E9130788F436B3B82EA811B25D8EC3C3 /* Pods-MiniChallenge#2-Info.plist */,
+				2DD2FFE8F2F06CF266F6A96313EC9C9B /* Pods-MiniChallenge#2-umbrella.h */,
+				99E205E55544302D4780766CC74AA2D3 /* Pods-MiniChallenge#2.debug.xcconfig */,
+				AD99B6FCD926BD801E6B40A4E94F6729 /* Pods-MiniChallenge#2.release.xcconfig */,
+			);
+			name = "Pods-MiniChallenge#2";
+			path = "Target Support Files/Pods-MiniChallenge#2";
+			sourceTree = "<group>";
+		};
+		B189BBB46DA32B96E5911891EE83CA53 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E4074D2A944AE3F5DA18C38C4F6C487 /* SwiftySKScrollView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B5ED3BA226DCE727C4D3C8E7A533A1B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1EB8931787810BE6B6EC87086B7C0FF /* Pods-MiniChallenge#2 */,
+				BAB881ECC16206B7F5BC90603338D621 /* SwiftySKScrollView */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				B189BBB46DA32B96E5911891EE83CA53 /* Pods */,
+				B5ED3BA226DCE727C4D3C8E7A533A1B6 /* Products */,
+				4CA9B1F65518AD0D1AEEED489CE45A31 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3CB3CADD1B47A19FED728ECDDFD677EF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E9EDD67F2C74430A518A2EA5BD89A8 /* Pods-MiniChallenge#2-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BD0E9B63BAE1D1836D4A8F5A13DF8B0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E343B6986BE8B4BE3F5EB19FF3EEEBF0 /* SwiftySKScrollView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8E4DF7CD2DC067CA613CDDE68D722835 /* Pods-MiniChallenge#2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D5E341B9E130ACCBA691338C981822F /* Build configuration list for PBXNativeTarget "Pods-MiniChallenge#2" */;
+			buildPhases = (
+				3CB3CADD1B47A19FED728ECDDFD677EF /* Headers */,
+				A51CEE467C65CB7EAB6CBE3441FBF24C /* Sources */,
+				443EF6D4BD4F9BDCE9F4C2CEE81C586F /* Frameworks */,
+				2436013E22029A2E441BAD3AE9CE152A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E6F960544DD3F54FC341625A26232EE /* PBXTargetDependency */,
+			);
+			name = "Pods-MiniChallenge#2";
+			productName = Pods_MiniChallenge_2;
+			productReference = A1EB8931787810BE6B6EC87086B7C0FF /* Pods-MiniChallenge#2 */;
+			productType = "com.apple.product-type.framework";
+		};
+		BF9EBCC9B14B878A23AEC46FD426F171 /* SwiftySKScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 638F276FDBFE1A64D70844D0E955E225 /* Build configuration list for PBXNativeTarget "SwiftySKScrollView" */;
+			buildPhases = (
+				9BD0E9B63BAE1D1836D4A8F5A13DF8B0 /* Headers */,
+				99F40E19DC8919F750B05A80ADB8D4D5 /* Sources */,
+				FA134A2D63FD7B7AFD23134E6B5AE4BF /* Frameworks */,
+				929EB45534F976AD991683A5D85A3879 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftySKScrollView;
+			productName = SwiftySKScrollView;
+			productReference = BAB881ECC16206B7F5BC90603338D621 /* SwiftySKScrollView */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = B5ED3BA226DCE727C4D3C8E7A533A1B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E4DF7CD2DC067CA613CDDE68D722835 /* Pods-MiniChallenge#2 */,
+				BF9EBCC9B14B878A23AEC46FD426F171 /* SwiftySKScrollView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2436013E22029A2E441BAD3AE9CE152A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		929EB45534F976AD991683A5D85A3879 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99F40E19DC8919F750B05A80ADB8D4D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C4ED73E2D8CAED7DE6AA28F1D581613 /* SwiftySKScrollView.swift in Sources */,
+				523DEEED5EA2A33A0169A76D7EA0CE4B /* SwiftySKScrollView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A51CEE467C65CB7EAB6CBE3441FBF24C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CADE099EF7394CB284C3E3900D8E3450 /* Pods-MiniChallenge#2-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4E6F960544DD3F54FC341625A26232EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftySKScrollView;
+			target = BF9EBCC9B14B878A23AEC46FD426F171 /* SwiftySKScrollView */;
+			targetProxy = 2A4A12C325D21E02547E61D0FBC15E29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D114A91F64304BE6293A12E17E49D50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD99B6FCD926BD801E6B40A4E94F6729 /* Pods-MiniChallenge#2.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		659BF01D14A0D3E32D3002F6329BFB93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC9417634E2F774EF29DEA1C851787B7 /* SwiftySKScrollView.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftySKScrollView/SwiftySKScrollView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftySKScrollView/SwiftySKScrollView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftySKScrollView/SwiftySKScrollView.modulemap";
+				PRODUCT_MODULE_NAME = SwiftySKScrollView;
+				PRODUCT_NAME = SwiftySKScrollView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		91E7121E915FB43C318167C105092975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99E205E55544302D4780766CC74AA2D3 /* Pods-MiniChallenge#2.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A6046EC2625847907E13D89E5C077134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D916740969DE6CE659DABCA9ED7F200B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D41E1CA46D4CE598B6F664E0B145A06 /* SwiftySKScrollView.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftySKScrollView/SwiftySKScrollView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftySKScrollView/SwiftySKScrollView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftySKScrollView/SwiftySKScrollView.modulemap";
+				PRODUCT_MODULE_NAME = SwiftySKScrollView;
+				PRODUCT_NAME = SwiftySKScrollView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F105DEC13C0AF4AD6927D5D40AF85A30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F105DEC13C0AF4AD6927D5D40AF85A30 /* Debug */,
+				A6046EC2625847907E13D89E5C077134 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		638F276FDBFE1A64D70844D0E955E225 /* Build configuration list for PBXNativeTarget "SwiftySKScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				659BF01D14A0D3E32D3002F6329BFB93 /* Debug */,
+				D916740969DE6CE659DABCA9ED7F200B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D5E341B9E130ACCBA691338C981822F /* Build configuration list for PBXNativeTarget "Pods-MiniChallenge#2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91E7121E915FB43C318167C105092975 /* Debug */,
+				1D114A91F64304BE6293A12E17E49D50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

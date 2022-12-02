@@ -18,20 +18,19 @@
 		161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161959EB2926C80300E2CC45 /* AnimatedObject.swift */; };
 		1656686D292EAD8A00D0F52A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656686C292EAD8A00D0F52A /* Menu.swift */; };
 		6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172C3D02926CFBA003C21FE /* CustomizedButton.swift */; };
+		926391C144BBB1C847E5BD11 /* Pods_MiniChallenge_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */; };
 		9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524E9CD29257D4E007AFBB2 /* Obstacle.swift */; };
 		9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */; };
 		956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */; };
 		956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960722926B56D00CF81EA /* GhostObstacle.swift */; };
 		956960752926B63D00CF81EA /* HandObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956960742926B63D00CF81EA /* HandObstacle.swift */; };
+		B90E9357293A7BCD001650E6 /* corvo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B90E9356293A7BCD001650E6 /* corvo.atlas */; };
+		B90E9359293A7BE4001650E6 /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B90E9358293A7BE4001650E6 /* maos.atlas */; };
+		B90E935B293A7C30001650E6 /* personagem_vivo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B90E935A293A7C30001650E6 /* personagem_vivo.atlas */; };
 		B98E203929273F030022E94F /* pipo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B98E203829273F030022E94F /* pipo.mp3 */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
 		B9E6427529315D0E00E8C3F3 /* personagem_alma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */; };
-		BB03AED42938D929002662DD /* fantasma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED12938D929002662DD /* fantasma.atlas */; };
-		BB03AED52938D929002662DD /* corvo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED22938D929002662DD /* corvo.atlas */; };
-		BB03AED62938D929002662DD /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED32938D929002662DD /* maos.atlas */; };
-		BB03AEDA2939235C002662DD /* personagem_vivo1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED82939235C002662DD /* personagem_vivo1.png */; };
-		BB03AEDB2939235C002662DD /* personagem_vivo2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED92939235C002662DD /* personagem_vivo2.png */; };
 		BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDC29397CD0002662DD /* PausedGame.swift */; };
 		BB03AEDF2939CE7B002662DD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDE2939CE7B002662DD /* GameOver.swift */; };
 /* End PBXBuildFile section */
@@ -49,22 +48,23 @@
 		161959EB2926C80300E2CC45 /* AnimatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedObject.swift; sourceTree = "<group>"; };
 		1656686C292EAD8A00D0F52A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		6172C3D02926CFBA003C21FE /* CustomizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedButton.swift; sourceTree = "<group>"; };
+		771766C5F0F035E15F854CC4 /* Pods-MiniChallenge#2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.release.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.release.xcconfig"; sourceTree = "<group>"; };
 		9524E9CD29257D4E007AFBB2 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdObstacle.swift; sourceTree = "<group>"; };
 		9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TombstoneObstacle.swift; sourceTree = "<group>"; };
 		956960722926B56D00CF81EA /* GhostObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostObstacle.swift; sourceTree = "<group>"; };
 		956960742926B63D00CF81EA /* HandObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandObstacle.swift; sourceTree = "<group>"; };
+		B90E9356293A7BCD001650E6 /* corvo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = corvo.atlas; path = "../../../../../../../images/Obstáculos/corvo.atlas"; sourceTree = "<group>"; };
+		B90E9358293A7BE4001650E6 /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = "../../../../../../../images/Obstáculos/maos.atlas"; sourceTree = "<group>"; };
+		B90E935A293A7C30001650E6 /* personagem_vivo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = personagem_vivo.atlas; path = ../../../../../../../images/Sprites/personagem/personagem_vivo.atlas; sourceTree = "<group>"; };
 		B98E203829273F030022E94F /* pipo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipo.mp3; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
 		B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = personagem_alma.atlas; sourceTree = "<group>"; };
-		BB03AED12938D929002662DD /* fantasma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = fantasma.atlas; path = "../../../../../../Downloads/Obstáculos/fantasma.atlas"; sourceTree = "<group>"; };
-		BB03AED22938D929002662DD /* corvo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = corvo.atlas; path = "../../../../../../Downloads/Obstáculos/corvo.atlas"; sourceTree = "<group>"; };
-		BB03AED32938D929002662DD /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = "../../../../../../Downloads/Obstáculos/maos.atlas"; sourceTree = "<group>"; };
-		BB03AED82939235C002662DD /* personagem_vivo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo1.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo1.png"; sourceTree = "<group>"; };
-		BB03AED92939235C002662DD /* personagem_vivo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo2.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo2.png"; sourceTree = "<group>"; };
 		BB03AEDC29397CD0002662DD /* PausedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedGame.swift; sourceTree = "<group>"; };
 		BB03AEDE2939CE7B002662DD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,17 +72,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926391C144BBB1C847E5BD11 /* Pods_MiniChallenge_2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11CF1A7115FCD59714EE6E85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		161959BA29256BFC00E2CC45 = {
 			isa = PBXGroup;
 			children = (
 				161959C529256BFC00E2CC45 /* MiniChallenge#2 */,
 				161959C429256BFC00E2CC45 /* Products */,
+				423765C4F2971271B6EAD648 /* Pods */,
+				11CF1A7115FCD59714EE6E85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,16 +149,24 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BB03AED22938D929002662DD /* corvo.atlas */,
-				BB03AED12938D929002662DD /* fantasma.atlas */,
-				BB03AED32938D929002662DD /* maos.atlas */,
-				BB03AED729392338002662DD /* personagem_vivo.atlas */,
+				B90E935A293A7C30001650E6 /* personagem_vivo.atlas */,
+				B90E9358293A7BE4001650E6 /* maos.atlas */,
+				B90E9356293A7BCD001650E6 /* corvo.atlas */,
 				B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */,
 				B98E203C292824280022E94F /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		423765C4F2971271B6EAD648 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */,
+				771766C5F0F035E15F854CC4 /* Pods-MiniChallenge#2.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		6172C3CF2926C71E003C21FE /* SKNodes */ = {
@@ -207,15 +226,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		BB03AED729392338002662DD /* personagem_vivo.atlas */ = {
-			isa = PBXGroup;
-			children = (
-				BB03AED82939235C002662DD /* personagem_vivo1.png */,
-				BB03AED92939235C002662DD /* personagem_vivo2.png */,
-			);
-			path = personagem_vivo.atlas;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,9 +233,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 161959DA29256BFF00E2CC45 /* Build configuration list for PBXNativeTarget "MiniChallenge#2" */;
 			buildPhases = (
+				BD806C4FD76EC2231EA3D234 /* [CP] Check Pods Manifest.lock */,
 				161959BF29256BFC00E2CC45 /* Sources */,
 				161959C029256BFC00E2CC45 /* Frameworks */,
 				161959C129256BFC00E2CC45 /* Resources */,
+				09A7239C19219402679A14A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,20 +286,60 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90E9359293A7BE4001650E6 /* maos.atlas in Resources */,
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
+				B90E9357293A7BCD001650E6 /* corvo.atlas in Resources */,
 				B9E6427529315D0E00E8C3F3 /* personagem_alma.atlas in Resources */,
-				BB03AEDA2939235C002662DD /* personagem_vivo1.png in Resources */,
+				B90E935B293A7C30001650E6 /* personagem_vivo.atlas in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				B98E203929273F030022E94F /* pipo.mp3 in Resources */,
-				BB03AEDB2939235C002662DD /* personagem_vivo2.png in Resources */,
-				BB03AED42938D929002662DD /* fantasma.atlas in Resources */,
-				BB03AED62938D929002662DD /* maos.atlas in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
-				BB03AED52938D929002662DD /* corvo.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09A7239C19219402679A14A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD806C4FD76EC2231EA3D234 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniChallenge#2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		161959BF29256BFC00E2CC45 /* Sources */ = {
@@ -453,6 +505,7 @@
 		};
 		161959DB29256BFF00E2CC45 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -486,6 +539,7 @@
 		};
 		161959DC29256BFF00E2CC45 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 771766C5F0F035E15F854CC4 /* Pods-MiniChallenge#2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
