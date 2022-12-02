@@ -114,8 +114,9 @@
 		161959DE29256C1100E2CC45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9B3C84C2927306900403187 /* Storyboard */,
+				B98E203E292824D10022E94F /* SKScenes */,
 				6172C3CF2926C71E003C21FE /* SKNodes */,
+				B9B3C84C2927306900403187 /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -124,8 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				B98E2041292827A90022E94F /* AVAudio */,
-				B98E2040292827060022E94F /* Score */,
-				B98E203E292824D10022E94F /* SKScenes */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
 				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
 			);
@@ -150,6 +149,7 @@
 		6172C3CF2926C71E003C21FE /* SKNodes */ = {
 			isa = PBXGroup;
 			children = (
+				B98E203A292806CB0022E94F /* Score.swift */,
 				1656686C292EAD8A00D0F52A /* Menu.swift */,
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 			);
@@ -182,14 +182,6 @@
 				161959CC29256BFC00E2CC45 /* GameScene.swift */,
 			);
 			path = SKScenes;
-			sourceTree = "<group>";
-		};
-		B98E2040292827060022E94F /* Score */ = {
-			isa = PBXGroup;
-			children = (
-				B98E203A292806CB0022E94F /* Score.swift */,
-			);
-			path = Score;
 			sourceTree = "<group>";
 		};
 		B98E2041292827A90022E94F /* AVAudio */ = {

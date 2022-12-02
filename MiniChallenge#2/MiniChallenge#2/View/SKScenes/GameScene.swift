@@ -13,13 +13,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let menu = Menu()
     private let character = Character.character
-    private let obstacle = BirdObstacle()
-    private var ground: SKSpriteNode = SKSpriteNode()
-    
-    var backgroundImage: SKSpriteNode = SKSpriteNode()
-    let objectDummy = SKNode()
     
     private var gameStarted = false
+    private var pausedGame = false
+    
+    //Sprites do ambiente de jogo
+    private var startedButton: CustomizedButton? = nil
+    private var ground: SKSpriteNode = SKSpriteNode()
+    private var backgroundImage: SKSpriteNode = SKSpriteNode()
+    
+    let gameSKNode = SKNode()
+    let objectDummy = SKNode()
     
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
     private var movedActionOfObstacles = SKAction()
@@ -32,7 +36,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Score.shared.scoreLabel.fontSize = 25
         Score.shared.scoreLabel.position = CGPoint(x: 150, y: 150)
         Score.shared.scoreLabel.text = ""
-        self.addChild(Score.shared.scoreLabel)
+        
+        self.startedButton = CustomizedButton(imageName: "pause.fill", buttonAction: {
+            self.pausedGame = true
+        })
         
         //Chamando a função que estrutura o menu principal
         self.menu.menuToStruct(sizeView: self.size)
@@ -48,31 +55,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Criando o objeto solo
         self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
         
-        //Adicionando os filhos à autoclasse
-        self.addChild(self.menu)
-        self.addChild(self.character.characterView)
-        self.addChild(self.ground)
-        self.addChild(objectDummy)
+        //setand tamanho da SKNode que vai rodar o jogo
+        
+        //Adicionando os filhos para a gameSKNode
+        self.gameSKNode.addChild(Score.shared.scoreLabel)
+        self.gameSKNode.addChild(self.menu)
+        self.gameSKNode.addChild(self.character.characterView)
+        self.gameSKNode.addChild(self.ground)
+        self.gameSKNode.addChild(objectDummy)
         for life in self.character.characterLife {
-            self.addChild(life)
+            self.gameSKNode.addChild(life)
         }
+        
+        //Adicionando a SKNode do jogo na cena
+        self.addChild(self.gameSKNode)
     }
     
-    //Função que detecta o contato dos corpos
-    func didBegin(_ contact: SKPhysicsContact) {
-        let firstBody = contact.bodyA
-        let secondBody = contact.bodyB
-        
-        //Estrutura condicional que verifica os corpos de contato
-        if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-            
-            //Decrementando itens da lista de vidas do jogo
-            if !self.character.characterLife.isEmpty {
-                self.character.characterLife.last?.removeFromParent()
-                self.character.characterLife.removeLast()
-            }
-        }
-    }
     //MARK: - Criando objetos da cena principal
     func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
         ground.size = CGSize(width: self.frame.width, height: 60)
@@ -199,7 +197,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
         self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
         self.obstaclesInAction.run(self.movedActionOfObstacles)
-        self.addChild(obstaclesInAction)
+        self.gameSKNode.addChild(obstaclesInAction)
     }
     
     func creatingMoveOfObstacle() {
@@ -217,6 +215,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let removePipes = SKAction.removeFromParent()
         self.movedActionOfObstacles = SKAction.sequence([movePipes, removePipes])
     }
+    
+    //Função que detecta o contato dos corpos
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody = contact.bodyA
+        let secondBody = contact.bodyB
+        
+        //Estrutura condicional que verifica os corpos de contato
+        if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
+            
+            //Decrementando itens da lista de vidas do jogo
+            if !(self.character.characterLife.count <= 1) {
+                self.character.characterLife.last?.removeFromParent()
+                self.character.characterLife.removeLast()
+            } else {
+                self.pausedGame = true
+                self.gameSKNode.isPaused = true
+                
+                self.character.characterLife.last?.removeFromParent()
+                self.character.characterLife.removeLast()
+            }
+        }
+    }
+    
 
     
     
@@ -243,7 +264,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.menu.tapToStart()
             self.creatingMoveOfObstacle()
         } else {
-            self.character.characterView = self.character.characterToFly(character: self.character.characterView)
+            if !self.pausedGame {
+                self.character.characterView = self.character.characterToFly(character: self.character.characterView)
+            }
         }
         
     }
