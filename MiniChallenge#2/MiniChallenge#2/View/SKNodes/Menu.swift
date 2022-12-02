@@ -88,15 +88,19 @@ class Menu: SKNode {
         self.menuToPlayMusicBackground()
         
         self.menuHighScoreToSetProperties(sizeView: sizeView)
+        self.highScoreText.zPosition = 5
         self.addChild(self.highScoreText)
         
         self.menuInfoButtonToSetProperties(sizeView: sizeView)
+        self.infoButton.zPosition = 5
         self.addChild(self.infoButton)
         
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
+        self.audioButton!.zPosition = 5
         self.addChild(self.audioButton!)
 
         self.menuStartTextToSetProperties(sizeView: sizeView)
+        self.startText.zPosition = 5
         self.addChild(self.startText)
     }
     
