@@ -19,6 +19,8 @@ class Menu: SKNode {
     
     var testeBg: Int = 1
     
+    let backgroundMenu = SKSpriteNode()
+    
     let startText = SKLabelNode(fontNamed: "")
     let highScoreText = SKLabelNode(fontNamed: "")
     
@@ -75,6 +77,14 @@ class Menu: SKNode {
     }
     //MARK: - Funções de estruturação da classe
     func menuToStruct(sizeView: CGSize) {
+        
+        self.zPosition = 4
+        
+        self.backgroundMenu.color = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
+        self.backgroundMenu.size = sizeView
+        self.backgroundMenu.position = CGPoint(x: sizeView.width / 2, y: sizeView.height / 2)
+        self.backgroundMenu.zPosition = 4
+        
         self.menuToPlayMusicBackground()
         
         self.menuHighScoreToSetProperties(sizeView: sizeView)

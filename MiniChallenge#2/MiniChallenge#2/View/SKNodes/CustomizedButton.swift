@@ -15,7 +15,6 @@ public class CustomizedButton: SKNode {
         
         self.cropNode = SKCropNode()
         self.cropNode.maskNode = buttonView
-        self.cropNode.zPosition = 3
         self.cropNode.addChild(mask)
         
         self.action = buttonAction
@@ -34,7 +33,6 @@ public class CustomizedButton: SKNode {
     }
     
     func setupNodes() {
-        self.buttonView.zPosition = 0
         buttonView.setScale(2.2)
     }
     

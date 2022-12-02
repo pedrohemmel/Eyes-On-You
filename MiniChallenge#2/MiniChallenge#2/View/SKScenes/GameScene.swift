@@ -221,7 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.backgroundImage.size.width = self.size.width * 2 //get the right pixel on phone
             self.backgroundImage.size.height = self.size.height
-            self.backgroundImage.zPosition = -1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
+            self.backgroundImage.zPosition = 1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
             self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
             self.backgroundImage.run(reDo)
             
@@ -232,10 +232,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //Função utilizada para organizar melhor o código no switch case
-    func settingPropertiesObstacle(obstacle: Obstacle, obstacleView: SKSpriteNode, zPosition: CGFloat) -> SKSpriteNode {
+    func settingPropertiesObstacle(obstacle: Obstacle, obstacleView: SKSpriteNode) -> SKSpriteNode {
         obstacle.obstacleView = obstacleView
     
-        obstacle.obstacleView = obstacle.obstacleToSetSize(obstacle: obstacle.obstacleView, obZPosition: zPosition)
+        obstacle.obstacleView = obstacle.obstacleToSetSize(obstacle: obstacle.obstacleView)
         obstacle.obstacleView = obstacle.obstacleToSetPhysics(obstacle: obstacle.obstacleView)
         obstacle.obstacleView = obstacle.obstacleToCollide(obstacle: obstacle.obstacleView)
         
@@ -253,7 +253,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             birdObstacle.obstacleView = AnimatedObject("corvo")
             birdObstacle.obstacleView.setScale(0.15)
             birdObstacle.obstacleView.size = CGSize(width: 100, height: 50)
-            birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView, zPosition: 9)
+            birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
             birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 1...250)), duration: 0.004 * distance)
@@ -264,7 +264,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             tombstoneObstacle.obstacleView = SKSpriteNode(imageNamed: "lapide1")
             tombstoneObstacle.obstacleView.setScale(0.15)
             tombstoneObstacle.obstacleView.size = CGSize(width: 150, height: 75)
-            tombstoneObstacle.obstacleView = settingPropertiesObstacle(obstacle: tombstoneObstacle, obstacleView: tombstoneObstacle.obstacleView, zPosition: 9)
+            tombstoneObstacle.obstacleView = settingPropertiesObstacle(obstacle: tombstoneObstacle, obstacleView: tombstoneObstacle.obstacleView)
             
             tombstoneObstacle.obstacleView.position.y = self.ground.frame.height + (tombstoneObstacle.obstacleView.frame.height / 2)
             return tombstoneObstacle
@@ -273,7 +273,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostObstacle.obstacleView = AnimatedObject("fantasma")
             ghostObstacle.obstacleView.setScale(0.15)
             ghostObstacle.obstacleView.size =  CGSize(width: 100, height: 100)
-            ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView, zPosition: 9)
+            ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
             ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -50...150)), duration: 0.004 * distance)
@@ -284,7 +284,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             handObstacle.obstacleView = AnimatedObject("maos")
             handObstacle.obstacleView.setScale(0.15)
             handObstacle.obstacleView.size = CGSize(width: 100, height: 50)
-            handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView , zPosition: 9)
+            handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
             handObstacle.actionObstacle = SKAction.moveBy(x: 0, y: self.frame.height / 6, duration: 0.004 * distance)
@@ -316,7 +316,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
             self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
             
-            self.obstaclesInAction.zPosition = 7
+            self.obstaclesInAction.zPosition = 2
             self.obstaclesInAction.run(self.movedActionOfObstacles)
             self.gameSKNode.addChild(obstaclesInAction)
         }
@@ -347,7 +347,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !givedUpGame {
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-                
+                print(self.character.characterLife.count)
                 //Decrementando itens da lista de vidas do jogo
                 if !(self.character.characterLife.count <= 1) {
                     self.character.characterLife.last?.removeFromParent()
@@ -394,6 +394,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !self.gameStarted {
             self.gameStarted = true
             self.givedUpGame = false
+            self.gameOver = false
             
             self.appearLifeScoreAndPauseButton()
             self.menu.tapToStart()
