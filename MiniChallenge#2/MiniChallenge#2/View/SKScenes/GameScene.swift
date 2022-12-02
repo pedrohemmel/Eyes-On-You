@@ -36,9 +36,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
-        
-        Score.shared.scoreLabel.fontSize = 25
-        Score.shared.scoreLabel.position = CGPoint(x: 150, y: 150)
 
         //Chamando a função que estrutura o menu principal
         self.menu.menuToStruct(sizeView: self.size)
@@ -47,6 +44,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButtonToCreate()
         self.pausedGameScreen = PausedGame(view: self)
         self.buttonsOfPausedScreenToCreate()
+        
+        Score.shared.scoreLabel.fontSize = 25
+        Score.shared.scoreLabel.fontColor = .red
+        Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 80, y: self.frame.height - 50)
         
         self.gameOverScreen = GameOver(view: self)
         self.gameOverScreen?.creatingRestartButton(view: self, actionOfBtnRestart: {
@@ -299,7 +300,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
     func generatingNewObstacle() {
-        if !givedUpGame {
+        if !givedUpGame && !pausedGame {
             self.obstaclesInAction = SKNode()
             let sortedObstacle = self.sortObstacle()
                         
@@ -432,7 +433,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if currentTime > Score.shared.renderTime{
                 Score.shared.addScore()
                 Score.shared.trySaveHighScore()
-                Score.shared.scoreLabel.text = "Pontos: \(Score.shared.gameScore)"
+                Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
                 menu.highScoreText.text = "HighScore: \(Score.shared.highScore)"
                 Score.shared.renderTime = currentTime + Score.shared.changeTime
             }
