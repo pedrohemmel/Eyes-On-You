@@ -12,6 +12,7 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let menu = Menu()
+    private var pausedGameScreen: PausedGame? = nil
     private let character = Character.character
     
     private var gameStarted = false
@@ -44,6 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Chamando a função que estrutura o menu principal
         self.menu.menuToStruct(sizeView: self.size)
         
+        self.pausedGameScreen = PausedGame(view: self)
+        
         self.creatingAnimatedBackground()
         
         //Criando e chamando as funções que fazem a estrutura do personagem
@@ -69,6 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Adicionando a SKNode do jogo na cena
         self.addChild(self.gameSKNode)
+        self.addChild(self.pausedGameScreen!)
     }
     
     //MARK: - Criando objetos da cena principal
@@ -97,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.backgroundImage.anchorPoint = CGPoint(x: 0, y:0)
             
-            self.backgroundImage.size.width = self.size.width //get the right pixel on phone
+            self.backgroundImage.size.width = self.size.width * 2 //get the right pixel on phone
             self.backgroundImage.size.height = self.size.height
             self.backgroundImage.zPosition = -1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
             self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
@@ -266,6 +270,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             if !self.pausedGame {
                 self.character.characterView = self.character.characterToFly(character: self.character.characterView)
+            } else {
+                
             }
         }
         

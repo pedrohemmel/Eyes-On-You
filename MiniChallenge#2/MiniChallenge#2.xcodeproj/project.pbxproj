@@ -32,6 +32,7 @@
 		BB03AED62938D929002662DD /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED32938D929002662DD /* maos.atlas */; };
 		BB03AEDA2939235C002662DD /* personagem_vivo1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED82939235C002662DD /* personagem_vivo1.png */; };
 		BB03AEDB2939235C002662DD /* personagem_vivo2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB03AED92939235C002662DD /* personagem_vivo2.png */; };
+		BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDC29397CD0002662DD /* PausedGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		BB03AED32938D929002662DD /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = "../../../../../../Downloads/Obstáculos/maos.atlas"; sourceTree = "<group>"; };
 		BB03AED82939235C002662DD /* personagem_vivo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo1.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo1.png"; sourceTree = "<group>"; };
 		BB03AED92939235C002662DD /* personagem_vivo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = personagem_vivo2.png; path = "../../../../../../../Downloads/drive-download-20221201T175921Z-001/personagem_vivo2.png"; sourceTree = "<group>"; };
+		BB03AEDC29397CD0002662DD /* PausedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				B98E203A292806CB0022E94F /* Score.swift */,
 				1656686C292EAD8A00D0F52A /* Menu.swift */,
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
+				BB03AEDC29397CD0002662DD /* PausedGame.swift */,
 			);
 			path = SKNodes;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
 				9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */,
 				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,
+				BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */,
 				B98E203B292806CB0022E94F /* Score.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
 				956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */,
