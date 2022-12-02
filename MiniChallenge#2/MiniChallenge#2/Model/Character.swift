@@ -32,11 +32,11 @@ public class Character {
     func characterToApplyProperties(character: SKSpriteNode, view: SKScene) -> SKSpriteNode {
         
         character.setScale(0.13)
-        character.position = CGPoint(x: 100, y: 100)
+        character.position = CGPoint(x: 250, y: 100)
         character.zPosition = 3
         
         //Physics properties
-        character.physicsBody = SKPhysicsBody(rectangleOf: character.frame.size)
+        character.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: character.frame.width - 10, height: character.frame.height))
         character.physicsBody?.affectedByGravity = true
         character.physicsBody?.isDynamic = true
         character.physicsBody?.allowsRotation = false
@@ -56,7 +56,7 @@ public class Character {
     //Setting properties of collision and contact
     func characterToCollide(character: SKSpriteNode) -> SKSpriteNode {
         character.physicsBody?.categoryBitMask = PhysicsCategory.character
-        character.physicsBody?.collisionBitMask = PhysicsCategory.ground
+        character.physicsBody?.collisionBitMask = PhysicsCategory.ground | PhysicsCategory.ceiling
         character.physicsBody?.contactTestBitMask = PhysicsCategory.obstacle
         
         return character

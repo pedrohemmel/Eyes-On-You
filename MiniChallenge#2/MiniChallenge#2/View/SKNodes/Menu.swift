@@ -119,10 +119,10 @@ class Menu: SKNode {
     
     func menuStartTextToSetProperties(sizeView: CGSize) {
         self.startText.text = "TOQUE NA TELA PARA INICIAR"
-        self.startText.fontColor = UIColor.white
+        self.startText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.startText.horizontalAlignmentMode = .center
         self.startText.verticalAlignmentMode = .bottom
-        self.startText.position = CGPoint(x: sizeView.width / 2, y: 40)
+        self.startText.position = CGPoint(x: sizeView.width / 2, y: sizeView.height / 2)
     }
     
     func menuAudioButtonToSetProperties(sizeView: CGSize) {
@@ -136,11 +136,11 @@ class Menu: SKNode {
     func menuHighScoreToSetProperties(sizeView: CGSize) {
         
         self.imageHighScoreText = SKSpriteNode(imageNamed: "highscore_icon")
-        self.imageHighScoreText.setScale(0.5)
-        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
+        self.imageHighScoreText.setScale(0.4)
+        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 90 - self.highScoreText.frame.width - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
         
         self.highScoreText.text = ("\(Score.shared.highScore)")
-        self.highScoreText.fontColor = UIColor.white
+        self.highScoreText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.highScoreText.fontSize = CGFloat(25)
         self.highScoreText.position = CGPoint(x: sizeView.width - 80 - self.highScoreText.frame.width, y: sizeView.height - 50)
     }

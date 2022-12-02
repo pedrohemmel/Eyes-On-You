@@ -14,7 +14,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let menu = Menu()
     private var pausedGameScreen: PausedGame? = nil
     private var gameOverScreen: GameOver? = nil
+    
     private let character = Character.character
+    private let bulk = AnimatedObject("vulto")
     
     private var gameStarted = false
     private var gameOver = false
@@ -24,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Sprites do ambiente de jogo
     private var pausedButton: CustomizedButton? = nil
     private var ground: SKSpriteNode = SKSpriteNode()
+    private var ceiling = SKSpriteNode()
     private var backgroundImage: SKSpriteNode = SKSpriteNode()
     
     let gameSKNode = SKNode()
@@ -47,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Score.shared.scoreLabel.fontSize = 25
         Score.shared.scoreLabel.fontColor = .red
-        Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 80, y: self.frame.height - 50)
+        Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 80, y: self.frame.height - 48)
         Score.shared.scoreLabel.zPosition = 2
         
         self.gameOverScreen = GameOver(view: self)
@@ -68,19 +71,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
         self.ground.zPosition = 2
         
+        //criando teto
+        self.ceiling = self.ceilingToCreate(ceiling: self.ceiling)
+        
         //Criando e chamando as funções que fazem a estrutura do personagem
         self.character.characterView = AnimatedObject("personagem_alma")
         self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
         self.character.characterView = character.characterToCollide(character: character.characterView)
         self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
+        self.bulk.setScale(0.2)
+        self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
+        self.bulk.zPosition = 2
         
         self.hideLifeScoreAndPauseButton()
         
         //Adicionando os filhos para a gameSKNode
         self.gameSKNode.addChild(Score.shared.scoreLabel)
-        
         self.gameSKNode.addChild(self.character.characterView)
+        self.gameSKNode.addChild(self.bulk)
+        self.gameSKNode.addChild(self.ceiling)
         self.gameSKNode.addChild(self.ground)
         self.gameSKNode.addChild(self.objectDummy)
         
@@ -159,6 +169,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.character.characterView.physicsBody?.affectedByGravity = true
         self.character.characterView.physicsBody?.isDynamic = true
+    }
+    
+    func ceilingToCreate(ceiling: SKSpriteNode) -> SKSpriteNode {
+        
+        ceiling.size = CGSize(width: self.frame.width, height: 1)
+        ceiling.position = CGPoint(x: self.frame.width / 2, y: self.frame.height)
+        ceiling.zPosition = 0
+        
+        ceiling.physicsBody = SKPhysicsBody(rectangleOf: ceiling.size)
+        ceiling.physicsBody?.categoryBitMask = PhysicsCategory.ceiling
+        ceiling.physicsBody?.collisionBitMask = PhysicsCategory.character
+        ceiling.physicsBody?.affectedByGravity = false
+        ceiling.physicsBody?.isDynamic = false
+        
+        return ceiling
     }
     
     func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
@@ -258,7 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 1...250)), duration: 0.004 * distance)
+            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 150...400)), duration: 0.004 * distance)
             birdObstacle.obstacleView.position.y = self.frame.height - CGFloat(Int.random(in: 50...100))
             return birdObstacle
         case 1:
@@ -278,7 +303,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -50...150)), duration: 0.004 * distance)
+            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -200...150)), duration: 0.004 * distance)
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
         case 3:
@@ -449,13 +474,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         if menu.startGame == true{
-            if currentTime > Score.shared.renderTime{
-                Score.shared.addScore()
-                Score.shared.trySaveHighScore()
-                Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
-                menu.highScoreText.text = "\(Score.shared.highScore)"
-                Score.shared.renderTime = currentTime + Score.shared.changeTime
+            if !gameOver && !pausedGame {
+                if currentTime > Score.shared.renderTime{
+                    Score.shared.addScore()
+                    Score.shared.trySaveHighScore()
+                    Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
+                    menu.highScoreText.text = "\(Score.shared.highScore)"
+                    Score.shared.renderTime = currentTime + Score.shared.changeTime
+                }
             }
+            
         }
     }
 }

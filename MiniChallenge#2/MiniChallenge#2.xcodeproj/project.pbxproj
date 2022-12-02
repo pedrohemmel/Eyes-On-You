@@ -39,6 +39,7 @@
 		BB03AF05293A8AFD002662DD /* noite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF04293A8AFC002662DD /* noite.mp3 */; };
 		BB03AF07293A8B99002662DD /* impacto.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF06293A8B99002662DD /* impacto.wav */; };
 		BB03AF09293A8B9F002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF08293A8B9F002662DD /* gameover.mp3 */; };
+		BB03AF0B293A958F002662DD /* vulto.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF0A293A958E002662DD /* vulto.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		BB03AF04293A8AFC002662DD /* noite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = noite.mp3; path = ../../../../../../../Downloads/noite.mp3; sourceTree = "<group>"; };
 		BB03AF06293A8B99002662DD /* impacto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = impacto.wav; path = ../../../../../../../Downloads/impacto.wav; sourceTree = "<group>"; };
 		BB03AF08293A8B9F002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = ../../../../../../../Downloads/gameover.mp3; sourceTree = "<group>"; };
+		BB03AF0A293A958E002662DD /* vulto.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = vulto.atlas; path = ../../../../../../Downloads/vulto.atlas; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BB03AF0A293A958E002662DD /* vulto.atlas */,
 				BB03AEFE293A866A002662DD /* fantasma.atlas */,
 				BB03AEFB293A827D002662DD /* corvo.atlas */,
 				BB03AEFA293A827D002662DD /* maos.atlas */,
@@ -304,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB03AF0B293A958F002662DD /* vulto.atlas in Resources */,
 				BB03AEFC293A827D002662DD /* maos.atlas in Resources */,
 				BB03AF09293A8B9F002662DD /* gameover.mp3 in Resources */,
 				BB03AEF9293A8240002662DD /* personagem_vivo.atlas in Resources */,
