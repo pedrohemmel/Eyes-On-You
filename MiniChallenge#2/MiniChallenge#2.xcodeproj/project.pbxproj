@@ -29,17 +29,11 @@
 		95ADC8C629381D4900F9B9C5 /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
-		B9E6427529315D0E00E8C3F3 /* personagem_alma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */; };
 		BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDC29397CD0002662DD /* PausedGame.swift */; };
 		BB03AEDF2939CE7B002662DD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDE2939CE7B002662DD /* GameOver.swift */; };
-		BB03AF05293A8AFD002662DD /* noite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF04293A8AFC002662DD /* noite.mp3 */; };
-		BB03AF07293A8B99002662DD /* impacto.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF06293A8B99002662DD /* impacto.wav */; };
-		BB03AF09293A8B9F002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF08293A8B9F002662DD /* gameover.mp3 */; };
-		BB03AF21293E7604002662DD /* fantasma.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF20293E7604002662DD /* fantasma.atlas */; };
-		BB03AF23293E7612002662DD /* corvo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF22293E7612002662DD /* corvo.atlas */; };
-		BB03AF25293E7619002662DD /* maos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF24293E7619002662DD /* maos.atlas */; };
-		BB03AF27293E7621002662DD /* personagem_vivo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF26293E7621002662DD /* personagem_vivo.atlas */; };
-		BB03AF29293E762C002662DD /* vulto.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF28293E762C002662DD /* vulto.atlas */; };
+		BB03AF36293E8916002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF33293E8916002662DD /* gameover.mp3 */; };
+		BB03AF37293E8916002662DD /* noite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF34293E8916002662DD /* noite.mp3 */; };
+		BB03AF38293E8916002662DD /* impacto.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF35293E8916002662DD /* impacto.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,17 +60,11 @@
 		95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButtonNode.swift; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
-		B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = personagem_alma.atlas; sourceTree = "<group>"; };
 		BB03AEDC29397CD0002662DD /* PausedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedGame.swift; sourceTree = "<group>"; };
 		BB03AEDE2939CE7B002662DD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
-		BB03AF04293A8AFC002662DD /* noite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = noite.mp3; path = ../../../../../../../Downloads/noite.mp3; sourceTree = "<group>"; };
-		BB03AF06293A8B99002662DD /* impacto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = impacto.wav; path = ../../../../../../../Downloads/impacto.wav; sourceTree = "<group>"; };
-		BB03AF08293A8B9F002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = ../../../../../../../Downloads/gameover.mp3; sourceTree = "<group>"; };
-		BB03AF20293E7604002662DD /* fantasma.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = fantasma.atlas; path = ../../../../../../Downloads/arquivosAtlas/fantasma.atlas; sourceTree = "<group>"; };
-		BB03AF22293E7612002662DD /* corvo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = corvo.atlas; path = ../../../../../../Downloads/arquivosAtlas/corvo.atlas; sourceTree = "<group>"; };
-		BB03AF24293E7619002662DD /* maos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maos.atlas; path = ../../../../../../Downloads/arquivosAtlas/maos.atlas; sourceTree = "<group>"; };
-		BB03AF26293E7621002662DD /* personagem_vivo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = personagem_vivo.atlas; path = ../../../../../../Downloads/arquivosAtlas/personagem_vivo.atlas; sourceTree = "<group>"; };
-		BB03AF28293E762C002662DD /* vulto.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = vulto.atlas; path = ../../../../../../Downloads/arquivosAtlas/vulto.atlas; sourceTree = "<group>"; };
+		BB03AF33293E8916002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
+		BB03AF34293E8916002662DD /* noite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = noite.mp3; sourceTree = "<group>"; };
+		BB03AF35293E8916002662DD /* impacto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = impacto.wav; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,13 +151,7 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BB03AF28293E762C002662DD /* vulto.atlas */,
-				BB03AF26293E7621002662DD /* personagem_vivo.atlas */,
-				BB03AF24293E7619002662DD /* maos.atlas */,
-				BB03AF22293E7612002662DD /* corvo.atlas */,
-				BB03AF20293E7604002662DD /* fantasma.atlas */,
-				B9E6427429315D0E00E8C3F3 /* personagem_alma.atlas */,
-				B98E203C292824280022E94F /* Sounds */,
+				BB03AF32293E8902002662DD /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
 			);
@@ -212,16 +194,6 @@
 			path = Obstacle;
 			sourceTree = "<group>";
 		};
-		B98E203C292824280022E94F /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				BB03AF06293A8B99002662DD /* impacto.wav */,
-				BB03AF08293A8B9F002662DD /* gameover.mp3 */,
-				BB03AF04293A8AFC002662DD /* noite.mp3 */,
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		B98E203E292824D10022E94F /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +217,16 @@
 				161959D029256BFC00E2CC45 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		BB03AF32293E8902002662DD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BB03AF33293E8916002662DD /* gameover.mp3 */,
+				BB03AF35293E8916002662DD /* impacto.wav */,
+				BB03AF34293E8916002662DD /* noite.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,18 +289,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB03AF21293E7604002662DD /* fantasma.atlas in Resources */,
-				BB03AF27293E7621002662DD /* personagem_vivo.atlas in Resources */,
-				BB03AF23293E7612002662DD /* corvo.atlas in Resources */,
-				BB03AF29293E762C002662DD /* vulto.atlas in Resources */,
-				BB03AF09293A8B9F002662DD /* gameover.mp3 in Resources */,
-				BB03AF07293A8B99002662DD /* impacto.wav in Resources */,
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
-				B9E6427529315D0E00E8C3F3 /* personagem_alma.atlas in Resources */,
+				BB03AF38293E8916002662DD /* impacto.wav in Resources */,
+				BB03AF36293E8916002662DD /* gameover.mp3 in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
-				BB03AF25293E7619002662DD /* maos.atlas in Resources */,
+				BB03AF37293E8916002662DD /* noite.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
-				BB03AF05293A8AFD002662DD /* noite.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
