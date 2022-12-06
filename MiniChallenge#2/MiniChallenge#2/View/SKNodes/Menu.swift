@@ -29,15 +29,15 @@ class Menu: SKNode {
     
     
     
-    var infoButton: CustomizedButton = {
-        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
-            
-            
-            
-        })
-        return button
-    }()
-    
+//    var infoButton: CustomizedButton = {
+//        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+//
+//
+//
+//        })
+//        return button
+//    }()
+//
     
     
     var audioButton: CustomizedButton?
@@ -99,10 +99,10 @@ class Menu: SKNode {
         self.addChild(self.imageHighScoreText)
         self.addChild(self.highScoreText)
         
-        self.menuInfoButtonToSetProperties(sizeView: sizeView)
-        self.infoButton.zPosition = 5
-        self.addChild(self.infoButton)
-        
+//        self.menuInfoButtonToSetProperties(sizeView: sizeView)
+//        self.infoButton.zPosition = 5
+//        self.addChild(self.infoButton)
+//
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
         self.audioButton!.zPosition = 5
         self.addChild(self.audioButton!)
@@ -129,9 +129,9 @@ class Menu: SKNode {
         self.audioButton!.position = CGPoint(x: 40, y: sizeView.height - 40)
     }
     
-    func menuInfoButtonToSetProperties(sizeView: CGSize) {
-        self.infoButton.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
-    }
+//    func menuInfoButtonToSetProperties(sizeView: CGSize) {
+//        self.infoButton.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
+//    }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
         
