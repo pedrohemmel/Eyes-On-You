@@ -20,6 +20,7 @@ class AnimatedObject: SKSpriteNode {
         
         super.init(texture: texture, color: .red, size: texture.size())
         
+        
         self.setup()
     }
 
@@ -43,7 +44,7 @@ class AnimatedObject: SKSpriteNode {
         
         
         //Properties that start the animation
-        let animation: SKAction = SKAction.animate(with: image, timePerFrame: 0.1, resize: true, restore: true)
+        let animation: SKAction = SKAction.animate(with: image, timePerFrame: 0.2, resize: true, restore: true)
         self.run(SKAction.repeatForever(animation))
     }
 }

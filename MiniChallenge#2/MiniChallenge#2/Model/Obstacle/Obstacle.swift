@@ -25,9 +25,13 @@ class Obstacle {
     }
     
     func obstacleToSetPhysics(obstacle: SKSpriteNode) -> SKSpriteNode {
-        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.frame.size)
+        
+        obstacle.physicsBody = SKPhysicsBody(texture: obstacle.texture!, size: obstacle.size)
+//        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.physicsBody?.affectedByGravity = true
         obstacle.physicsBody?.isDynamic = true
+        
+        obstacle.physicsBody?.mass = 10
         
         return obstacle
     }

@@ -15,7 +15,7 @@ public class Character {
     
     public var characterView: SKSpriteNode
     
-    public var characterLife: [SKSpriteNode] = []
+//    public var characterLife: [SKSpriteNode] = []
     
     public var exemplo: String
     
@@ -25,7 +25,7 @@ public class Character {
         
         self.exemplo = exemploParam
         
-        characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
+//        characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
     }
     
     //Setting SpriteKit properties to a var and returning it
@@ -36,7 +36,8 @@ public class Character {
         character.zPosition = 3
         
         //Physics properties
-        character.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: character.frame.width - 10, height: character.frame.height))
+        character.physicsBody = SKPhysicsBody(texture: character.texture!, size: character.size)
+//        character.physicsBody = SKPhysicsBody(rectangleOf: character.size)
         character.physicsBody?.affectedByGravity = true
         character.physicsBody?.isDynamic = true
         character.physicsBody?.allowsRotation = false
@@ -48,7 +49,7 @@ public class Character {
     func characterToFly(character: SKSpriteNode) -> SKSpriteNode {
         
         character.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        character.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 150))
+        character.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
         
         return character
     }

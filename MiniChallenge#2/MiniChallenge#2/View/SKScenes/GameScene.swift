@@ -78,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.characterView = AnimatedObject("personagem_alma")
         self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
         self.character.characterView = character.characterToCollide(character: character.characterView)
-        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+//        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
         self.bulk.setScale(0.2)
         self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
@@ -95,9 +95,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.objectDummy)
         
         self.gameSKNode.addChild(self.pausedButton!)
-        for life in self.character.characterLife {
-            self.gameSKNode.addChild(life)
-        }
+//        for life in self.character.characterLife {
+//            self.gameSKNode.addChild(life)
+//        }
         
         //Adicionando a SKNode do jogo na cena
         self.addChild(self.menu)
@@ -108,27 +108,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Criando objetos da cena principal
     
-    func restartLifeAndScore() -> Void {
-        Score.shared.gameScore = 0
-        
-        for life in self.character.characterLife {
-            life.removeFromParent()
-        }
-        self.character.characterLife.removeAll()
-        self.character.characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
-        self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
-        for life in self.character.characterLife {
-            self.gameSKNode.addChild(life)
-        }
-        
-    }
+//    func restartLifeAndScore() -> Void {
+//        Score.shared.gameScore = 0
+//
+//        for life in self.character.characterLife {
+//            life.removeFromParent()
+//        }
+//        self.character.characterLife.removeAll()
+//        self.character.characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
+//        self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+//        for life in self.character.characterLife {
+//            self.gameSKNode.addChild(life)
+//        }
+//
+//    }
     
     func hideLifeScoreAndPauseButton() -> Void {
         Score.shared.scoreLabel.isHidden = true
         
-        for life in self.character.characterLife {
-            life.isHidden = true
-        }
+//        for life in self.character.characterLife {
+//            life.isHidden = true
+//        }
         
         self.pausedButton?.isHidden = true
     }
@@ -136,9 +136,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func appearLifeScoreAndPauseButton() -> Void {
         Score.shared.scoreLabel.isHidden = false
         
-        for life in self.character.characterLife {
-            life.isHidden = false
-        }
+//        for life in self.character.characterLife {
+//            life.isHidden = false
+//        }
         
         self.pausedButton?.isHidden = false
     }
@@ -223,6 +223,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func mostraMenu() {
         self.menu.tapToRestart()
         
+        Score.shared.gameScore = 0
+        
         self.gameStarted = false
         
         self.continueGameSKNode()
@@ -231,7 +233,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.gameOverScreen?.isHidden = true
         
-        self.restartLifeAndScore()
+//        self.restartLifeAndScore()
         self.hideLifeScoreAndPauseButton()
     }
     
@@ -306,17 +308,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -200...150)), duration: 0.004 * distance)
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
-        case 3:
-            let handObstacle = HandObstacle()
-            handObstacle.obstacleView = AnimatedObject("maos")
-            handObstacle.obstacleView.setScale(0.4)
-            handObstacle.obstacleView.size = CGSize(width: 150, height: 150)
-            handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView)
-            
-            let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            handObstacle.actionObstacle = SKAction.moveBy(x: 0, y: self.frame.height / 6, duration: 0.004 * distance)
-            handObstacle.obstacleView.position.y = self.ground.frame.height //mudar 20 pelo tamanho do chão
-            return handObstacle
+//        case 3:
+//            let handObstacle = HandObstacle()
+//            handObstacle.obstacleView = AnimatedObject("maos")
+//            handObstacle.obstacleView.setScale(0.4)
+//            handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView)
+//
+//            let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
+//            handObstacle.actionObstacle = SKAction.moveBy(x: 0, y: 0, duration: 0.004 * distance)
+//            handObstacle.obstacleView.position.y = self.ground.frame.height + (handObstacle.obstacleView.frame.height / 2)
+//            return handObstacle
         default:
             //Obstaculo poadrão
             let birdObstacle = BirdObstacle()
@@ -333,7 +334,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
             sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
                     
-            sortedObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: sortedObstacle.obstacleView.size)
+//            sortedObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: sortedObstacle.obstacleView.size)
             sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
             sortedObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
             sortedObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
@@ -375,33 +376,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
                 
-                if menu.audioStatus {
-                    AVAudio.sharedInstance().playSoundEffect("impacto.wav")
-                }
+//                if menu.audioStatus {
+//                    AVAudio.sharedInstance().playSoundEffect("impacto.wav")
+//                }
                 
                 //Decrementando itens da lista de vidas do jogo
-                if !(self.character.characterLife.count <= 1) {
-                    self.character.characterLife.last?.removeFromParent()
-                    self.character.characterLife.removeLast()
-                } else {
-                    if !gameOver {
-                        
-                        if menu.audioStatus {
-                            AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
-                        }
-                        
-                        
-                        self.character.characterLife.last?.removeFromParent()
-                        self.character.characterLife.removeLast()
-                        
-                        gameOver = true
-                        
-                        self.pausedGame = true
-                        self.pauseGameSKNode()
-                        self.gameOverScreen!.isHidden = false
-                        
+//                if !(self.character.characterLife.count <= 1) {
+//                    self.character.characterLife.last?.removeFromParent()
+//                    self.character.characterLife.removeLast()
+//                } else {
+//                    if !gameOver {
+//
+//                        if menu.audioStatus {
+//                            AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
+//                        }
+//
+//
+//                        self.character.characterLife.last?.removeFromParent()
+//                        self.character.characterLife.removeLast()
+//
+//                        gameOver = true
+//
+//                        self.pausedGame = true
+//                        self.pauseGameSKNode()
+//                        self.gameOverScreen!.isHidden = false
+//
+//                    }
+//
+//                }
+                
+                if !gameOver {
+
+                    if menu.audioStatus {
+                        AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                     }
-                    
+
+
+//                    self.character.characterLife.last?.removeFromParent()
+//                    self.character.characterLife.removeLast()
+
+                    gameOver = true
+
+                    self.pausedGame = true
+                    self.pauseGameSKNode()
+                    self.gameOverScreen!.isHidden = false
+
                 }
                 
                 if firstBody.categoryBitMask == PhysicsCategory.obstacle {
