@@ -15,7 +15,7 @@ class Score: SKNode {
     
 //    var scoreLabel: SKLabelNode = SKLabelNode()
     
-    let scoreLabel = SKLabelNode(fontNamed: "")
+    let scoreLabel = SKLabelNode(fontNamed: "AvenirNext-Bold")
     
     var renderTime: TimeInterval = 0.0
     var changeTime: TimeInterval = 1

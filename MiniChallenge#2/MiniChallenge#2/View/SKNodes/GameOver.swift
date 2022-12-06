@@ -40,6 +40,7 @@ class GameOver: SKNode {
         self.gameOverEscope.zPosition = 4
         
         self.titleGameOver.text = "Game Over"
+        self.titleGameOver.fontName = "AvenirNext-Bold"
         self.titleGameOver.fontColor = UIColor.white
         self.titleGameOver.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
         self.titleGameOver.zPosition = 5

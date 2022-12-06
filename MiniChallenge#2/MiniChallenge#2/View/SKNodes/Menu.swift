@@ -119,6 +119,7 @@ class Menu: SKNode {
     
     func menuStartTextToSetProperties(sizeView: CGSize) {
         self.startText.text = "TOQUE NA TELA PARA INICIAR"
+        self.startText.fontName = "AvenirNext-Bold"
         self.startText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.startText.horizontalAlignmentMode = .center
         self.startText.verticalAlignmentMode = .bottom
@@ -140,6 +141,7 @@ class Menu: SKNode {
         self.imageHighScoreText.position = CGPoint(x: sizeView.width - 20 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
         
         self.highScoreText.text = ("\(Score.shared.highScore)")
+        self.highScoreText.fontName = "AvenirNext-Bold"
         self.highScoreText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.highScoreText.fontSize = CGFloat(25)
         self.highScoreText.position = CGPoint(x: sizeView.width - 50, y: sizeView.height - 50)
