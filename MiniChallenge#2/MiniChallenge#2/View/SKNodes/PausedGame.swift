@@ -23,15 +23,12 @@ class PausedGame: SKNode {
     var endGame: Bool = false
     var restartGame: Bool = false
     
-    var testeBg: Int = 1
-    
     let titlePaused = SKLabelNode(fontNamed: "")
     let highScoreText = SKLabelNode(fontNamed: "")
     
-    
-    
     var infoButton: CustomizedButton = {
         var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+            
             
             
         })
@@ -89,8 +86,4 @@ class PausedGame: SKNode {
         self.addChild(self.btnGiveUp!)
         self.addChild(self.btnContinue!)
     }
-    
-
-    
-    
 }

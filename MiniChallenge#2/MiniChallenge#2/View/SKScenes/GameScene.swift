@@ -389,8 +389,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         if menu.audioStatus {
                             AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                         }
-                        
-                        
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
                         

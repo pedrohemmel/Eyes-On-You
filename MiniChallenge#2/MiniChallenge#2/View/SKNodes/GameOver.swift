@@ -15,6 +15,8 @@ class GameOver: SKNode {
 
     private var btnRestart: CustomizedButton? = nil
     
+    let scoreEndGame = SKLabelNode(fontNamed: "")
+    
     let titleGameOver = SKLabelNode(fontNamed: "")
     
     var audioButton: CustomizedButton?
@@ -44,7 +46,14 @@ class GameOver: SKNode {
         self.titleGameOver.fontColor = UIColor.white
         self.titleGameOver.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
         self.titleGameOver.zPosition = 5
-       
+        
+        self.scoreEndGame.text = "Points: \(Score.shared.scoreLabel)"
+        self.scoreEndGame.fontName = "AvenirNext-Bold"
+        self.scoreEndGame.fontColor = UIColor.white
+        self.scoreEndGame.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.75)
+        self.scoreEndGame.zPosition = 6
+        
+        self.addChild(self.scoreEndGame)
         self.addChild(self.titleGameOver)
         self.addChild(self.gameOverEscope)
 
@@ -52,8 +61,10 @@ class GameOver: SKNode {
     
     func creatingRestartButton(view: SKScene, actionOfBtnRestart: @escaping() -> Void) -> Void {
         self.btnRestart = CustomizedButton(imageName: "btnReiniciar", buttonAction: {
+            
             actionOfBtnRestart()
         })
+        
         self.btnRestart!.setScale(0.5)
         self.btnRestart!.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 3)
         self.btnRestart!.zPosition = 5
