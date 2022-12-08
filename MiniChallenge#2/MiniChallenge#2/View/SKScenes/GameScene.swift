@@ -286,7 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 150...400)), duration: 0.004 * distance)
+            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 300...450)), duration: 0.004 * distance)
             birdObstacle.obstacleView.position.y = self.frame.height - CGFloat(Int.random(in: 50...100))
             return birdObstacle
         case 1:
@@ -306,7 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -200...150)), duration: 0.004 * distance)
+            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -250...150)), duration: 0.004 * distance)
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
 //        case 3:
