@@ -15,7 +15,7 @@ public class Character {
     
     public var characterView: SKSpriteNode
     
-//    public var characterLife: [SKSpriteNode] = []
+    public var characterLife: [SKSpriteNode] = []
     
     public var exemplo: String
     
@@ -25,7 +25,7 @@ public class Character {
         
         self.exemplo = exemploParam
         
-//        characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
+        characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
     }
     
     //Setting SpriteKit properties to a var and returning it

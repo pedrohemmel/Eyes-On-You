@@ -31,9 +31,9 @@
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
 		BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDC29397CD0002662DD /* PausedGame.swift */; };
 		BB03AEDF2939CE7B002662DD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDE2939CE7B002662DD /* GameOver.swift */; };
-		BB03AF36293E8916002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF33293E8916002662DD /* gameover.mp3 */; };
 		BB03AF37293E8916002662DD /* noite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF34293E8916002662DD /* noite.mp3 */; };
-		BB03AF38293E8916002662DD /* impacto.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF35293E8916002662DD /* impacto.wav */; };
+		BB03AF6029422BD1002662DD /* impacto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF5F29422BD1002662DD /* impacto.mp3 */; };
+		BB03AF6229422D19002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF6129422D19002662DD /* gameover.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,9 +62,9 @@
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
 		BB03AEDC29397CD0002662DD /* PausedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedGame.swift; sourceTree = "<group>"; };
 		BB03AEDE2939CE7B002662DD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
-		BB03AF33293E8916002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB03AF34293E8916002662DD /* noite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = noite.mp3; sourceTree = "<group>"; };
-		BB03AF35293E8916002662DD /* impacto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = impacto.wav; sourceTree = "<group>"; };
+		BB03AF5F29422BD1002662DD /* impacto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impacto.mp3; sourceTree = "<group>"; };
+		BB03AF6129422D19002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,8 +222,8 @@
 		BB03AF32293E8902002662DD /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				BB03AF33293E8916002662DD /* gameover.mp3 */,
-				BB03AF35293E8916002662DD /* impacto.wav */,
+				BB03AF5F29422BD1002662DD /* impacto.mp3 */,
+				BB03AF6129422D19002662DD /* gameover.mp3 */,
 				BB03AF34293E8916002662DD /* noite.mp3 */,
 			);
 			path = Sounds;
@@ -290,10 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
-				BB03AF38293E8916002662DD /* impacto.wav in Resources */,
-				BB03AF36293E8916002662DD /* gameover.mp3 in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
+				BB03AF6229422D19002662DD /* gameover.mp3 in Resources */,
 				BB03AF37293E8916002662DD /* noite.mp3 in Resources */,
+				BB03AF6029422BD1002662DD /* impacto.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

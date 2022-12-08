@@ -22,6 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var gameOver = false
     private var pausedGame = false
     private var givedUpGame = false
+    private var colisionAllowed = true
     
     //Sprites do ambiente de jogo
     private var pausedButton: CustomizedButton? = nil
@@ -78,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.characterView = AnimatedObject("personagem_alma")
         self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
         self.character.characterView = character.characterToCollide(character: character.characterView)
-//        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+        self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
         self.bulk.setScale(0.2)
         self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
@@ -95,9 +96,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.objectDummy)
         
         self.gameSKNode.addChild(self.pausedButton!)
-//        for life in self.character.characterLife {
-//            self.gameSKNode.addChild(life)
-//        }
+        for life in self.character.characterLife {
+            self.gameSKNode.addChild(life)
+        }
         
         //Adicionando a SKNode do jogo na cena
         self.addChild(self.menu)
@@ -108,27 +109,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Criando objetos da cena principal
     
-//    func restartLifeAndScore() -> Void {
-//        Score.shared.gameScore = 0
-//
-//        for life in self.character.characterLife {
-//            life.removeFromParent()
-//        }
-//        self.character.characterLife.removeAll()
-//        self.character.characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
-//        self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
-//        for life in self.character.characterLife {
-//            self.gameSKNode.addChild(life)
-//        }
-//
-//    }
+    func restartLifeAndScore() -> Void {
+        Score.shared.gameScore = 0
+
+        for life in self.character.characterLife {
+            life.removeFromParent()
+        }
+        self.character.characterLife.removeAll()
+        self.character.characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
+        self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+        for life in self.character.characterLife {
+            self.gameSKNode.addChild(life)
+        }
+
+    }
     
     func hideLifeScoreAndPauseButton() -> Void {
         Score.shared.scoreLabel.isHidden = true
         
-//        for life in self.character.characterLife {
-//            life.isHidden = true
-//        }
+        for life in self.character.characterLife {
+            life.isHidden = true
+        }
         
         self.pausedButton?.isHidden = true
     }
@@ -136,9 +137,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func appearLifeScoreAndPauseButton() -> Void {
         Score.shared.scoreLabel.isHidden = false
         
-//        for life in self.character.characterLife {
-//            life.isHidden = false
-//        }
+        for life in self.character.characterLife {
+            life.isHidden = false
+        }
         
         self.pausedButton?.isHidden = false
     }
@@ -233,7 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.gameOverScreen?.isHidden = true
         
-//        self.restartLifeAndScore()
+        self.restartLifeAndScore()
         self.hideLifeScoreAndPauseButton()
     }
     
@@ -273,7 +274,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //
     func sortObstacle() -> Obstacle {
-        let obstacleSorted = Int.random(in: 0...3)
+        let obstacleSorted = Int.random(in: 0...2)
         
         //Criando os objetos do tipo do obstaculo sorteado e setando as devidas propriedades
         switch obstacleSorted {
@@ -367,6 +368,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    //Função que aguarda um tempo determinado para permitir com que o personagem possa colidir com os obstaculos
+    func settingTimeOfInvincibility() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.colisionAllowed = true
+        }
+    }
+    
     //Função que detecta o contato dos corpos
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
@@ -376,52 +384,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
                 
-//                if menu.audioStatus {
-//                    AVAudio.sharedInstance().playSoundEffect("impacto.wav")
-//                }
                 
-                //Decrementando itens da lista de vidas do jogo
-//                if !(self.character.characterLife.count <= 1) {
-//                    self.character.characterLife.last?.removeFromParent()
-//                    self.character.characterLife.removeLast()
-//                } else {
-//                    if !gameOver {
-//
-//                        if menu.audioStatus {
-//                            AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
-//                        }
-//
-//
-//                        self.character.characterLife.last?.removeFromParent()
-//                        self.character.characterLife.removeLast()
-//
-//                        gameOver = true
-//
-//                        self.pausedGame = true
-//                        self.pauseGameSKNode()
-//                        self.gameOverScreen!.isHidden = false
-//
-//                    }
-//
-//                }
                 
-                if !gameOver {
+//                Decrementando itens da lista de vidas do jogo
+                if self.colisionAllowed {
+                    if !(self.character.characterLife.count <= 1) {
+                        self.character.characterLife.last?.removeFromParent()
+                        self.character.characterLife.removeLast()
+                        
+                        if menu.audioStatus {
+                            AVAudio.sharedInstance().playSoundEffect("impacto.mp3")
+                        }
+                    } else {
+                        if !gameOver {
 
-                    if menu.audioStatus {
-                        AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
+                            if menu.audioStatus {
+                                AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
+                            }
+
+
+                            self.character.characterLife.last?.removeFromParent()
+                            self.character.characterLife.removeLast()
+
+                            gameOver = true
+
+                            self.pausedGame = true
+                            self.pauseGameSKNode()
+                            self.gameOverScreen!.isHidden = false
+
+                        }
+
                     }
-
-
-//                    self.character.characterLife.last?.removeFromParent()
-//                    self.character.characterLife.removeLast()
-
-                    gameOver = true
-
-                    self.pausedGame = true
-                    self.pauseGameSKNode()
-                    self.gameOverScreen!.isHidden = false
-
+                    
+                    //Deixando a colisao permitida igual a false para o fator invencibilidade do personagem
+                    self.colisionAllowed = false
                 }
+                self.settingTimeOfInvincibility()
+                
                 
                 if firstBody.categoryBitMask == PhysicsCategory.obstacle {
                     firstBody.node?.removeFromParent()
