@@ -120,6 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for life in self.character.characterLife {
             life.removeFromParent()
         }
+        
         self.character.characterLife.removeAll()
         self.character.characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
         self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
@@ -409,15 +410,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                             }
 
-
                             self.character.characterLife.last?.removeFromParent()
                             self.character.characterLife.removeLast()
 
-                            gameOver = true
-
+                            self.gameOver = true
                             self.pausedGame = true
-                            self.pauseGameSKNode()
                             self.gameOverScreen!.isHidden = false
+                            
+                            self.pauseGameSKNode()
+                            self.gameOverScreen?.updatingFinalScore(newFinalScore: Int(Score.shared.gameScore))
+                            
 
                         }
 

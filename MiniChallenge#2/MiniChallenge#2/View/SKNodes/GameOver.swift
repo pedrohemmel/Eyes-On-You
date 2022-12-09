@@ -15,6 +15,8 @@ class GameOver: SKNode {
 
     private var btnRestart: CustomizedButton? = nil
     
+    private var lblFinalScore = SKLabelNode()
+    
     let titleGameOver = SKLabelNode(fontNamed: "")
     
     var audioButton: CustomizedButton?
@@ -44,9 +46,16 @@ class GameOver: SKNode {
         self.titleGameOver.fontColor = UIColor.white
         self.titleGameOver.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
         self.titleGameOver.zPosition = 5
-       
+        
+        self.lblFinalScore.text = "Pontuação 0"
+        self.lblFinalScore.fontName = "AvenirNext-Bold"
+        self.lblFinalScore.fontColor = UIColor.white
+        self.lblFinalScore.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
+        self.lblFinalScore.zPosition = 5
+        
         self.addChild(self.titleGameOver)
         self.addChild(self.gameOverEscope)
+        self.addChild(self.lblFinalScore)
 
     }
     
@@ -59,6 +68,10 @@ class GameOver: SKNode {
         self.btnRestart!.zPosition = 5
         
         self.addChild(self.btnRestart!)
+    }
+    
+    func updatingFinalScore(newFinalScore: Int) {
+        self.lblFinalScore.text = "Score: \(newFinalScore)"
     }
     
 
