@@ -290,7 +290,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 400...500)), duration: 0.004 * distance)
+            
+            //Setando ação do obstáculo e colocando uma estrutura condicional que, conforme o jogo passa, vai ficando mais rápido e o objeto tem que ajustar mais para baixo, e é isso o que acontece
+            if Score.shared.gameScore < 70 {
+                birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 400...500)), duration: 0.004 * distance)
+            } else {
+                birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 500...600)), duration: 0.004 * distance)
+            }
+            
             
             birdObstacle.obstacleView.position.y = self.frame.height - CGFloat(Int.random(in: 50...100))
             return birdObstacle
@@ -310,20 +317,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostObstacle.obstacleView.size =  CGSize(width: 80, height: 80)
             ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView)
             
-            let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -300...150)), duration: 0.004 * distance)
+            if Score.shared.gameScore < 70 {
+                let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
+                ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -300...150)), duration: 0.004 * distance)
+            } else {
+                let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
+                ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -400...200)), duration: 0.004 * distance)
+            }
+            
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
-//        case 3:
-//            let handObstacle = HandObstacle()
-//            handObstacle.obstacleView = AnimatedObject("maos")
-//            handObstacle.obstacleView.setScale(0.4)
-//            handObstacle.obstacleView = settingPropertiesObstacle(obstacle: handObstacle, obstacleView: handObstacle.obstacleView)
-//
-//            let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-//            handObstacle.actionObstacle = SKAction.moveBy(x: 0, y: 0, duration: 0.004 * distance)
-//            handObstacle.obstacleView.position.y = self.ground.frame.height + (handObstacle.obstacleView.frame.height / 2)
-//            return handObstacle
         default:
             //Obstaculo poadrão
             let birdObstacle = BirdObstacle()
@@ -340,7 +343,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
             sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
                     
-//            sortedObstacle.obstacleView.physicsBody = SKPhysicsBody(rectangleOf: sortedObstacle.obstacleView.size)
             sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
             sortedObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
             sortedObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
