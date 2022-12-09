@@ -110,8 +110,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: - Criando objetos da cena principal
     
     func deleteActionsAndObstacles() {
-        
-        self.obstaclesInAction.removeAllActions()
         self.movedActionOfObstacles = SKAction.removeFromParent()
         self.removeAllActions()
     }
@@ -215,6 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.givedUpGame = true
         
                 self.obstaclesInAction.removeAllChildren()
+                self.obstaclesInAction.removeAllActions()
                 self.deleteActionsAndObstacles()
                 
                 self.mostraMenu()
@@ -491,6 +490,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    //Criando função que implementa dificuldade com o decorrer do jogo
+    func increasingLevel() {
+        if Score.shared.gameScore == 10 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 2.0, duration: 0.0035)
+        } else if Score.shared.gameScore == 30 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 1.8, duration: 0.0030)
+        } else if Score.shared.gameScore == 70 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 1.5, duration: 0.0025)
+        } else if Score.shared.gameScore == 130 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 1.0, duration: 0.0020)
+        }
+    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -503,19 +519,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     menu.highScoreText.text = "\(Score.shared.highScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
                     
-                    if Score.shared.gameScore == 10 {
-                        self.deleteActionsAndObstacles()
-                        self.creatingMoveOfObstacle(tempo: 2.0, duration: 0.0035)
-                    } else if Score.shared.gameScore == 30 {
-                        self.deleteActionsAndObstacles()
-                        self.creatingMoveOfObstacle(tempo: 1.5, duration: 0.0025)
-                    } else if Score.shared.gameScore == 70 {
-                        self.deleteActionsAndObstacles()
-                        self.creatingMoveOfObstacle(tempo: 1.0, duration: 0.0020)
-                    } else if Score.shared.gameScore == 130 {
-                        self.deleteActionsAndObstacles()
-                        self.creatingMoveOfObstacle(tempo: 0.5, duration: 0.0015)
-                    }
+                    self.increasingLevel()
+                    
                 }
             }
             
