@@ -109,6 +109,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Criando objetos da cena principal
     
+    func deleteActionsAndObstacles() {
+        self.movedActionOfObstacles = SKAction.removeFromParent()
+        self.removeAllActions()
+    }
+    
     func restartLifeAndScore() -> Void {
         Score.shared.gameScore = 0
 
@@ -208,9 +213,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.givedUpGame = true
         
                 self.obstaclesInAction.removeAllChildren()
-                self.movedActionOfObstacles = SKAction.removeFromParent()
                 self.obstaclesInAction.removeAllActions()
-                self.removeAllActions()
+                self.deleteActionsAndObstacles()
                 
                 self.mostraMenu()
             },
@@ -286,7 +290,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             birdObstacle.obstacleView = settingPropertiesObstacle(obstacle: birdObstacle, obstacleView: birdObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 300...450)), duration: 0.004 * distance)
+            birdObstacle.actionObstacle = SKAction.moveBy(x: -distance, y: -CGFloat(Int.random(in: 400...500)), duration: 0.004 * distance)
+            
             birdObstacle.obstacleView.position.y = self.frame.height - CGFloat(Int.random(in: 50...100))
             return birdObstacle
         case 1:
@@ -306,7 +311,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostObstacle.obstacleView = settingPropertiesObstacle(obstacle: ghostObstacle, obstacleView: ghostObstacle.obstacleView)
             
             let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -250...150)), duration: 0.004 * distance)
+            ghostObstacle.actionObstacle = SKAction.moveBy(x: 0, y: (-self.frame.height / 1.5) + CGFloat(Int.random(in: -300...150)), duration: 0.004 * distance)
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
 //        case 3:
@@ -351,18 +356,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func creatingMoveOfObstacle() {
+    func creatingMoveOfObstacle(tempo: Double, duration: Double) {
         let spawn = SKAction.run({ () in
             self.generatingNewObstacle()
         })
         
-        let delay = SKAction.wait(forDuration: 2.5)
+        let delay = SKAction.wait(forDuration: tempo)
         let spawnDelay = SKAction.sequence([spawn, delay])
         let spawnDelayForever = SKAction.repeatForever(spawnDelay)
         self.run(spawnDelayForever)
         
         let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-        let movePipes = SKAction.moveBy(x: -distance - 300, y: 0, duration: 0.004 * distance)
+        let movePipes = SKAction.moveBy(x: -distance - 300, y: 0, duration: duration * distance)
         let removePipes = SKAction.removeFromParent()
         self.movedActionOfObstacles = SKAction.sequence([movePipes, removePipes])
         
@@ -459,12 +464,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.appearLifeScoreAndPauseButton()
             self.menu.tapToStart()
-            self.creatingMoveOfObstacle()
+            self.creatingMoveOfObstacle(tempo: 2.5, duration: 0.004)
         } else {
             if !self.pausedGame {
                 self.character.characterView = self.character.characterToFly(character: self.character.characterView)
-            } else {
-                
             }
         }
         
@@ -488,6 +491,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    //Criando função que implementa dificuldade com o decorrer do jogo
+    func increasingLevel() {
+        if Score.shared.gameScore == 10 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 2.0, duration: 0.0035)
+        } else if Score.shared.gameScore == 30 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 1.8, duration: 0.0030)
+        } else if Score.shared.gameScore == 70 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 1.5, duration: 0.0025)
+        } else if Score.shared.gameScore == 130 {
+            self.deleteActionsAndObstacles()
+            self.creatingMoveOfObstacle(tempo: 1.0, duration: 0.0020)
+        }
+    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -499,6 +519,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
                     menu.highScoreText.text = "\(Score.shared.highScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
+                    
+                    self.increasingLevel()
+                    
                 }
             }
             
