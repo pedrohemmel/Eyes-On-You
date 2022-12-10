@@ -29,24 +29,25 @@ class Menu: SKNode {
     
     
     
-//    var infoButton: CustomizedButton = {
-//        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
-//
-//
-//
-//        })
-//        return button
-//    }()
-//
+    var infoButton: CustomizedButton? = nil
     
     
     var audioButton: CustomizedButton?
     
     //MARK: - Inicializador
-    override init() {
+    init(infoButtonAction: @escaping () -> Void) {
         super.init()
         
         self.audioButton = menuToCreateAudioButton()
+        
+        self.infoButton = {
+            let button = CustomizedButton(imageName: "exclamation", buttonAction: {
+            
+                infoButtonAction()
+            
+            })
+            return button
+        }()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,10 +100,10 @@ class Menu: SKNode {
         self.addChild(self.imageHighScoreText)
         self.addChild(self.highScoreText)
         
-//        self.menuInfoButtonToSetProperties(sizeView: sizeView)
-//        self.infoButton.zPosition = 5
-//        self.addChild(self.infoButton)
-//
+        self.menuInfoButtonToSetProperties(sizeView: sizeView)
+        self.infoButton!.zPosition = 5
+        self.addChild(self.infoButton!)
+
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
         self.audioButton!.zPosition = 5
         self.addChild(self.audioButton!)
@@ -130,21 +131,21 @@ class Menu: SKNode {
         self.audioButton!.position = CGPoint(x: 40, y: sizeView.height - 40)
     }
     
-//    func menuInfoButtonToSetProperties(sizeView: CGSize) {
-//        self.infoButton.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
-//    }
+    func menuInfoButtonToSetProperties(sizeView: CGSize) {
+        self.infoButton!.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
+    }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
         
         self.imageHighScoreText = SKSpriteNode(imageNamed: "highscore_icon")
         self.imageHighScoreText.setScale(0.4)
-        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 20 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
+        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 60 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
         
         self.highScoreText.text = ("\(Score.shared.highScore)")
         self.highScoreText.fontName = "AvenirNext-Bold"
         self.highScoreText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.highScoreText.fontSize = CGFloat(25)
-        self.highScoreText.position = CGPoint(x: sizeView.width - 50, y: sizeView.height - 50)
+        self.highScoreText.position = CGPoint(x: sizeView.width - 90, y: sizeView.height - 50)
     }
     
     func tapToRestart() {

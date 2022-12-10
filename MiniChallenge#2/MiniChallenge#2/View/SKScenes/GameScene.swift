@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let menu = Menu()
+    private var menu: Menu? = nil
     private var pausedGameScreen: PausedGame? = nil
     private var gameOverScreen: GameOver? = nil
     
@@ -41,8 +41,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
 
+        self.menu = Menu() {
+            let telaInfo = Info()
+            telaInfo.scaleMode = .aspectFill
+            self.view?.presentScene(telaInfo,transition: SKTransition.flipHorizontal(withDuration: 1))
+        }
         //Chamando a função que estrutura o menu principal
-        self.menu.menuToStruct(sizeView: self.size)
+        self.menu!.menuToStruct(sizeView: self.size)
         
         //criando botão de pausar o game
         pauseButtonToCreate()
@@ -101,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         //Adicionando a SKNode do jogo na cena
-        self.addChild(self.menu)
+        self.addChild(self.menu!)
         self.addChild(self.gameSKNode)
         self.addChild(self.pausedGameScreen!)
         self.addChild(self.gameOverScreen!)
@@ -227,7 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func mostraMenu() {
-        self.menu.tapToRestart()
+        self.menu!.tapToRestart()
         
         Score.shared.gameScore = 0
         
@@ -400,13 +405,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
                         
-                        if menu.audioStatus {
+                        if menu!.audioStatus {
                             AVAudio.sharedInstance().playSoundEffect("impacto.mp3")
                         }
                     } else {
                         if !gameOver {
 
-                            if menu.audioStatus {
+                            if menu!.audioStatus {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                             }
 
@@ -467,7 +472,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.gameOver = false
             
             self.appearLifeScoreAndPauseButton()
-            self.menu.tapToStart()
+            self.menu!.tapToStart()
             self.creatingMoveOfObstacle(tempo: 2.5, duration: 0.004)
         } else {
             if !self.pausedGame {
@@ -515,13 +520,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if menu.startGame == true{
+        if menu!.startGame == true{
             if !gameOver && !pausedGame {
                 if currentTime > Score.shared.renderTime{
                     Score.shared.addScore()
                     Score.shared.trySaveHighScore()
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
-                    menu.highScoreText.text = "\(Score.shared.highScore)"
+                    menu!.highScoreText.text = "\(Score.shared.highScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
                     
                     self.increasingLevel()
