@@ -42,8 +42,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
 
         self.menu = Menu() {
-            let telaInfo = Info()
+            let telaInfo = Info(size: self.frame.size)
             telaInfo.scaleMode = .aspectFill
+            
+            //removendo pai do HighScore pois se não, quando voltar para essa tela, vai dar erro ao tentar adicionar um pai no HighScore ja que ele ja teria um
+            Score.shared.scoreLabel.removeFromParent()
+            //Removendo também das vidas do personagem
+            self.character.characterToRemoveLifesFromParent()
+            
             self.view?.presentScene(telaInfo,transition: SKTransition.flipHorizontal(withDuration: 1))
         }
         //Chamando a função que estrutura o menu principal

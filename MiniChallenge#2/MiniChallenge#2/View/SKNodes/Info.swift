@@ -41,11 +41,13 @@ extension Info {
         
         
         let back = CustomizedButton(imageName: "back", buttonAction: {
-            //volta inicio
+            let telaGameScene = GameScene(size: self.frame.size)
+            telaGameScene.scaleMode = .aspectFill
+            self.view?.presentScene(telaGameScene,transition: SKTransition.flipHorizontal(withDuration: 1))
         })
         back.setScale(0.25)
         back.zPosition = 10.0
-        back.position = CGPoint(x: frame.minX + 70, y: frame.maxY - 50)
+        back.position = CGPoint(x: frame.minX + 70, y: frame.height - 50)
         addChild(back)
         
         
@@ -58,7 +60,7 @@ extension Info {
         tutorial.zPosition = 10.0
         tutorial.position = CGPoint(x: size.width/2.95, y: frame.midY + tutorial.frame.height + 25)
         tutorial.setScale(0.45)
-        addChild(tutorial)
+//        addChild(tutorial)
         
         
         let credits = CustomizedButton(imageName: "creditos", buttonAction: {
@@ -68,7 +70,8 @@ extension Info {
         })
 
         credits.zPosition = 10.0
-        credits.position = CGPoint(x: size.width/1.5, y: frame.midY + credits.frame.height + 25)
+//        credits.position = CGPoint(x: size.width/1.5, y: frame.midY + credits.frame.height + 25)
+        credits.position = CGPoint(x: size.width / 2, y: frame.height / 2)
         credits.setScale(0.45)
         addChild(credits)
         
@@ -82,7 +85,7 @@ extension Info {
         politcs.zPosition = 10.0
         politcs.position = CGPoint(x: size.width/2.95, y: frame.midY + politcs.frame.height - 90 )
         politcs.setScale(0.45)
-        addChild(politcs)
+//        addChild(politcs)
         
         
         let terms = CustomizedButton(imageName: "termosdeuso", buttonAction: {
@@ -94,7 +97,7 @@ extension Info {
         terms.zPosition = 10.0
         terms.position = CGPoint(x: size.width/1.5, y: frame.midY + terms.frame.height - 90 )
         terms.setScale(0.45)
-        addChild(terms)
+//        addChild(terms)
                 
     }
 }

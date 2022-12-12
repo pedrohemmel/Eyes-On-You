@@ -82,4 +82,10 @@ public class Character {
         
         return characterLifeAux
     }
+    
+    func characterToRemoveLifesFromParent() -> Void {
+        for life in self.characterLife {
+            life.removeFromParent()
+        }
+    }
 }

@@ -125,7 +125,7 @@ class ScreenInfoChoosed : SKScene {
             let devs = SKLabelNode(fontNamed: "")
             devs.text = """
                         Gustavo Assis, Higor Crisostomo,
-                        Marcelo Araujo e Pedro Hemmel.
+                        Marcelo Araujo e Pedro Henrique Souza.
                         """
             devs.fontSize = 16
             devs.preferredMaxLayoutWidth = 500

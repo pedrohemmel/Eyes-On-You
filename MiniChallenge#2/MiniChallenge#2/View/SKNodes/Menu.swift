@@ -42,7 +42,7 @@ class Menu: SKNode {
         
         self.infoButton = {
             let button = CustomizedButton(imageName: "exclamation", buttonAction: {
-            
+                
                 infoButtonAction()
             
             })
@@ -139,13 +139,13 @@ class Menu: SKNode {
         
         self.imageHighScoreText = SKSpriteNode(imageNamed: "highscore_icon")
         self.imageHighScoreText.setScale(0.4)
-        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 60 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
+        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 70 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
         
         self.highScoreText.text = ("\(Score.shared.highScore)")
         self.highScoreText.fontName = "AvenirNext-Bold"
         self.highScoreText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.highScoreText.fontSize = CGFloat(25)
-        self.highScoreText.position = CGPoint(x: sizeView.width - 90, y: sizeView.height - 50)
+        self.highScoreText.position = CGPoint(x: sizeView.width - 100, y: sizeView.height - 50)
     }
     
     func tapToRestart() {
