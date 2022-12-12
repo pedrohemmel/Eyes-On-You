@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //Removendo também das vidas do personagem
             self.character.characterToRemoveLifesFromParent()
             
-            self.view?.presentScene(telaInfo,transition: SKTransition.flipHorizontal(withDuration: 1))
+            self.view?.presentScene(telaInfo, transition: SKTransition.fade(with: .black, duration: 1))
         }
         //Chamando a função que estrutura o menu principal
         self.menu!.menuToStruct(sizeView: self.size)

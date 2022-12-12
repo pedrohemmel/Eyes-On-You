@@ -43,7 +43,7 @@ extension Info {
         let back = CustomizedButton(imageName: "back", buttonAction: {
             let telaGameScene = GameScene(size: self.frame.size)
             telaGameScene.scaleMode = .aspectFill
-            self.view?.presentScene(telaGameScene,transition: SKTransition.flipHorizontal(withDuration: 1))
+            self.view?.presentScene(telaGameScene, transition: SKTransition.fade(with: .black, duration: 1))
         })
         back.setScale(0.25)
         back.zPosition = 10.0
@@ -66,7 +66,7 @@ extension Info {
         let credits = CustomizedButton(imageName: "creditos", buttonAction: {
             let proximaTela = ScreenInfoChoosed(tela: 2, size: self.frame.size)
             proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela,transition: SKTransition.flipHorizontal(withDuration: 1))
+            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
         })
 
         credits.zPosition = 10.0

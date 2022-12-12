@@ -58,7 +58,7 @@ class ScreenInfoChoosed : SKScene {
             let back = CustomizedButton(imageName: "back", buttonAction: {
                 let info = Info(size: self.frame.size)
                 info.scaleMode = .aspectFill
-                self.view?.presentScene(info, transition: SKTransition.fade(with: .green, duration: 1))
+                self.view?.presentScene(info, transition: SKTransition.fade(with: .black, duration: 1))
             })
             back.setScale(0.25)
             back.zPosition = 10.0
