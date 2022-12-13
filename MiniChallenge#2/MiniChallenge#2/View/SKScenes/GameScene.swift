@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var backgroundImage: SKSpriteNode = SKSpriteNode()
     
     let gameSKNode = SKNode()
-    let objectDummy = SKNode()
+    let animationOfBackground = SKNode()
     
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
     private var movedActionOfObstacles = SKAction()
@@ -104,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.bulk)
         self.gameSKNode.addChild(self.ceiling)
         self.gameSKNode.addChild(self.ground)
-        self.gameSKNode.addChild(self.objectDummy)
+        self.gameSKNode.addChild(self.animationOfBackground)
         
         self.gameSKNode.addChild(self.pausedButton!)
         for life in self.character.characterLife {
@@ -271,10 +271,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
             self.backgroundImage.run(reDo)
             
-            self.objectDummy.addChild(backgroundImage)
+            self.animationOfBackground.addChild(backgroundImage)
         }
         
-        self.objectDummy.speed = 1
+        self.animationOfBackground.speed = 1
     }
     
     //Função utilizada para organizar melhor o código no switch case

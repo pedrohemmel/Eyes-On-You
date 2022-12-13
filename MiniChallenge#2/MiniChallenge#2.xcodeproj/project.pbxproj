@@ -34,6 +34,8 @@
 		BB03AF37293E8916002662DD /* noite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF34293E8916002662DD /* noite.mp3 */; };
 		BB03AF6029422BD1002662DD /* impacto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF5F29422BD1002662DD /* impacto.mp3 */; };
 		BB03AF6229422D19002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF6129422D19002662DD /* gameover.mp3 */; };
+		BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF682947E97A002662DD /* StoryAnimationScene.swift */; };
+		BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF6A2947F9BA002662DD /* GateObstacle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		BB03AF34293E8916002662DD /* noite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = noite.mp3; sourceTree = "<group>"; };
 		BB03AF5F29422BD1002662DD /* impacto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impacto.mp3; sourceTree = "<group>"; };
 		BB03AF6129422D19002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
+		BB03AF682947E97A002662DD /* StoryAnimationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAnimationScene.swift; sourceTree = "<group>"; };
+		BB03AF6A2947F9BA002662DD /* GateObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateObstacle.swift; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,8 +177,6 @@
 				B98E203A292806CB0022E94F /* Score.swift */,
 				BB03AEDC29397CD0002662DD /* PausedGame.swift */,
 				BB03AEDE2939CE7B002662DD /* GameOver.swift */,
-				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
-				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
 				1656686C292EAD8A00D0F52A /* Menu.swift */,
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 				95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */,
@@ -190,6 +192,7 @@
 				9524E9CF292589A8007AFBB2 /* BirdObstacle.swift */,
 				9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */,
 				956960742926B63D00CF81EA /* HandObstacle.swift */,
+				BB03AF6A2947F9BA002662DD /* GateObstacle.swift */,
 			);
 			path = Obstacle;
 			sourceTree = "<group>";
@@ -197,7 +200,9 @@
 		B98E203E292824D10022E94F /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
+				BB03AF632947D745002662DD /* Info */,
 				161959CC29256BFC00E2CC45 /* GameScene.swift */,
+				BB03AF682947E97A002662DD /* StoryAnimationScene.swift */,
 			);
 			path = SKScenes;
 			sourceTree = "<group>";
@@ -227,6 +232,15 @@
 				BB03AF34293E8916002662DD /* noite.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		BB03AF632947D745002662DD /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
+				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
+				BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */,
 				95ADC8C629381D4900F9B9C5 /* SKButtonNode.swift in Sources */,
 				161959CD29256BFC00E2CC45 /* GameScene.swift in Sources */,
 				1656686D292EAD8A00D0F52A /* Menu.swift in Sources */,
@@ -366,6 +381,7 @@
 				161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
 				161959E42925782E00E2CC45 /* Character.swift in Sources */,
+				BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */,
 				161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */,
 				95ADC8C22937E13F00F9B9C5 /* Info.swift in Sources */,
 			);

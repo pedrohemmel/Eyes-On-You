@@ -11,19 +11,15 @@ import SpriteKit
 public class Character {
     
     //Creating a static var to the manegement of the class
-    static let character = Character(exemploParam: "exemplo")
+    static let character = Character()
     
     public var characterView: SKSpriteNode
     
     public var characterLife: [SKSpriteNode] = []
     
-    public var exemplo: String
-    
     //Initializing class and applying an init of SKSpriteNode to the characterView
-    init(exemploParam: String) {
+    init() {
         self.characterView = SKSpriteNode()
-        
-        self.exemplo = exemploParam
         
         characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
     }
