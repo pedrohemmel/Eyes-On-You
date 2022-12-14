@@ -173,8 +173,6 @@
 				B98E203A292806CB0022E94F /* Score.swift */,
 				BB03AEDC29397CD0002662DD /* PausedGame.swift */,
 				BB03AEDE2939CE7B002662DD /* GameOver.swift */,
-				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
-				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
 				1656686C292EAD8A00D0F52A /* Menu.swift */,
 				6172C3D02926CFBA003C21FE /* CustomizedButton.swift */,
 				95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */,
@@ -197,6 +195,8 @@
 		B98E203E292824D10022E94F /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
+				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
+				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
 				161959CC29256BFC00E2CC45 /* GameScene.swift */,
 			);
 			path = SKScenes;
