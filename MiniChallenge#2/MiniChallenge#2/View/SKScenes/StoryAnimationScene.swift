@@ -14,6 +14,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
     private var animationOfBackground = SKNode()
     
     private let character = Character.character
+    private var deadCharacter = SKSpriteNode()
     
     private var gateStatic = GateObstacle()
     private var gateDynamic = GateObstacle()
@@ -41,7 +42,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         self.ground.zPosition = 2
         
         //Criando portao estático e setando suas propriedades
-        self.gateStatic.obstacleView = SKSpriteNode(imageNamed: "portao")
+        self.gateStatic.obstacleView = SKSpriteNode(imageNamed: "portaoEstatico")
         self.gateStatic.obstacleView = self.creatingStaticGate(gate: self.gateStatic.obstacleView)
         
         //Criando ação que ocorrerá no portão
@@ -57,11 +58,24 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func creatingFallCharacterAnimationAndRemovingActualCharacter() {
+        self.deadCharacter = AnimatedObject("animacao_queda", countRepeat: 1, lastImageDesired: 4)
+        self.deadCharacter.setScale(0.13)
+        self.deadCharacter.position = CGPoint(x: 250, y: 100)
+        self.deadCharacter.zPosition = 3
+        
+        self.deadCharacter.run(SKAction.moveBy(x: 0, y: -50, duration: 1))
+        
+        self.addChild(self.deadCharacter)
+        
+        self.character.characterView.isHidden = true
+    }
+    
     func creatingStaticGate(gate: SKSpriteNode) -> SKSpriteNode {
         
         gate.setScale(0.2)
-        gate.position = CGPoint(x: self.frame.width, y: self.ground.frame.height + (gate.frame.height / 2))
-        gate.zPosition = 2
+        gate.position = CGPoint(x: self.frame.width, y: self.ground.frame.height + (gate.frame.height / 2) - 18)
+        gate.zPosition = 4
         
         gate.physicsBody = SKPhysicsBody(texture: gate.texture!, size: gate.size)
         gate.physicsBody?.isDynamic = false
@@ -75,18 +89,16 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
     
     //Criando portão dinâmico que será adicionado no momento em que o personagem fazer contato com o portao
     func creatingDynamicGate(gate: SKSpriteNode) -> SKSpriteNode {
-        
-        let newGate = AnimatedObject("portao")
-        newGate.setScale(0.2)
-        newGate.position = CGPoint(x: self.frame.width / 2, y: self.ground.frame.height + (gate.frame.height / 2))
-        newGate.zPosition = 2
+        gate.setScale(0.2)
+        gate.position = self.gateStatic.obstacleView.position
+        gate.zPosition = 4
         
         return gate
     }
 
     //Função que estrutura toda a parte do background animado
     func creatingAnimatedBackground() -> Void{
-        let moveBackground = SKAction.moveBy(x: -self.frame.width * 2, y: 0, duration: 13)
+        let moveBackground = SKAction.moveBy(x: -self.frame.width, y: 0, duration: 10)
         let resizeBackground = SKAction.moveBy(x: self.size.width, y: 0, duration: 0)
         let reDo = SKAction.repeat((SKAction.sequence([moveBackground, resizeBackground])), count: 1)
 
@@ -96,10 +108,9 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 self.backgroundImage = SKSpriteNode(imageNamed: "background_inicio")
             }
-            
 
+            //Setando propriedades da imagem
             self.backgroundImage.anchorPoint = CGPoint(x: 0, y:0)
-
             self.backgroundImage.size.width = self.size.width * 2 //get the right pixel on phone
             self.backgroundImage.size.height = self.size.height
             self.backgroundImage.zPosition = 1 //Z positions define what itens comes in front goes from ex: 0,1,2,3 etc
@@ -118,6 +129,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         self.animationOfBackground.speed = 1
     }
     
+    //Criando chão do ambiente
     func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
         ground.size = CGSize(width: self.frame.width, height: 60)
         ground.position = CGPoint(x: self.frame.width / 2, y: 30)
@@ -132,6 +144,50 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         return ground
     }
     
+    func creatingNewGateAndStopingAnimation() {
+        self.gateDynamic.obstacleView = AnimatedObject("portao", countRepeat: 1, lastImageDesired: 3)
+        self.gateDynamic.obstacleView = self.creatingDynamicGate(gate: self.gateDynamic.obstacleView)
+        
+        self.gateStatic.obstacleView.removeAllActions()
+        self.gateStatic.obstacleView.removeFromParent()
+        self.addChild(self.gateDynamic.obstacleView)
+    }
+    
+    //Função que aguarda o personagem passar pelo portao para ativar animacao
+    func waitingForCharacterToActivateGateAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            //Parando animação do background
+            self.animationOfBackground.isPaused = true
+            
+            //Criando o novo portao animado e removendo o stático
+            self.creatingNewGateAndStopingAnimation()
+            self.creatingFallCharacterAnimationAndRemovingActualCharacter()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                AVAudio.sharedInstance().playSoundEffect("impacto.mp3")
+            }
+        }
+        
+    }
+    
+    func redirectingToGameScene() {
+        //Direcionando para a página principal
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            //removendo pai do HighScore pois se não, quando voltar para essa tela, vai dar erro ao tentar adicionar um pai no HighScore ja que ele ja teria um
+            Score.shared.scoreLabel.removeFromParent()
+            //Removendo também das vidas do personagem
+            self.character.characterToRemoveLifesFromParent()
+            
+            let telaGameScene = GameScene(size: self.frame.size)
+            telaGameScene.scaleMode = .aspectFill
+            self.view?.presentScene(telaGameScene, transition: SKTransition.fade(with: .black, duration: 0))
+        }
+        
+    }
+            
+        
+    
+    
     //Função que detecta o contato dos corpos
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
@@ -140,15 +196,14 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
             (firstBody.categoryBitMask == PhysicsCategory.gate && secondBody.categoryBitMask == PhysicsCategory.character) {
             
             if self.collisionAllowed {
-                self.gateDynamic.obstacleView = self.creatingDynamicGate(gate: self.gateStatic.obstacleView)
-                
-                self.gateStatic.obstacleView.removeAllActions()
-                self.gateStatic.obstacleView.removeFromParent()
-                self.addChild(self.gateDynamic.obstacleView)
+                self.waitingForCharacterToActivateGateAnimation()
             }
             
+            
+            self.redirectingToGameScene()
             //Deixando a colisao permitida igual a false para o fator invencibilidade do personagem
             self.collisionAllowed = false
+            
         }
     }
     

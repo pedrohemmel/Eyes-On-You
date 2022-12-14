@@ -24,6 +24,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var givedUpGame = false
     private var colisionAllowed = true
     
+    private var timeToWaitForMusic: Date = .now
+    private var timeMusicPlayed = false
+    
     //Sprites do ambiente de jogo
     private var pausedButton: CustomizedButton? = nil
     private var ground: SKSpriteNode = SKSpriteNode()
@@ -526,6 +529,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        if .now >= self.timeToWaitForMusic + 0.1 {
+            if !self.timeMusicPlayed {
+                self.menu?.menuToPlayMusicBackground()
+                self.timeMusicPlayed = true
+            }
+            
+        }
+        
         if menu!.startGame == true{
             if !gameOver && !pausedGame {
                 if currentTime > Score.shared.renderTime{
@@ -541,5 +552,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         }
+        
     }
 }

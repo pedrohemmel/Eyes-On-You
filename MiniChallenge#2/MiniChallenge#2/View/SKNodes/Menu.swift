@@ -11,7 +11,6 @@ import SpriteKit
 class Menu: SKNode {
     
     //MARK: - Criando as variáveis principais
-   
     var audioStatus: Bool = true
     var startGame: Bool = false
     var endGame: Bool = false
@@ -26,12 +25,7 @@ class Menu: SKNode {
     
     var imageHighScoreText = SKSpriteNode()
     
-    
-    
-    
     var infoButton: CustomizedButton? = nil
-    
-    
     var audioButton: CustomizedButton?
     
     //MARK: - Inicializador
@@ -64,20 +58,13 @@ class Menu: SKNode {
             
                 self.audioStatus = false
                 AVAudio.sharedInstance().pauseBackgroundMusic()
-                
-                print(self.audioStatus)
-                
                 volumeImage = "volumeBt"
             }
             
             else if self.audioStatus == false {
     
                 self.audioStatus = true
-                
                 AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
-                
-                
-                print(self.audioStatus)
                 volumeImage = "exclamation"
             }
         })
@@ -92,7 +79,7 @@ class Menu: SKNode {
         self.backgroundMenu.position = CGPoint(x: sizeView.width / 2, y: sizeView.height / 2)
         self.backgroundMenu.zPosition = 4
         
-        self.menuToPlayMusicBackground()
+        
         
         self.menuHighScoreToSetProperties(sizeView: sizeView)
         self.highScoreText.zPosition = 5

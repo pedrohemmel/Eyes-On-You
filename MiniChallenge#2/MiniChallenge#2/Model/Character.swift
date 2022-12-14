@@ -29,7 +29,7 @@ public class Character {
         
         character.setScale(0.13)
         character.position = CGPoint(x: 250, y: 100)
-        character.zPosition = 3
+        character.zPosition = 4
         
         //Physics properties
         character.physicsBody = SKPhysicsBody(texture: character.texture!, size: character.size)

@@ -135,6 +135,7 @@
 		161959DE29256C1100E2CC45 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BB03AF6C294A6014002662DD /* SKSpriteNodes */,
 				B98E203E292824D10022E94F /* SKScenes */,
 				6172C3CF2926C71E003C21FE /* SKNodes */,
 				B9B3C84C2927306900403187 /* Storyboard */,
@@ -147,7 +148,6 @@
 			children = (
 				B98E2041292827A90022E94F /* AVAudio */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
-				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +241,14 @@
 				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		BB03AF6C294A6014002662DD /* SKSpriteNodes */ = {
+			isa = PBXGroup;
+			children = (
+				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
+			);
+			path = SKSpriteNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
