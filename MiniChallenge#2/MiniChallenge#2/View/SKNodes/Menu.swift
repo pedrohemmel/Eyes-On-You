@@ -27,19 +27,18 @@ class Menu: SKNode {
     var imageHighScoreText = SKSpriteNode()
     
     
-    
+    var maconha: String = "eu"
     
     var infoButton: CustomizedButton? = nil
     
     
-    var audioButton: CustomizedButton?
+    var audioButtonOn: CustomizedButton?
+    var audioButtonOff: CustomizedButton?
     
     //MARK: - Inicializador
     init(infoButtonAction: @escaping () -> Void) {
         super.init()
-        
-        self.audioButton = menuToCreateAudioButton()
-        
+    
         self.infoButton = {
             let button = CustomizedButton(imageName: "exclamation", buttonAction: {
                 
@@ -48,40 +47,35 @@ class Menu: SKNode {
             })
             return button
         }()
+        
+        
+        self.audioButtonOn = {
+            let buttonOn = CustomizedButton(imageName: "volumeBtOn", buttonAction: {
+                AVAudio.sharedInstance().pauseBackgroundMusic()
+                self.audioButtonOff!.isHidden = false
+                self.audioButtonOn!.isHidden = true
+            })
+            return buttonOn
+        }()
+        
+        self.audioButtonOff = {
+            let buttonOff = CustomizedButton(imageName: "volumeBtOff", buttonAction: {
+                AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
+                self.audioButtonOff!.isHidden = true
+                self.audioButtonOn!.isHidden = false
+            })
+            return buttonOff
+        }()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func menuToCreateAudioButton() -> CustomizedButton {
-        
-        var volumeImage = "volumeBt"
-        
-        return CustomizedButton(imageName: volumeImage , buttonAction: {
-            
-            if self.audioStatus == true {
-            
-                self.audioStatus = false
-                AVAudio.sharedInstance().pauseBackgroundMusic()
-                
-                print(self.audioStatus)
-                
-                volumeImage = "volumeBt"
-            }
-            
-            else if self.audioStatus == false {
     
-                self.audioStatus = true
-                
-                AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
-                
-                
-                print(self.audioStatus)
-                volumeImage = "exclamation"
-            }
-        })
-    }
+    
+  
     //MARK: - Funções de estruturação da classe
     func menuToStruct(sizeView: CGSize) {
         
@@ -105,8 +99,12 @@ class Menu: SKNode {
         self.addChild(self.infoButton!)
 
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
-        self.audioButton!.zPosition = 5
-        self.addChild(self.audioButton!)
+        self.audioButtonOn!.zPosition = 5
+        self.addChild(self.audioButtonOn!)
+        
+        self.menuAudioButtonToSetProperties(sizeView: sizeView)
+        self.audioButtonOff!.zPosition = 5
+        self.addChild(self.audioButtonOff!)
 
         self.menuStartTextToSetProperties(sizeView: sizeView)
         self.startText.zPosition = 5
@@ -128,7 +126,14 @@ class Menu: SKNode {
     }
     
     func menuAudioButtonToSetProperties(sizeView: CGSize) {
-        self.audioButton!.position = CGPoint(x: 40, y: sizeView.height - 40)
+        
+        audioButtonOff?.isHidden = true
+        
+        self.audioButtonOn!.position = CGPoint(x: 40, y: sizeView.height - 40)
+        self.audioButtonOff!.position = CGPoint(x: 40, y: sizeView.height - 40)
+        
+        self.audioButtonOn!.setScale(0.6)
+        self.audioButtonOff!.setScale(0.6)
     }
     
     func menuInfoButtonToSetProperties(sizeView: CGSize) {
