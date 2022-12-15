@@ -40,8 +40,6 @@ class ScreenInfoChoosed : SKScene {
         super.init(size: size)
     }
 }
-
-
     
     //MARK: - Configurations
     
@@ -72,8 +70,6 @@ class ScreenInfoChoosed : SKScene {
         func chooseScreen(tela: Int){
             
             switch tela {
-                case 1:
-                    setupTutorial()
                 case 2:
                     setupCredits()
                 case 3:
@@ -83,21 +79,7 @@ class ScreenInfoChoosed : SKScene {
             }
         }
         
-        func setupTutorial(){
- 
-            let texto = SKLabelNode(fontNamed: "")
-            
-            texto.lineBreakMode = NSLineBreakMode.byWordWrapping
-            texto.fontSize = 20
-            texto.position = CGPoint(x: frame.midX, y: frame.midY - 100)
-            texto.preferredMaxLayoutWidth = frame.width * 0.8
-            texto.lineBreakMode = NSLineBreakMode.byWordWrapping
-            texto.numberOfLines = 0
-            
-            texto.text = "vai ficar os textos 2022-12-01 17:5 4:57.057569-0300 miniChallenge#2 [25539:782849] Metal API Validation Enabledaqui dentro aqui 022-12-01 17:54:57.057569-0300 MiniChallenge#2[25539:782849] Metal API Vali vai ficar os textos aqui dentro aaaa "
 
-        }
-        
         func setupCredits(){
             
             let icon = SKSpriteNode(imageNamed: "cc")
@@ -251,9 +233,6 @@ class ScreenInfoChoosed : SKScene {
             
             
         }
-        
-        
-        
     }
     
 

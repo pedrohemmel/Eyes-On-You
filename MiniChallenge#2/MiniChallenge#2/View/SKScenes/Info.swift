@@ -53,9 +53,9 @@ extension Info {
         
         
         let tutorial = CustomizedButton(imageName: "tutorial", buttonAction: {
-            let proximaTela = ScreenInfoChoosed(tela: 1, size: self.frame.size)
-            proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
+            let tutorialScreen = Tutorial(size: self.frame.size)
+            tutorialScreen.scaleMode = .aspectFill
+            self.view?.presentScene(tutorialScreen, transition: SKTransition.fade(with: .black, duration: 1))
         })
         
         tutorial.zPosition = 10.0
@@ -65,9 +65,9 @@ extension Info {
         
         
         let credits = CustomizedButton(imageName: "creditos", buttonAction: {
-            let proximaTela = ScreenInfoChoosed(tela: 2, size: self.frame.size)
-            proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
+            let screenChoosed = ScreenInfoChoosed(tela: 2, size: self.frame.size)
+            screenChoosed.scaleMode = .aspectFill
+            self.view?.presentScene(screenChoosed, transition: SKTransition.fade(with: .black, duration: 1))
         })
 
         credits.zPosition = 10.0
@@ -77,9 +77,9 @@ extension Info {
         
         
         let politcs = CustomizedButton(imageName: "politicasdepriv", buttonAction: {
-            let proximaTela = ScreenInfoChoosed(tela: 3, size: self.frame.size)
-            proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
+            let screenChoosed = ScreenInfoChoosed(tela: 3, size: self.frame.size)
+            screenChoosed.scaleMode = .aspectFill
+            self.view?.presentScene(screenChoosed, transition: SKTransition.fade(with: .black, duration: 1))
         })
 
         politcs.zPosition = 10.0
@@ -89,9 +89,9 @@ extension Info {
         
         
         let terms = CustomizedButton(imageName: "termosdeuso", buttonAction: {
-            let proximaTela = ScreenInfoChoosed(tela: 4, size: self.frame.size)
-            proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
+            let screenChoosed = ScreenInfoChoosed(tela: 4, size: self.frame.size)
+            screenChoosed.scaleMode = .aspectFill
+            self.view?.presentScene(screenChoosed, transition: SKTransition.fade(with: .black, duration: 1))
         })
 
         terms.zPosition = 10.0
