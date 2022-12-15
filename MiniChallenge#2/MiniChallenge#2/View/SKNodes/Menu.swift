@@ -26,9 +26,6 @@ class Menu: SKNode {
     
     var imageHighScoreText = SKSpriteNode()
     
-    
-    var maconha: String = "eu"
-    
     var infoButton: CustomizedButton? = nil
     
     
