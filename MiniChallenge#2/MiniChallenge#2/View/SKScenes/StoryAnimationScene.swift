@@ -30,7 +30,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         
         //Setando propriedades do personagem principal vivo
         self.character.characterView = AnimatedObject("personagem_vivo")
-        self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self)
+        self.character.characterView = character.characterToApplyProperties(character: character.characterView, view: self, zPosition: 2)
         self.character.characterView = character.characterToCollide(character: character.characterView)
         self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
@@ -64,17 +64,18 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         self.deadCharacter.position = CGPoint(x: 250, y: 100)
         self.deadCharacter.zPosition = 3
         
-        self.deadCharacter.run(SKAction.moveBy(x: 0, y: -50, duration: 1))
+        self.deadCharacter.run(SKAction.moveBy(x: 0, y: -40, duration: 0.5))
+        
         
         self.addChild(self.deadCharacter)
-        
+         
         self.character.characterView.isHidden = true
     }
     
     func creatingStaticGate(gate: SKSpriteNode) -> SKSpriteNode {
         
         gate.setScale(0.2)
-        gate.position = CGPoint(x: self.frame.width, y: self.ground.frame.height + (gate.frame.height / 2) - 18)
+        gate.position = CGPoint(x: self.frame.width / 1.5, y: self.ground.frame.height + (gate.frame.height / 2) - 18)
         gate.zPosition = 4
         
         gate.physicsBody = SKPhysicsBody(texture: gate.texture!, size: gate.size)
@@ -153,6 +154,25 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(self.gateDynamic.obstacleView)
     }
     
+    func generatingGhostOfCharacter() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.deadCharacter.isHidden = true
+            
+            
+            self.character.characterView.removeFromParent()
+            
+            //Setando propriedades do personagem principal vivo
+            self.character.characterView = AnimatedObject("personagem_alma")
+            self.character.characterView = self.character.characterToApplyProperties(character: self.character.characterView, view: self, zPosition: 2)
+            self.character.characterView = self.character.characterToCollide(character: self.character.characterView)
+            self.character.characterLife = self.character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
+            
+            self.addChild(self.character.characterView)
+            
+            
+        }
+    }
+    
     //Função que aguarda o personagem passar pelo portao para ativar animacao
     func waitingForCharacterToActivateGateAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
@@ -172,7 +192,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
     
     func redirectingToGameScene() {
         //Direcionando para a página principal
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             //removendo pai do HighScore pois se não, quando voltar para essa tela, vai dar erro ao tentar adicionar um pai no HighScore ja que ele ja teria um
             Score.shared.scoreLabel.removeFromParent()
             //Removendo também das vidas do personagem
@@ -197,10 +217,10 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
             
             if self.collisionAllowed {
                 self.waitingForCharacterToActivateGateAnimation()
+                self.generatingGhostOfCharacter()
+                self.redirectingToGameScene()
             }
             
-            
-            self.redirectingToGameScene()
             //Deixando a colisao permitida igual a false para o fator invencibilidade do personagem
             self.collisionAllowed = false
             

@@ -25,11 +25,16 @@ public class Character {
     }
     
     //Setting SpriteKit properties to a var and returning it
-    func characterToApplyProperties(character: SKSpriteNode, view: SKScene) -> SKSpriteNode {
+    func characterToApplyProperties(character: SKSpriteNode, view: SKScene, zPosition: CGFloat? = nil) -> SKSpriteNode {
         
         character.setScale(0.13)
         character.position = CGPoint(x: 250, y: 100)
-        character.zPosition = 4
+        if zPosition != nil {
+            character.zPosition = zPosition!
+        } else {
+            character.zPosition = 4
+        }
+        
         
         //Physics properties
         character.physicsBody = SKPhysicsBody(texture: character.texture!, size: character.size)
