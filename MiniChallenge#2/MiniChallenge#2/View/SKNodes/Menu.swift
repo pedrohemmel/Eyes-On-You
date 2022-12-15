@@ -11,7 +11,6 @@ import SpriteKit
 class Menu: SKNode {
     
     //MARK: - Criando as variáveis principais
-   
     var audioStatus: Bool = true
     var startGame: Bool = false
     var endGame: Bool = false
@@ -27,7 +26,6 @@ class Menu: SKNode {
     var imageHighScoreText = SKSpriteNode()
     
     var infoButton: CustomizedButton? = nil
-    
     
     var audioButtonOn: CustomizedButton?
     var audioButtonOff: CustomizedButton?
@@ -50,7 +48,6 @@ class Menu: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-  
     //MARK: - Funções de estruturação da classe
     func menuToStruct(sizeView: CGSize) {
         
@@ -61,7 +58,7 @@ class Menu: SKNode {
         self.backgroundMenu.position = CGPoint(x: sizeView.width / 2, y: sizeView.height / 2)
         self.backgroundMenu.zPosition = 4
         
-        self.menuToPlayMusicBackground()
+        
         
         self.menuHighScoreToSetProperties(sizeView: sizeView)
         self.highScoreText.zPosition = 5

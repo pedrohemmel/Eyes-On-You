@@ -11,29 +11,30 @@ import SpriteKit
 public class Character {
     
     //Creating a static var to the manegement of the class
-    static let character = Character(exemploParam: "exemplo")
+    static let character = Character()
     
     public var characterView: SKSpriteNode
     
     public var characterLife: [SKSpriteNode] = []
     
-    public var exemplo: String
-    
     //Initializing class and applying an init of SKSpriteNode to the characterView
-    init(exemploParam: String) {
+    init() {
         self.characterView = SKSpriteNode()
-        
-        self.exemplo = exemploParam
         
         characterLife = [SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha"), SKSpriteNode(imageNamed: "caveira_vermelha")]
     }
     
     //Setting SpriteKit properties to a var and returning it
-    func characterToApplyProperties(character: SKSpriteNode, view: SKScene) -> SKSpriteNode {
+    func characterToApplyProperties(character: SKSpriteNode, view: SKScene, zPosition: CGFloat? = nil) -> SKSpriteNode {
         
         character.setScale(0.13)
         character.position = CGPoint(x: 250, y: 100)
-        character.zPosition = 3
+        if zPosition != nil {
+            character.zPosition = zPosition!
+        } else {
+            character.zPosition = 4
+        }
+        
         
         //Physics properties
         character.physicsBody = SKPhysicsBody(texture: character.texture!, size: character.size)

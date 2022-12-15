@@ -24,6 +24,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var givedUpGame = false
     private var colisionAllowed = true
     
+    private var timeToWaitForMusic: Date = .now
+    private var timeMusicPlayed = false
+    
     //Sprites do ambiente de jogo
     private var pausedButton: CustomizedButton? = nil
     private var ground: SKSpriteNode = SKSpriteNode()
@@ -31,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var backgroundImage: SKSpriteNode = SKSpriteNode()
     
     let gameSKNode = SKNode()
-    let objectDummy = SKNode()
+    let animationOfBackground = SKNode()
     
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
     private var movedActionOfObstacles = SKAction()
@@ -104,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.bulk)
         self.gameSKNode.addChild(self.ceiling)
         self.gameSKNode.addChild(self.ground)
-        self.gameSKNode.addChild(self.objectDummy)
+        self.gameSKNode.addChild(self.animationOfBackground)
         
         self.gameSKNode.addChild(self.pausedButton!)
         for life in self.character.characterLife {
@@ -271,10 +274,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.backgroundImage.position = CGPoint(x:self.size.width * CGFloat(i), y:0)
             self.backgroundImage.run(reDo)
             
-            self.objectDummy.addChild(backgroundImage)
+            self.animationOfBackground.addChild(backgroundImage)
         }
         
-        self.objectDummy.speed = 1
+        self.animationOfBackground.speed = 1
     }
     
     //Função utilizada para organizar melhor o código no switch case
@@ -526,6 +529,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        if .now >= self.timeToWaitForMusic + 0.1 {
+            if !self.timeMusicPlayed {
+                self.menu?.menuToPlayMusicBackground()
+                self.timeMusicPlayed = true
+            }
+            
+        }
+        
         if menu!.startGame == true{
             if !gameOver && !pausedGame {
                 if currentTime > Score.shared.renderTime{
@@ -541,5 +552,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         }
+        
     }
 }
