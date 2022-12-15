@@ -39,41 +39,19 @@ class Menu: SKNode {
     init(infoButtonAction: @escaping () -> Void) {
         super.init()
     
-        self.infoButton = {
-            let button = CustomizedButton(imageName: "exclamation", buttonAction: {
-                
-                infoButtonAction()
-            
-            })
-            return button
-        }()
+        //Criando os botões de configuração do menu
+        self.menuToCreateButtonInfo(infoButtonAction: infoButtonAction)
+        self.menuToCreateButtonOn()
+        self.menuToCreateButtonOff()
         
-        
-        self.audioButtonOn = {
-            let buttonOn = CustomizedButton(imageName: "volumeBtOn", buttonAction: {
-                AVAudio.sharedInstance().pauseBackgroundMusic()
-                self.audioButtonOff!.isHidden = false
-                self.audioButtonOn!.isHidden = true
-            })
-            return buttonOn
-        }()
-        
-        self.audioButtonOff = {
-            let buttonOff = CustomizedButton(imageName: "volumeBtOff", buttonAction: {
-                AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
-                self.audioButtonOff!.isHidden = true
-                self.audioButtonOn!.isHidden = false
-            })
-            return buttonOff
-        }()
+        //Setando icone de som mutado escondido na tela por padrão
+        audioButtonOff?.isHidden = true
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
   
     //MARK: - Funções de estruturação da classe
@@ -111,6 +89,40 @@ class Menu: SKNode {
         self.addChild(self.startText)
     }
     
+    //Criação do botão de informações
+    func menuToCreateButtonInfo(infoButtonAction: @escaping () -> Void) {
+        self.infoButton = {
+            let button = CustomizedButton(imageName: "exclamation", buttonAction: {
+                infoButtonAction()
+            })
+            return button
+        }()
+    }
+    
+    //Criação do botão de som ativo
+    func menuToCreateButtonOn() {
+        self.audioButtonOn = {
+            let buttonOn = CustomizedButton(imageName: "volumeBtOn", buttonAction: {
+                AVAudio.sharedInstance().pauseBackgroundMusic()
+                self.audioButtonOff!.isHidden = false
+                self.audioButtonOn!.isHidden = true
+            })
+            return buttonOn
+        }()
+    }
+    
+    //Criação do botão de som desativado
+    func menuToCreateButtonOff() {
+        self.audioButtonOff = {
+            let buttonOff = CustomizedButton(imageName: "volumeBtOff", buttonAction: {
+                AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
+                self.audioButtonOff!.isHidden = true
+                self.audioButtonOn!.isHidden = false
+            })
+            return buttonOff
+        }()
+    }
+    
     func menuToPlayMusicBackground() {
         AVAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.5
         AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
@@ -119,7 +131,8 @@ class Menu: SKNode {
     func menuStartTextToSetProperties(sizeView: CGSize) {
         self.startText.text = "TOQUE NA TELA PARA INICIAR"
         self.startText.fontName = "AvenirNext-Bold"
-        self.startText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+//        self.startText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+        self.startText.fontColor = .black
         self.startText.horizontalAlignmentMode = .center
         self.startText.verticalAlignmentMode = .bottom
         self.startText.position = CGPoint(x: sizeView.width / 2, y: sizeView.height / 2)
@@ -127,30 +140,30 @@ class Menu: SKNode {
     
     func menuAudioButtonToSetProperties(sizeView: CGSize) {
         
-        audioButtonOff?.isHidden = true
         
         self.audioButtonOn!.position = CGPoint(x: 40, y: sizeView.height - 40)
         self.audioButtonOff!.position = CGPoint(x: 40, y: sizeView.height - 40)
         
-        self.audioButtonOn!.setScale(0.6)
-        self.audioButtonOff!.setScale(0.6)
+        self.audioButtonOn!.buttonView.setScale(0.25)
+        self.audioButtonOff!.buttonView.setScale(0.25)
     }
     
     func menuInfoButtonToSetProperties(sizeView: CGSize) {
         self.infoButton!.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
+        self.infoButton?.buttonView.setScale(0.25)
     }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
         
         self.imageHighScoreText = SKSpriteNode(imageNamed: "highscore_icon")
         self.imageHighScoreText.setScale(0.4)
-        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 70 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
+        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 90 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
         
         self.highScoreText.text = ("\(Score.shared.highScore)")
         self.highScoreText.fontName = "AvenirNext-Bold"
-        self.highScoreText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+        self.highScoreText.fontColor = .black
         self.highScoreText.fontSize = CGFloat(25)
-        self.highScoreText.position = CGPoint(x: sizeView.width - 100, y: sizeView.height - 50)
+        self.highScoreText.position = CGPoint(x: sizeView.width - 120, y: sizeView.height - 50)
     }
     
     func tapToRestart() {
