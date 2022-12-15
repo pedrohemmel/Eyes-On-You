@@ -58,6 +58,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    //Criando animação personagem queda e escondendo personagem vivo
     func creatingFallCharacterAnimationAndRemovingActualCharacter() {
         self.deadCharacter = AnimatedObject("animacao_queda", countRepeat: 1, lastImageDesired: 4)
         self.deadCharacter.setScale(0.13)
@@ -65,7 +66,6 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         self.deadCharacter.zPosition = 3
         
         self.deadCharacter.run(SKAction.moveBy(x: 0, y: -40, duration: 0.5))
-        
         
         self.addChild(self.deadCharacter)
          
@@ -75,7 +75,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
     func creatingStaticGate(gate: SKSpriteNode) -> SKSpriteNode {
         
         gate.setScale(0.2)
-        gate.position = CGPoint(x: self.frame.width / 1.5, y: self.ground.frame.height + (gate.frame.height / 2) - 18)
+        gate.position = CGPoint(x: self.frame.width / 2, y: self.ground.frame.height + (gate.frame.height / 2) - 18)
         gate.zPosition = 4
         
         gate.physicsBody = SKPhysicsBody(texture: gate.texture!, size: gate.size)
