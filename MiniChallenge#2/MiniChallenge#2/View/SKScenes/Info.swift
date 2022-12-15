@@ -55,11 +55,11 @@ extension Info {
         let tutorial = CustomizedButton(imageName: "tutorial", buttonAction: {
             let proximaTela = ScreenInfoChoosed(tela: 1, size: self.frame.size)
             proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela,transition: SKTransition.flipHorizontal(withDuration: 1))
+            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
         })
         
         tutorial.zPosition = 10.0
-        tutorial.position = CGPoint(x: size.width/2.95, y: frame.midY + tutorial.frame.height + 25)
+        tutorial.position = CGPoint(x: size.width/2.8, y: frame.midY + tutorial.frame.height + 34)
         tutorial.setScale(0.45)
         addChild(tutorial)
         
@@ -71,8 +71,7 @@ extension Info {
         })
 
         credits.zPosition = 10.0
-        credits.position = CGPoint(x: size.width/1.5, y: frame.midY + credits.frame.height + 25)
-//        credits.position = CGPoint(x: size.width / 2, y: frame.height / 2)
+        credits.position = CGPoint(x: size.width/1.55, y: frame.midY + credits.frame.height + 34)
         credits.setScale(0.45)
         addChild(credits)
         
@@ -80,11 +79,11 @@ extension Info {
         let politcs = CustomizedButton(imageName: "politicasdepriv", buttonAction: {
             let proximaTela = ScreenInfoChoosed(tela: 3, size: self.frame.size)
             proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela,transition: SKTransition.flipHorizontal(withDuration: 1))
+            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
         })
 
         politcs.zPosition = 10.0
-        politcs.position = CGPoint(x: size.width/2.95, y: frame.midY + politcs.frame.height - 90 )
+        politcs.position = CGPoint(x: size.width/2.8, y: frame.midY + politcs.frame.height - 90 )
         politcs.setScale(0.45)
         addChild(politcs)
         
@@ -92,11 +91,11 @@ extension Info {
         let terms = CustomizedButton(imageName: "termosdeuso", buttonAction: {
             let proximaTela = ScreenInfoChoosed(tela: 4, size: self.frame.size)
             proximaTela.scaleMode = .aspectFill
-            self.view?.presentScene(proximaTela,transition: SKTransition.flipHorizontal(withDuration: 1))
+            self.view?.presentScene(proximaTela, transition: SKTransition.fade(with: .black, duration: 1))
         })
 
         terms.zPosition = 10.0
-        terms.position = CGPoint(x: size.width/1.5, y: frame.midY + terms.frame.height - 90 )
+        terms.position = CGPoint(x: size.width/1.55, y: frame.midY + terms.frame.height - 90 )
         terms.setScale(0.45)
         addChild(terms)
                 
