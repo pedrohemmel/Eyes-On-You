@@ -31,15 +31,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var pausedButton: CustomizedButton? = nil
     private var ground: SKSpriteNode = SKSpriteNode()
     private var ceiling = SKSpriteNode()
-//    private var backgroundImage: SKSpriteNode = SKSpriteNode()
     
     private var day = true
     private var transitionDay = false
-    private var finishedTransitionDay = false
+    private var startedTransitionDay = false
     
     private var night = false
     private var transitionNight = false
-    private var finishedTransitionNight = false
+    private var startedTransitionNight = false
     
     private var backgroundChoosedToTransition: SKSpriteNode? = nil
     
@@ -95,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.mostraMenu()
         })
         
-        self.creatingAnimatedBackground()
+//        self.creatingAnimatedBackground()
         
         //Criando o objeto solo
         self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
@@ -291,38 +290,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Função que estrutura toda a parte do background animado
     func creatingAnimatedBackground() {
         let moveBackground = SKAction.moveBy(x: -self.size.width * 2, y: 0, duration: 10)
-//        let resizeBackground = SKAction.moveBy(x: self.size.width, y: 0, duration: 0)
-//        let reDo = SKAction.repeatForever(SKAction.sequence([moveBackground, resizeBackground]))
         
         self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 0)
         self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
         
+        self.backgroundChoosedToTransition = self.backgroundDia1
+        
         self.addChild(backgroundDia1)
         self.addChild(backgroundDia2)
-        
-        
-//        for i in 0..<2 {
-//
-//            self.structuringBackgroundAndApplyingAction(backgroundName: "bg",reDo: reDo, indexOfBg: i)
-//            self.animationOfBackground.addChild(self.backgroundImage)
-//
-////            if i == 3 {
-////                self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", reDo: reDo, indexOfBg: 4)
-////                self.animationOfBackground.addChild(backgroundImage)
-////            }
-////
-//
-//        }
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//            self.backgroundImage.removeAllActions()
-//            self.backgroundImage.removeFromParent()
-//
-//            self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", reDo: reDo, indexOfBg: 4)
-//            self.animationOfBackground.addChild(self.backgroundImage)
-//        }
-        
-//        self.animationOfBackground.speed = 1
+    
     }
     
     //Função utilizada para organizar melhor o código no switch case
@@ -563,79 +539,116 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func verifyAndMoveBackground() {
         
         let moveBackground = SKAction.moveBy(x: -self.size.width * 2, y: 0, duration: 10)
-        
+        print("day \(self.day)")
+        print("transitionDay \(self.transitionDay)")
         if self.day {
             if !self.transitionDay {
-//                if !self.finishedTransitionNight {
                 if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                    
+
                     self.backgroundDia1.removeFromParent()
                     self.backgroundDia2.removeFromParent()
                     self.backgroundDia1.removeAllActions()
                     self.backgroundDia2.removeAllActions()
-                    
+
                     self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 0)
                     self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
-                    
+
+                    self.backgroundChoosedToTransition = self.backgroundDia2
+
                     self.addChild(self.backgroundDia1)
                     self.addChild(self.backgroundDia2)
-                    
+
                 } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1{
-                    
+
                     self.backgroundDia1.removeFromParent()
                     self.backgroundDia2.removeFromParent()
                     self.backgroundDia1.removeAllActions()
                     self.backgroundDia2.removeAllActions()
-                    
+
                     self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 0)
                     self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
-                    
+
+                    self.backgroundChoosedToTransition = self.backgroundDia1
+
                     self.addChild(self.backgroundDia1)
                     self.addChild(self.backgroundDia2)
                 }
             } else {
-                if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
+                if !self.startedTransitionDay {
+                    if self.backgroundChoosedToTransition!.position.x <= -self.size.width * 2 + 1 {
+                        self.backgroundDia1.removeFromParent()
+                        self.backgroundDia2.removeFromParent()
+                        self.backgroundDia1.removeAllActions()
+                        self.backgroundDia2.removeAllActions()
+                        
+                        if self.backgroundChoosedToTransition == self.backgroundDia1 {
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", action: moveBackground, helpAdjustPosition: 2)
+                        } else {
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", action: moveBackground, helpAdjustPosition: 2)
+                        }
+                        
+                        self.addChild(self.backgroundDia1)
+                        self.addChild(self.backgroundDia2)
+                        
+                        self.startedTransitionDay = true
+                    }
                     
-                    self.backgroundDia1.removeFromParent()
-                    self.backgroundDia2.removeFromParent()
-                    self.backgroundDia1.removeAllActions()
-                    self.backgroundDia2.removeAllActions()
                     
-                    self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", action: moveBackground, helpAdjustPosition: 0)
-                    self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
+                } else {
+                    if self.backgroundChoosedToTransition == self.backgroundDia1 {
+                        if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
+                            self.backgroundDia1.removeFromParent()
+                            self.backgroundDia2.removeFromParent()
+                            self.backgroundDia1.removeAllActions()
+                            self.backgroundDia2.removeAllActions()
+                            
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 2)
+                            
+                            
+                            self.addChild(self.backgroundDia1)
+                            self.addChild(self.backgroundDia2)
+                        } else if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
+                            //setando transitionDay a day como false para fazer a transição para noite
+                            self.day = false
+                            self.transitionDay = false
+                            self.startedTransitionDay = false
+                            
+                            self.night = true
+                            
+                            //Setando tempo de transição de background para o tempo atual
+                            self.timeOfChangingBackground = .now
+                        }
+                    } else {
+                        if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
+                            self.backgroundDia1.removeFromParent()
+                            self.backgroundDia2.removeFromParent()
+                            self.backgroundDia1.removeAllActions()
+                            self.backgroundDia2.removeAllActions()
+                            
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 2)
+                            
+                            self.addChild(self.backgroundDia1)
+                            self.addChild(self.backgroundDia2)
+                        } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
+                            
+                            //setando transitionDay a day como false para fazer a transição para noite
+                            self.day = false
+                            self.transitionDay = false
+                            self.startedTransitionDay = false
+                            
+                            self.night = true
+                            
+                            //Setando tempo de transição de background para o tempo atual
+                            self.timeOfChangingBackground = .now
+                        }
+                    }
                     
-                    self.addChild(self.backgroundDia1)
-                    self.addChild(self.backgroundDia2)
-                    
-                } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1{
-                    
-                    self.backgroundDia1.removeFromParent()
-                    self.backgroundDia2.removeFromParent()
-                    self.backgroundDia1.removeAllActions()
-                    self.backgroundDia2.removeAllActions()
-                    
-                    self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_dia", action: moveBackground, helpAdjustPosition: 0)
-                    self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
-                    
-                    self.addChild(self.backgroundDia1)
-                    self.addChild(self.backgroundDia2)
                 }
                 
-                self.finishedTransitionNight = false
-//                }
-                
-//            } else {
-                
-                
-                //setando transitionDay a day como false para fazer a transição para noite
-                self.day = false
-                self.transitionDay = false
-                self.finishedTransitionDay = true
-                
-                self.night = true
-                
-                //Setando tempo de transição de background para o tempo atual
-                self.timeOfChangingBackground = .now
             }
         } else if self.night {
             if !self.transitionNight {
@@ -654,7 +667,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.addChild(self.backgroundDia1)
                     self.addChild(self.backgroundDia2)
                     
-                } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1{
+                } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
                     
                     self.backgroundDia1.removeFromParent()
                     self.backgroundDia2.removeFromParent()
@@ -672,68 +685,84 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             } else {
                 
-                if backgroundChoosedToTransition?.position.x <= -self.size.width * 2 + 1 {
-                    self.backgroundDia1.removeFromParent()
-                    self.backgroundDia2.removeFromParent()
-                    self.backgroundDia1.removeAllActions()
-                    self.backgroundDia2.removeAllActions()
-                    
-                    if self.backgroundChoosedToTransition == self.backgroundDia1 {
-                        self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 0)
-                        self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 2)
-                    } else {
-                        self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 0)
-                        self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 2)
-                    }
-                    
-                    self.addChild(self.backgroundDia1)
-                    self.addChild(self.backgroundDia2)
-                }
-                
-                if self.backgroundChoosedToTransition == self.backgroundDia1 {
-                    if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                        self.backgroundDia1.removeFromParent()
-                        self.backgroundDia2.removeFromParent()
-                        self.backgroundDia1.removeAllActions()
-                        self.backgroundDia2.removeAllActions()
-                        
-                        self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 0)
-                        self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 2)
-                        
-                        
-                        self.addChild(self.backgroundDia1)
-                        self.addChild(self.backgroundDia2)
-                    }
-                } else {
-                    if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
+                if !self.startedTransitionNight {
+                    if self.backgroundChoosedToTransition!.position.x <= -self.size.width * 2 + 1 {
                         self.backgroundDia1.removeFromParent()
                         self.backgroundDia2.removeFromParent()
                         self.backgroundDia1.removeAllActions()
                         self.backgroundDia2.removeAllActions()
                         
                         if self.backgroundChoosedToTransition == self.backgroundDia1 {
-                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 0)
-                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 2)
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 2)
                         } else {
-                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 0)
-                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 2)
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_noite", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 2)
                         }
                         
                         self.addChild(self.backgroundDia1)
                         self.addChild(self.backgroundDia2)
+                        
+                        self.startedTransitionNight = true
                     }
+                    
+                    
+                } else {
+                    if self.backgroundChoosedToTransition == self.backgroundDia1 {
+                        if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
+                            self.backgroundDia1.removeFromParent()
+                            self.backgroundDia2.removeFromParent()
+                            self.backgroundDia1.removeAllActions()
+                            self.backgroundDia2.removeAllActions()
+                            
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
+                            
+                            
+                            self.addChild(self.backgroundDia1)
+                            self.addChild(self.backgroundDia2)
+                        } else if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
+                            //setando transitionDay a day como false para fazer a transição para noite
+                            self.night = false
+                            self.transitionNight = false
+                            self.startedTransitionNight = false
+                            
+                            self.day = true
+                            
+                            //Setando tempo de transição de background para o tempo atual
+                            self.timeOfChangingBackground = .now
+                        }
+                    } else {
+                        if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
+                            self.backgroundDia1.removeFromParent()
+                            self.backgroundDia2.removeFromParent()
+                            self.backgroundDia1.removeAllActions()
+                            self.backgroundDia2.removeAllActions()
+                            
+                            self.backgroundDia2 = self.structuringBackgroundAndApplyingAction(backgroundName: "background_transicao_noite", action: moveBackground, helpAdjustPosition: 0)
+                            self.backgroundDia1 = self.structuringBackgroundAndApplyingAction(backgroundName: "bg", action: moveBackground, helpAdjustPosition: 2)
+                            
+                            self.addChild(self.backgroundDia1)
+                            self.addChild(self.backgroundDia2)
+                        } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
+                            //setando transitionDay a day como false para fazer a transição para noite
+                            self.night = false
+                            self.transitionNight = false
+                            self.startedTransitionNight = false
+                            
+                            self.day = true
+                            
+                            //Setando tempo de transição de background para o tempo atual
+                            self.timeOfChangingBackground = .now
+                        }
+                    }
+                    
                 }
                 
                 
-                //setando transitionDay a day como false para fazer a transição para noite
-                self.night = false
-                self.transitionNight = false
-                self.finishedTransitionNight = true
                 
-                self.day = true
                 
-                //Setando tempo de transição de background para o tempo atual
-                self.timeOfChangingBackground = .now
+                
             }
         }
        
@@ -791,7 +820,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if .now >= self.timeOfChangingBackground + 5 {
                     self.transitionDay = true
                 }
-            } else if self.night {
+            }
+            
+            if self.night {
                 if .now >= self.timeOfChangingBackground + 5 {
                     self.transitionNight = true
                 }
