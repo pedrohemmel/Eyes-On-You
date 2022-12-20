@@ -32,7 +32,7 @@ public class Character {
         if zPosition != nil {
             character.zPosition = zPosition!
         } else {
-            character.zPosition = 4
+            character.zPosition = 3
         }
         
         
