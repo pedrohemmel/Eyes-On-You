@@ -23,6 +23,9 @@ class Menu: SKNode {
     let startText = SKLabelNode(fontNamed: "")
     let highScoreText = SKLabelNode(fontNamed: "")
     
+    let coinText = SKLabelNode(fontNamed: "")
+    var imageCoinText = SKSpriteNode()
+    
     var imageHighScoreText = SKSpriteNode()
     
     var infoButton: CustomizedButton? = nil
@@ -58,7 +61,11 @@ class Menu: SKNode {
         self.backgroundMenu.position = CGPoint(x: sizeView.width / 2, y: sizeView.height / 2)
         self.backgroundMenu.zPosition = 4
         
-        
+        self.menuCoinToSetProperties(sizeView: sizeView)
+        self.coinText.zPosition = 5
+        self.imageCoinText.zPosition = 5
+        self.addChild(self.coinText)
+        self.addChild(self.imageCoinText)
         
         self.menuHighScoreToSetProperties(sizeView: sizeView)
         self.highScoreText.zPosition = 5
@@ -134,7 +141,6 @@ class Menu: SKNode {
     
     func menuAudioButtonToSetProperties(sizeView: CGSize) {
         
-        
         self.audioButtonOn!.position = CGPoint(x: 40, y: sizeView.height - 40)
         self.audioButtonOff!.position = CGPoint(x: 40, y: sizeView.height - 40)
         
@@ -145,6 +151,19 @@ class Menu: SKNode {
     func menuInfoButtonToSetProperties(sizeView: CGSize) {
         self.infoButton!.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
         self.infoButton?.buttonView.setScale(0.25)
+    }
+    
+    func menuCoinToSetProperties(sizeView:CGSize){
+        self.imageCoinText = SKSpriteNode(imageNamed: "coin")
+        self.imageCoinText.setScale(0.15)
+        self.imageCoinText.position = CGPoint(x: sizeView.width - 220
+                                              - self.imageCoinText.frame.width, y: sizeView.height - 35)
+        
+        self.coinText.text = ("\(SavePrize.shared.saveCoin)") //inserir o userDefaults do coin
+        self.coinText.fontName = "AvenirNext-Bold"
+        self.coinText.fontColor = .black
+        self.coinText.fontSize = CGFloat(25)
+        self.coinText.position = CGPoint(x: sizeView.width - 220, y: sizeView.height - 50)
     }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {

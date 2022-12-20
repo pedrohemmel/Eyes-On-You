@@ -36,11 +36,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let gameSKNode = SKNode()
     let animationOfBackground = SKNode()
     
+    let moveAction = SKAction.moveTo(x: -100, duration: 5)
+    let removeAction = SKAction.removeFromParent()
+    
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
     private var movedActionOfObstacles = SKAction()
     private var obstaclesInAction = SKNode()
     
     override func didMove(to view: SKView) {
+        generatingPrize() // retirar apos fixado
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
 
@@ -342,6 +346,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
+    
         default:
             //Obstaculo poadrão
             let birdObstacle = BirdObstacle()
@@ -349,12 +354,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return birdObstacle
         }
     }
+    
+    func generatingPrize(){ //colocar ela dentro de um random para gerar aleatorio
+        let randomPrize = Float.random(in: 40..<250) //random de Y
+//        let prize: AnimatedObject = AnimatedObject("coin_2")
+        let prize = SKSpriteNode(imageNamed: "coin2")
+        prize.setScale(0.3)
+        
+        prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
+        prize.zPosition = 2
+        prize.name = "prize"
+        
+        prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
+        prize.physicsBody?.isDynamic = false
+        prize.physicsBody?.allowsRotation = false
+        prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+        
+        prize.run(SKAction.sequence([moveAction, removeAction]))
+        addChild(prize)
+    }
 
     //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
     func generatingNewObstacle() {
         if !givedUpGame && !pausedGame {
             self.obstaclesInAction = SKNode()
             let sortedObstacle = self.sortObstacle()
+           
                         
             sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
                     
@@ -402,14 +427,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
+    
         if !givedUpGame {
+            
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
                 
                 
-                
 //                Decrementando itens da lista de vidas do jogo
                 if self.colisionAllowed {
+                    
+//                    if firstBody.node?.name == "prize" && secondBody.node?.name == "prize"{
+//
+//                        firstBody.node?.removeFromParent()
+//                        SavePrize.shared.addcCoin()
+//
+//                    }
+        
                     if !(self.character.characterLife.count <= 1) {
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
@@ -436,6 +470,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             
 
                         }
+                        
 
                     }
                     

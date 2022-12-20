@@ -12,6 +12,7 @@ class Info: SKScene {
     
     //MARK: - Systems
     override func didMove(to view: SKView) {
+        SavePrize.shared.addcCoin()
         setupBG()
     }
     

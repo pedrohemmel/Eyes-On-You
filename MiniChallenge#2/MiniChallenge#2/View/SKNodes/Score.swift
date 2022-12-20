@@ -13,8 +13,6 @@ class Score: SKNode {
     
     public static var shared = Score()
     
-//    var scoreLabel: SKLabelNode = SKLabelNode()
-    
     let scoreLabel = SKLabelNode(fontNamed: "AvenirNext-Bold")
     
     var renderTime: TimeInterval = 0.0
@@ -26,7 +24,6 @@ class Score: SKNode {
         get {
           return UserDefaults.standard.integer(forKey: "highscore")
         }
-        
         
         set {
             UserDefaults.standard.set(newValue, forKey: "highscore")
