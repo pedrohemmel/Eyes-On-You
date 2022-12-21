@@ -44,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var obstaclesInAction = SKNode()
     
     override func didMove(to view: SKView) {
-        generatingPrize() // retirar apos fixado
+       
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
 
@@ -363,15 +363,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
         prize.zPosition = 2
-        prize.name = "prize"
         
         prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
         prize.physicsBody?.isDynamic = false
         prize.physicsBody?.allowsRotation = false
         prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
         
+        prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
+        prize.physicsBody?.collisionBitMask = PhysicsCategory.character
         prize.run(SKAction.sequence([moveAction, removeAction]))
         addChild(prize)
+    }
+    
+    func randomizePrize(){
+        let randomPrize = Int.random(in: 0..<12)
+        if randomPrize < 5 {
+            self.generatingPrize()
+        }
+        
     }
 
     //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
@@ -401,6 +410,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func creatingMoveOfObstacle(tempo: Double, duration: Double) {
         let spawn = SKAction.run({ () in
             self.generatingNewObstacle()
+            self.randomizePrize()
+            
         })
         
         let delay = SKAction.wait(forDuration: tempo)
@@ -430,20 +441,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
         if !givedUpGame {
             
+            if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.prize || firstBody.categoryBitMask == PhysicsCategory.prize && secondBody.categoryBitMask == PhysicsCategory.character{
+                
+                secondBody.node?.removeFromParent()
+                SavePrize.shared.addcCoin()
+                print("ooioi")
+            }
+//            else{
+//                secondBody.node?.removeFromParent()
+//            }
+           
+
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-                
-                
+
 //                Decrementando itens da lista de vidas do jogo
                 if self.colisionAllowed {
-                    
-//                    if firstBody.node?.name == "prize" && secondBody.node?.name == "prize"{
-//
-//                        firstBody.node?.removeFromParent()
-//                        SavePrize.shared.addcCoin()
-//
-//                    }
-        
+
                     if !(self.character.characterLife.count <= 1) {
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
@@ -479,12 +493,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 self.settingTimeOfInvincibility()
                 
+               
                 
                 if firstBody.categoryBitMask == PhysicsCategory.obstacle {
                     firstBody.node?.removeFromParent()
                 } else {
                     secondBody.node?.removeFromParent()
                 }
+               
+               
+                
             }
         }
         
