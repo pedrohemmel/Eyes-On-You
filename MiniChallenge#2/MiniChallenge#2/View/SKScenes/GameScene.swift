@@ -11,6 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    private let prize = SKSpriteNode(imageNamed: "coin2")
+    
     private var menu: Menu? = nil
     private var pausedGameScreen: PausedGame? = nil
     private var gameOverScreen: GameOver? = nil
@@ -36,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let gameSKNode = SKNode()
     let animationOfBackground = SKNode()
     
-    let moveAction = SKAction.moveTo(x: -100, duration: 5)
+    let moveAction = SKAction.moveTo(x: -100, duration: 3)
     let removeAction = SKAction.removeFromParent()
     
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
@@ -112,7 +114,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.ceiling)
         self.gameSKNode.addChild(self.ground)
         self.gameSKNode.addChild(self.animationOfBackground)
-        
         self.gameSKNode.addChild(self.pausedButton!)
         for life in self.character.characterLife {
             self.gameSKNode.addChild(life)
@@ -355,32 +356,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func generatingPrize(){ //colocar ela dentro de um random para gerar aleatorio
-        let randomPrize = Float.random(in: 40..<250) //random de Y
-//        let prize: AnimatedObject = AnimatedObject("coin_2")
-        let prize = SKSpriteNode(imageNamed: "coin2")
-        prize.setScale(0.3)
+    func createPrizeObject(){ //colocar ela dentro de um random para gerar aleatorio
         
-        prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
-        prize.zPosition = 2
-        UIImpactFeedbackGenerator(style: .medium).prepare()
-        prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
-        prize.physicsBody?.isDynamic = false
-        prize.physicsBody?.allowsRotation = false
-        prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+        self.prize.setScale(0.3)
         
-        prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
-        prize.physicsBody?.collisionBitMask = PhysicsCategory.character
-        prize.run(SKAction.sequence([moveAction, removeAction]))
-        addChild(prize)
-    }
-    
-    func randomizePrize(){
-        let randomPrize = Int.random(in: 0..<12)
-        if randomPrize < 5 {
-            self.generatingPrize()
-        }
+        let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
         
+        self.prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
+        self.prize.zPosition = 2
+        
+        self.prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
+        self.prize.physicsBody?.isDynamic = false
+        self.prize.physicsBody?.allowsRotation = false
+        self.prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+        
+        self.prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
+        self.prize.physicsBody?.collisionBitMask = PhysicsCategory.character
+        
+        
+        
+        self.gameSKNode.addChild(prize)
     }
 
     //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
@@ -410,7 +405,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func creatingMoveOfObstacle(tempo: Double, duration: Double) {
         let spawn = SKAction.run({ () in
             self.generatingNewObstacle()
-            self.randomizePrize()
             
         })
         
@@ -443,20 +437,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.prize || firstBody.categoryBitMask == PhysicsCategory.prize && secondBody.categoryBitMask == PhysicsCategory.character{
                 
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                firstBody.categoryBitMask == PhysicsCategory.prize ? firstBody.node?.removeFromParent() : secondBody.node?.removeFromParent()
-                SavePrize.shared.addcCoin()
+                
+                
+                if self.colisionAllowed {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    firstBody.categoryBitMask == PhysicsCategory.prize ? firstBody.node?.removeFromParent() : secondBody.node?.removeFromParent()
+                    
+                    SavePrize.shared.addcCoin()
+                    self.menu?.menuToUpdateCountOfCoin()
+                    
+                    self.colisionAllowed = false
+                }
+                self.settingTimeOfInvincibility()
+                
                 
             }
           
 
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                
 //                Decrementando itens da lista de vidas do jogo
                 if self.colisionAllowed {
 
                     if !(self.character.characterLife.count <= 1) {
+                        
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
                         
@@ -464,14 +471,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             AVAudio.sharedInstance().playSoundEffect("impacto.mp3")
                         }
                     } else {
-//MARK: - GAME OVER
+                        //MARK: - GAME OVER
                         if !gameOver {
 
+                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                            
                             if menu!.audioStatus {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                             }
                             
-                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                             self.character.characterLife.last?.removeFromParent()
                             self.character.characterLife.removeLast()
                             self.gameOver = true
@@ -564,8 +572,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     Score.shared.addScore()
                     Score.shared.trySaveHighScore()
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
-                    menu!.highScoreText.text = "\(Score.shared.highScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
+                    
+                    menu!.highScoreText.text = "\(Score.shared.highScore)"
+                    
                     self.increasingLevel()
                 }
             }

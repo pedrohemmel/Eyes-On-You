@@ -153,17 +153,19 @@ class Menu: SKNode {
         self.infoButton?.buttonView.setScale(0.25)
     }
     
-    func menuCoinToSetProperties(sizeView:CGSize){
-        self.imageCoinText = SKSpriteNode(imageNamed: "coin")
-        self.imageCoinText.setScale(0.15)
-        self.imageCoinText.position = CGPoint(x: sizeView.width - 220
-                                              - self.imageCoinText.frame.width, y: sizeView.height - 35)
-        
+    func menuCoinToSetProperties(sizeView:CGSize) {
         self.coinText.text = ("\(SavePrize.shared.saveCoin)") //inserir o userDefaults do coin
         self.coinText.fontName = "AvenirNext-Bold"
         self.coinText.fontColor = .black
         self.coinText.fontSize = CGFloat(25)
         self.coinText.position = CGPoint(x: sizeView.width - 220, y: sizeView.height - 50)
+        
+        self.imageCoinText = SKSpriteNode(imageNamed: "coin")
+        self.imageCoinText.setScale(0.15)
+        self.imageCoinText.position = CGPoint(x: sizeView.width - 232 - self.imageCoinText.frame.width, y: sizeView.height - 38)
+    }
+    func menuToUpdateCountOfCoin() {
+        self.coinText.text = ("\(SavePrize.shared.saveCoin)")
     }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
