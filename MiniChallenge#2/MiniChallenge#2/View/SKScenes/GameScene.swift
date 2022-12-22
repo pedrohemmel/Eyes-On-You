@@ -13,6 +13,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let prize = SKSpriteNode(imageNamed: "coin2")
     private var prizeIsRemoved = false
+    private var prizeGame = 0
+    private var prizeLblGame = SKLabelNode()
     
     private var menu: Menu? = nil
     private var pausedGameScreen: PausedGame? = nil
