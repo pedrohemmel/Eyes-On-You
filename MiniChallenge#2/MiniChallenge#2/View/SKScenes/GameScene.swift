@@ -100,8 +100,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Teto do jogo
         self.ceiling = self.ceilingToCreate(ceiling: self.ceiling)
         
-        //Moedas
-        self.createPrizeObject()
         
         //Criando e chamando as funções que fazem a estrutura do personagem
         self.character.characterView = AnimatedObject("personagem_alma")
@@ -246,6 +244,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.obstaclesInAction.removeAllActions()
                 self.deleteActionsAndObstacles()
                 
+                //apagando moeda para reiniciar moeda
+                self.prize.removeFromParent()
+                
                 self.mostraMenu()
             },
             actionOfBtnContinue: {
@@ -368,47 +369,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createPrizeObject(){ //colocar ela dentro de um random para gerar aleatorio
         
-        self.prize.setScale(0.3)
+        if gameStarted {
+            self.prize.setScale(0.3)
+            
+            let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
+            
+            self.prize.position = CGPoint(x:self.size.width + 100, y: CGFloat(randomPrize))
+            self.prize.zPosition = 2
+            
+            self.prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
+            self.prize.physicsBody?.affectedByGravity = false
+            
+            self.prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+            self.prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
+            self.prize.physicsBody?.collisionBitMask = PhysicsCategory.character
+            
+            self.prize.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 5))
+            
+            self.gameSKNode.addChild(prize)
+        }
         
-        let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
-        
-        self.prize.position = CGPoint(x:self.size.width - 100, y: CGFloat(randomPrize))
-        self.prize.zPosition = 2
-        
-        self.prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
-        self.prize.physicsBody?.isDynamic = false
-        self.prize.physicsBody?.allowsRotation = false
-        self.prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
-        
-        self.prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
-        self.prize.physicsBody?.collisionBitMask = PhysicsCategory.character
-        
-        self.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 10))
-        
-        self.gameSKNode.addChild(prize)
     }
     
-    func verifyPrize() {
-        if prize.position.x <= -100 && !self.prizeIsRemoved {
-            
+    func restartPrize() {
+        
+        if gameStarted {
             self.prize.removeFromParent()
+            self.prize.removeAllActions()
             
             let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
             
             self.prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
             
-            self.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 10))
+            self.prize.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 5))
             
             self.gameSKNode.addChild(prize)
+        }
+        
+    }
+    
+    func verifyPrize() {
+        if prize.position.x <= -90 && !self.prizeIsRemoved {
+            
+            self.restartPrize()
         } else {
             if prizeIsRemoved {
-                let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
                 
-                self.prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
-                
-                self.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 10))
-                
-                self.gameSKNode.addChild(prize)
+                self.restartPrize()
                 
                 self.prizeIsRemoved = false
             }
@@ -519,6 +526,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                             }
                             
+                            //apagando moeda
+                            self.prize.removeFromParent()
+                            
                             self.character.characterLife.last?.removeFromParent()
                             self.character.characterLife.removeLast()
                             self.gameOver = true
@@ -547,6 +557,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.gameStarted = true
             self.givedUpGame = false
             self.gameOver = false
+            
+            self.createPrizeObject()
             
             self.appearLifeScoreAndPauseButton()
             self.menu!.tapToStart()
