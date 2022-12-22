@@ -11,10 +11,11 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let prize = SKSpriteNode(imageNamed: "coin2")
+    private var prize = AnimatedObject("moeda")
     private var prizeIsRemoved = false
     private var prizeGame = 0
-    private var prizeLblGame = SKLabelNode()
+    private var prizeLblGame = SKLabelNode(fontNamed: "AvenirNext-Bold")
+    private var prizeImgGame = SKSpriteNode(imageNamed: "moedaCContraste")
     
     private var menu: Menu? = nil
     private var pausedGameScreen: PausedGame? = nil
@@ -91,7 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Score
         Score.shared.scoreLabel.fontSize = 25
         Score.shared.scoreLabel.fontColor = .red
-        Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 80, y: self.frame.height - 48)
+        Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 90, y: self.frame.height - 48)
         Score.shared.scoreLabel.zPosition = 2
         
         //Game over
@@ -106,6 +107,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.mostraMenu()
         })
+        
+        //Moeda
+        self.structuringPrizeLbl()
+        self.structuringPrizeImg()
         
         //Background
         self.creatingAnimatedBackground()
@@ -127,13 +132,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Vulto atrás do personagem
         self.bulk.setScale(0.2)
         self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
-        self.bulk.zPosition = 2
+        self.bulk.zPosition = 3
         
         //Escondendo imagens do jogo antes de começar
         self.hideLifeScoreAndPauseButton()
         
         //Adicionando os filhos para a gameSKNode
         self.gameSKNode.addChild(Score.shared.scoreLabel)
+        self.gameSKNode.addChild(self.prizeLblGame)
+        self.gameSKNode.addChild(self.prizeImgGame)
         self.gameSKNode.addChild(self.character.characterView)
         self.gameSKNode.addChild(self.bulk)
         self.gameSKNode.addChild(self.ceiling)
@@ -177,6 +184,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func hideLifeScoreAndPauseButton() -> Void {
         Score.shared.scoreLabel.isHidden = true
         
+        //Escondendo score de moedas antes de começar o jogo
+        self.prizeLblGame.isHidden = true
+        self.prizeImgGame.isHidden = true
+        
         for life in self.character.characterLife {
             life.isHidden = true
         }
@@ -186,6 +197,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func appearLifeScoreAndPauseButton() -> Void {
         Score.shared.scoreLabel.isHidden = false
+        
+        //Mostrando score de moedas depois de começar o jogo
+        self.prizeLblGame.isHidden = false
+        self.prizeImgGame.isHidden = false
         
         for life in self.character.characterLife {
             life.isHidden = false
@@ -209,7 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         self.pausedButton?.setScale(0.5)
         self.pausedButton?.zPosition = 2
-        self.pausedButton?.position = CGPoint(x: self.frame.width - 40, y: self.frame.height - 40)
+        self.pausedButton?.position = CGPoint(x: self.frame.width - 40, y: self.frame.height - 39)
     }
     
     func pauseGameSKNode() -> Void {
@@ -239,6 +254,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ceiling.physicsBody?.isDynamic = false
         
         return ceiling
+    }
+    
+    //Setando propriedades da labe da moeda
+    func structuringPrizeLbl() -> Void {
+        self.prizeLblGame.position = CGPoint(x: self.size.width - 160, y: self.size.height - 48)
+        self.prizeLblGame.fontSize = 25
+        self.prizeLblGame.zPosition = 2
+    }
+    
+    func structuringPrizeImg() -> Void {
+        self.prizeImgGame.position = CGPoint(x: self.size.width - 210 - self.prizeLblGame.frame.width, y: self.size.height - 37)
+        self.prizeImgGame.setScale(0.065)
+        self.prizeImgGame.zPosition = 2
     }
     
     func groundToCreate(ground: SKSpriteNode) -> SKSpriteNode {
@@ -390,22 +418,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setPropertiesOfPrize() -> Void {
+        self.prize.setScale(0.1)
+        
+        let randomPrize = Float.random(in: (Float(prize.frame.height))...(Float(self.size.height) - Float(prize.frame.height))) //random de Y
+        
+        self.prize.position = CGPoint(x:self.size.width + 100, y: CGFloat(randomPrize))
+        self.prize.zPosition = 2
+        
+        self.prize.physicsBody = SKPhysicsBody(circleOfRadius: self.prize.size.width / 2)
+        self.prize.physicsBody?.affectedByGravity = false
+        
+        self.prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+        self.prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
+        self.prize.physicsBody?.collisionBitMask = PhysicsCategory.character
+    }
+    
     func createPrizeObject(){ //colocar ela dentro de um random para gerar aleatorio
         
         if gameStarted {
-            self.prize.setScale(0.3)
             
-            let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
+            self.prize = AnimatedObject("moeda")
             
-            self.prize.position = CGPoint(x:self.size.width + 100, y: CGFloat(randomPrize))
-            self.prize.zPosition = 2
-            
-            self.prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
-            self.prize.physicsBody?.affectedByGravity = false
-            
-            self.prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
-            self.prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
-            self.prize.physicsBody?.collisionBitMask = PhysicsCategory.character
+            self.setPropertiesOfPrize()
             
             self.prize.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 5))
             
@@ -420,9 +455,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.prize.removeFromParent()
             self.prize.removeAllActions()
             
-            let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
+            self.prize = AnimatedObject("moeda")
             
-            self.prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
+            self.setPropertiesOfPrize()
             
             self.prize.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 5))
             
@@ -512,6 +547,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     firstBody.categoryBitMask == PhysicsCategory.prize ? firstBody.node?.removeFromParent() : secondBody.node?.removeFromParent()
                     self.prizeIsRemoved = true
                     
+                    self.prizeGame += 1
                     SavePrize.shared.addcCoin()
                     self.menu?.menuToUpdateCountOfCoin()
                     
@@ -587,6 +623,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.gameOver = false
             
             self.createPrizeObject()
+            self.prizeGame = 0
+            self.prizeLblGame.text = "\(prizeGame)"
             
             self.appearLifeScoreAndPauseButton()
             self.menu!.tapToStart()
@@ -936,6 +974,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if !gameOver && !pausedGame {
                 
                 self.verifyPrize()
+                
+                prizeLblGame.text = "\(prizeGame)"
                 
                 if currentTime > Score.shared.renderTime{
                     Score.shared.addScore()

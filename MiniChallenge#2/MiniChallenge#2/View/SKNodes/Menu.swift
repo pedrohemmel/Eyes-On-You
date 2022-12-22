@@ -158,11 +158,11 @@ class Menu: SKNode {
         self.coinText.fontName = "AvenirNext-Bold"
         self.coinText.fontColor = .black
         self.coinText.fontSize = CGFloat(25)
-        self.coinText.position = CGPoint(x: sizeView.width - 220, y: sizeView.height - 50)
+        self.coinText.position = CGPoint(x: sizeView.width - 280, y: sizeView.height - 50)
         
         self.imageCoinText = SKSpriteNode(imageNamed: "coin")
         self.imageCoinText.setScale(0.15)
-        self.imageCoinText.position = CGPoint(x: sizeView.width - 232 - self.imageCoinText.frame.width, y: sizeView.height - 38)
+        self.imageCoinText.position = CGPoint(x: sizeView.width - 340, y: sizeView.height - 38)
     }
     func menuToUpdateCountOfCoin() {
         self.coinText.text = ("\(SavePrize.shared.saveCoin)")
@@ -172,7 +172,7 @@ class Menu: SKNode {
         
         self.imageHighScoreText = SKSpriteNode(imageNamed: "highscore_icon")
         self.imageHighScoreText.setScale(0.4)
-        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 90 - self.imageHighScoreText.frame.width, y: sizeView.height - 35)
+        self.imageHighScoreText.position = CGPoint(x: sizeView.width - 180 , y: sizeView.height - 35)
         
         self.highScoreText.text = ("\(Score.shared.highScore)")
         self.highScoreText.fontName = "AvenirNext-Bold"
