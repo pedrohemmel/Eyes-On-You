@@ -125,10 +125,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
         //Vulto atrás do personagem
-        self.bulk.setScale(0.2)
-        self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
-        self.bulk.zPosition = 2
-        
+//        func monsterAppear(night: Bool) {
+//            self.bulk.setScale(0.22)
+//            self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
+//
+//            if night {
+//                self.bulk.zPosition = 2
+//            } else {
+//                self.bulk.zPosition = 0
+//            }
+//        }
+     
         //Escondendo imagens do jogo antes de começar
         self.hideLifeScoreAndPauseButton()
         
@@ -149,6 +156,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(self.gameSKNode)
         self.addChild(self.pausedGameScreen!)
         self.addChild(self.gameOverScreen!)
+    }
+    
+    //Vulto atrás do personagem
+    func monsterAppear(night: Bool) {
+        
+        self.bulk.setScale(0.22)
+        self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
+
+        if night {
+            self.bulk.zPosition = 2
+        } else {
+            self.bulk.zPosition = 0
+        }
     }
     
     //MARK: - Criando objetos da cena principal
@@ -904,6 +924,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    
     //Criando função que implementa dificuldade com o decorrer do jogo
     func increasingLevel() {
         if Score.shared.gameScore == 10 {
@@ -961,6 +982,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if self.night {
                 if .now >= self.timeOfChangingBackground {
+                    
                     self.transitionNight = true
                 }
             }
@@ -968,6 +990,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         self.verifyAndMoveBackground()
+        
+        self.monsterAppear(night: night)
+//        print("noite esta atualmente => \(night)")
 
     }
 }
