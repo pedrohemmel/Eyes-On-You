@@ -11,6 +11,9 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    private let prize = SKSpriteNode(imageNamed: "coin2")
+    private var prizeIsRemoved = false
+    
     private var menu: Menu? = nil
     private var pausedGameScreen: PausedGame? = nil
     private var gameOverScreen: GameOver? = nil
@@ -51,14 +54,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let gameSKNode = SKNode()
     let animationOfBackground = SKNode()
     
+    let moveAction = SKAction.moveTo(x: -100, duration: 3)
+    let removeAction = SKAction.removeFromParent()
+    
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
     private var movedActionOfObstacles = SKAction()
     private var obstaclesInAction = SKNode()
     
     override func didMove(to view: SKView) {
+       
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
 
+        //Menu
         self.menu = Menu() {
             let telaInfo = Info(size: self.frame.size)
             telaInfo.scaleMode = .aspectFill
@@ -73,16 +81,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Chamando a função que estrutura o menu principal
         self.menu!.menuToStruct(sizeView: self.size)
         
-        //criando botão de pausar o game
+        //Pause do jogo
         pauseButtonToCreate()
         self.pausedGameScreen = PausedGame(view: self)
         self.buttonsOfPausedScreenToCreate()
         
+        //Score
         Score.shared.scoreLabel.fontSize = 25
         Score.shared.scoreLabel.fontColor = .red
         Score.shared.scoreLabel.position = CGPoint(x: self.frame.width - 80, y: self.frame.height - 48)
         Score.shared.scoreLabel.zPosition = 2
         
+        //Game over
         self.gameOverScreen = GameOver(view: self)
         self.gameOverScreen?.creatingRestartButton(view: self, actionOfBtnRestart: {
             self.givedUpGame = true
@@ -95,14 +105,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.mostraMenu()
         })
         
+        //Background
         self.creatingAnimatedBackground()
         
-        //Criando o objeto solo
+        //Chão do jogo
         self.ground = groundToCreate(ground: SKSpriteNode(imageNamed: "chao"))
         self.ground.zPosition = 2
         
-        //criando teto
+        //Teto do jogo
         self.ceiling = self.ceilingToCreate(ceiling: self.ceiling)
+        
         
         //Criando e chamando as funções que fazem a estrutura do personagem
         self.character.characterView = AnimatedObject("personagem_alma")
@@ -110,10 +122,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.characterView = character.characterToCollide(character: character.characterView)
         self.character.characterLife = character.characterLifeToSetProperties(characterLife: self.character.characterLife, view: self)
         
+        //Vulto atrás do personagem
         self.bulk.setScale(0.2)
         self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
         self.bulk.zPosition = 2
         
+        //Escondendo imagens do jogo antes de começar
         self.hideLifeScoreAndPauseButton()
         
         //Adicionando os filhos para a gameSKNode
@@ -123,7 +137,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.ceiling)
         self.gameSKNode.addChild(self.ground)
         self.gameSKNode.addChild(self.animationOfBackground)
-        
         self.gameSKNode.addChild(self.pausedButton!)
         for life in self.character.characterLife {
             self.gameSKNode.addChild(life)
@@ -250,6 +263,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.obstaclesInAction.removeAllActions()
                 self.deleteActionsAndObstacles()
                 
+                //apagando moeda para reiniciar moeda
+                self.prize.removeFromParent()
+                
                 self.mostraMenu()
                 
                 //Adicionando tempo de diferença do pause para o tempo de mudança dos bakcgrounds
@@ -363,11 +379,67 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
+    
         default:
             //Obstaculo poadrão
             let birdObstacle = BirdObstacle()
             birdObstacle.obstacleView.position.y = self.frame.height * 2
             return birdObstacle
+        }
+    }
+    
+    func createPrizeObject(){ //colocar ela dentro de um random para gerar aleatorio
+        
+        if gameStarted {
+            self.prize.setScale(0.3)
+            
+            let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
+            
+            self.prize.position = CGPoint(x:self.size.width + 100, y: CGFloat(randomPrize))
+            self.prize.zPosition = 2
+            
+            self.prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
+            self.prize.physicsBody?.affectedByGravity = false
+            
+            self.prize.physicsBody?.categoryBitMask = PhysicsCategory.prize
+            self.prize.physicsBody?.contactTestBitMask = PhysicsCategory.character
+            self.prize.physicsBody?.collisionBitMask = PhysicsCategory.character
+            
+            self.prize.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 5))
+            
+            self.gameSKNode.addChild(prize)
+        }
+        
+    }
+    
+    func restartPrize() {
+        
+        if gameStarted {
+            self.prize.removeFromParent()
+            self.prize.removeAllActions()
+            
+            let randomPrize = Float.random(in: (0 + Float(prize.frame.height))..<(Float(self.frame.height) - Float(prize.frame.height))) //random de Y
+            
+            self.prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
+            
+            self.prize.run(SKAction.moveBy(x: -self.size.width - 200, y: 0, duration: 5))
+            
+            self.gameSKNode.addChild(prize)
+        }
+        
+    }
+    
+    func verifyPrize() {
+        if prize.position.x <= -90 && !self.prizeIsRemoved {
+            
+            self.restartPrize()
+        } else {
+            if prizeIsRemoved {
+                
+                self.restartPrize()
+                
+                self.prizeIsRemoved = false
+            }
         }
     }
 
@@ -376,6 +448,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !givedUpGame && !pausedGame {
             self.obstaclesInAction = SKNode()
             let sortedObstacle = self.sortObstacle()
+           
                         
             sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
                     
@@ -397,6 +470,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func creatingMoveOfObstacle(tempo: Double, duration: Double) {
         let spawn = SKAction.run({ () in
             self.generatingNewObstacle()
+            
         })
         
         let delay = SKAction.wait(forDuration: tempo)
@@ -423,15 +497,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
+    
         if !givedUpGame {
+            
+            if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.prize || firstBody.categoryBitMask == PhysicsCategory.prize && secondBody.categoryBitMask == PhysicsCategory.character{
+                
+                
+                
+                if self.colisionAllowed {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    
+                    firstBody.categoryBitMask == PhysicsCategory.prize ? firstBody.node?.removeFromParent() : secondBody.node?.removeFromParent()
+                    self.prizeIsRemoved = true
+                    
+                    SavePrize.shared.addcCoin()
+                    self.menu?.menuToUpdateCountOfCoin()
+                    
+                    self.colisionAllowed = false
+                }
+                self.settingTimeOfInvincibility()
+                
+                
+            }
+          
+
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
                 
-                
-                
 //                Decrementando itens da lista de vidas do jogo
                 if self.colisionAllowed {
+
                     if !(self.character.characterLife.count <= 1) {
+                        
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        
                         self.character.characterLife.last?.removeFromParent()
                         self.character.characterLife.removeLast()
                         
@@ -439,12 +538,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             AVAudio.sharedInstance().playSoundEffect("impacto.mp3")
                         }
                     } else {
+                        //MARK: - GAME OVER
                         if !gameOver {
 
+                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                            
                             if menu!.audioStatus {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                             }
-
+                            
+                            //apagando moeda
+                            self.prize.removeFromParent()
+                            
                             self.character.characterLife.last?.removeFromParent()
                             self.character.characterLife.removeLast()
                             self.character.characterView.isHidden = true
@@ -455,18 +560,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             
                             self.pauseGameSKNode()
                             self.gameOverScreen?.updatingFinalScore(newFinalScore: Int(Score.shared.gameScore))
-                            
-
                         }
-
                     }
-                    
                     //Deixando a colisao permitida igual a false para o fator invencibilidade do personagem
                     self.colisionAllowed = false
                 }
                 self.settingTimeOfInvincibility()
-                
-                
                 if firstBody.categoryBitMask == PhysicsCategory.obstacle {
                     firstBody.node?.removeFromParent()
                 } else {
@@ -474,26 +573,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
-    }
-    
-
-    
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
-        
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -504,6 +583,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.gameStarted = true
             self.givedUpGame = false
             self.gameOver = false
+            
+            self.createPrizeObject()
             
             self.appearLifeScoreAndPauseButton()
             self.menu!.tapToStart()
@@ -851,18 +932,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if menu!.startGame == true{
             if !gameOver && !pausedGame {
+                
+                self.verifyPrize()
+                
                 if currentTime > Score.shared.renderTime{
                     Score.shared.addScore()
                     Score.shared.trySaveHighScore()
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
-                    menu!.highScoreText.text = "\(Score.shared.highScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
                     
-                    self.increasingLevel()
+                    menu!.highScoreText.text = "\(Score.shared.highScore)"
                     
+                    self.increasingLevel()
                 }
             }
-            
         }
         
         if self.gameStarted {
@@ -880,14 +963,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            
-            
         }
         
         self.verifyAndMoveBackground()
-        
-        
-        
-        
+
     }
 }

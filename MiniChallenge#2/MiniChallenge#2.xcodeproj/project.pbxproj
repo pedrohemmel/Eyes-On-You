@@ -28,6 +28,7 @@
 		95ADC8C22937E13F00F9B9C5 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C12937E13F00F9B9C5 /* Info.swift */; };
 		95ADC8C42938105500F9B9C5 /* ScreenInfoChoosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */; };
 		95ADC8C629381D4900F9B9C5 /* SKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */; };
+		B91DADD6295128D8006E036D /* SavePrize.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DADD5295128D8006E036D /* SavePrize.swift */; };
 		B98E203B292806CB0022E94F /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E203A292806CB0022E94F /* Score.swift */; };
 		B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3C84A29272E4100403187 /* AVAudio.swift */; };
 		BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AEDC29397CD0002662DD /* PausedGame.swift */; };
@@ -62,6 +63,7 @@
 		95ADC8C12937E13F00F9B9C5 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInfoChoosed.swift; sourceTree = "<group>"; };
 		95ADC8C529381D4900F9B9C5 /* SKButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButtonNode.swift; sourceTree = "<group>"; };
+		B91DADD5295128D8006E036D /* SavePrize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePrize.swift; sourceTree = "<group>"; };
 		B98E203A292806CB0022E94F /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9B3C84A29272E4100403187 /* AVAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudio.swift; sourceTree = "<group>"; };
 		BB03AEDC29397CD0002662DD /* PausedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedGame.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		6172C3CF2926C71E003C21FE /* SKNodes */ = {
 			isa = PBXGroup;
 			children = (
+				B91DADD5295128D8006E036D /* SavePrize.swift */,
 				B98E203A292806CB0022E94F /* Score.swift */,
 				BB03AEDC29397CD0002662DD /* PausedGame.swift */,
 				BB03AEDE2939CE7B002662DD /* GameOver.swift */,
@@ -202,7 +205,6 @@
 		B98E203E292824D10022E94F /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
-
 				BB03AF682947E97A002662DD /* StoryAnimationScene.swift */,
 				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
 				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
@@ -239,7 +241,6 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-
 		BB03AF6C294A6014002662DD /* SKSpriteNodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,7 +279,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					161959C229256BFC00E2CC45 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -385,7 +386,7 @@
 				95686808294BA00400182C77 /* Tutorial.swift in Sources */,
 				9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */,
 				161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */,
-				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
+				B91DADD6295128D8006E036D /* SavePrize.swift in Sources */,
 				161959E42925782E00E2CC45 /* Character.swift in Sources */,
 				BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */,
 				161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */,
@@ -465,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -519,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -537,7 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K9PSK8562;
+				DEVELOPMENT_TEAM = UFS93RKF34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes on You";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
@@ -547,7 +548,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,7 +573,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K9PSK8562;
+				DEVELOPMENT_TEAM = UFS93RKF34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes on You";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
@@ -582,7 +583,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

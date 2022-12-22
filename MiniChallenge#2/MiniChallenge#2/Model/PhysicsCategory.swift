@@ -13,4 +13,5 @@ struct PhysicsCategory {
     static let ground: UInt32 = 0x1 << 3
     static let ceiling: UInt32 = 0x1 << 4
     static let gate: UInt32 = 0x1 << 5
+    static let prize: UInt32 = 0x1 << 6
 }
