@@ -13,12 +13,11 @@ open class AVAudio {
 
     open var backgroundMusicPlayer: AVAudioPlayer?
     open var soundEffectPlayer: AVAudioPlayer?
-    
+
     open class func sharedInstance() -> AVAudio {
         return AVAudioInstance
     }
-    
-    
+
     open func playBackgroundMusic(_ filename: String) {
         let url = Bundle.main.url(forResource: filename,
                                   withExtension: nil)
@@ -26,9 +25,9 @@ open class AVAudio {
             print("Could not find file: \(filename)")
             return
         }
-        
+
         var error: NSError? = nil
-        
+
         do {
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf:
                 url!)
@@ -36,7 +35,7 @@ open class AVAudio {
             error = undefinedBackgroundMusic
             backgroundMusicPlayer = nil
         }
-        
+
         if let player = backgroundMusicPlayer {
             player.numberOfLoops = -1
             player.prepareToPlay()
@@ -44,9 +43,9 @@ open class AVAudio {
         } else {
             print("Could not create audio player: \(error!)")
         }
-        
+
     }
-    
+
     open func pauseBackgroundMusic() {
         if let player = backgroundMusicPlayer {
             if player.isPlaying {
@@ -54,7 +53,7 @@ open class AVAudio {
             }
         }
     }
-    
+
     open func resumeBackgroundMusic() {
         if let player = backgroundMusicPlayer {
             if !player.isPlaying {
@@ -62,7 +61,7 @@ open class AVAudio {
             }
         }
     }
-    
+
     open func playSoundEffect(_ filename: String) {
         let url = Bundle.main.url(forResource: filename,
                                   withExtension: nil)

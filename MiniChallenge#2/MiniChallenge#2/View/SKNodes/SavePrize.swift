@@ -27,12 +27,6 @@ class SavePrize: SKNode{
         saveCoin += 1
     }
     
-    public func trySaveHighScore() {
-        if self.saveCoin < self.saveCoin {
-            self.saveCoin = self.saveCoin
-        }
-    }
-    
     override init() {
         super.init()
     }

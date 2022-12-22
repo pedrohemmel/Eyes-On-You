@@ -363,7 +363,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         prize.position = CGPoint(x:self.size.width+100, y: CGFloat(randomPrize))
         prize.zPosition = 2
-        
+        UIImpactFeedbackGenerator(style: .medium).prepare()
         prize.physicsBody = SKPhysicsBody(texture: prize.texture!, size: prize.size)
         prize.physicsBody?.isDynamic = false
         prize.physicsBody?.allowsRotation = false
@@ -443,18 +443,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.prize || firstBody.categoryBitMask == PhysicsCategory.prize && secondBody.categoryBitMask == PhysicsCategory.character{
                 
-                secondBody.node?.removeFromParent()
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                firstBody.categoryBitMask == PhysicsCategory.prize ? firstBody.node?.removeFromParent() : secondBody.node?.removeFromParent()
                 SavePrize.shared.addcCoin()
-                print("ooioi")
+                
             }
-//            else{
-//                secondBody.node?.removeFromParent()
-//            }
-           
+          
 
             //Estrutura condicional que verifica os corpos de contato
             if firstBody.categoryBitMask == PhysicsCategory.character && secondBody.categoryBitMask == PhysicsCategory.obstacle || firstBody.categoryBitMask == PhysicsCategory.obstacle && secondBody.categoryBitMask == PhysicsCategory.character {
-
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 //                Decrementando itens da lista de vidas do jogo
                 if self.colisionAllowed {
 
@@ -466,65 +464,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             AVAudio.sharedInstance().playSoundEffect("impacto.mp3")
                         }
                     } else {
+//MARK: - GAME OVER
                         if !gameOver {
 
                             if menu!.audioStatus {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
                             }
-
+                            
+                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                             self.character.characterLife.last?.removeFromParent()
                             self.character.characterLife.removeLast()
-
                             self.gameOver = true
                             self.pausedGame = true
                             self.gameOverScreen!.isHidden = false
                             
                             self.pauseGameSKNode()
                             self.gameOverScreen?.updatingFinalScore(newFinalScore: Int(Score.shared.gameScore))
-                            
-
                         }
-                        
-
                     }
-                    
                     //Deixando a colisao permitida igual a false para o fator invencibilidade do personagem
                     self.colisionAllowed = false
                 }
                 self.settingTimeOfInvincibility()
-                
-               
-                
                 if firstBody.categoryBitMask == PhysicsCategory.obstacle {
                     firstBody.node?.removeFromParent()
                 } else {
                     secondBody.node?.removeFromParent()
                 }
-               
-               
-                
             }
         }
-        
-    }
-    
-
-    
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
-        
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -598,13 +566,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
                     menu!.highScoreText.text = "\(Score.shared.highScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
-                    
                     self.increasingLevel()
-                    
                 }
             }
-            
         }
-        
     }
 }
