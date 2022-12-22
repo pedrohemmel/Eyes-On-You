@@ -7,8 +7,12 @@
 
 import Foundation
 import SpriteKit
+import GameKit
 
 class Menu: SKNode {
+    
+    //Variável auxiliar para apresentar a viewController do game center
+    var currentViewController: GameViewController?
     
     //MARK: - Criando as variáveis principais
     var audioStatus: Bool = true
@@ -29,15 +33,20 @@ class Menu: SKNode {
     
     var audioButtonOn: CustomizedButton?
     var audioButtonOff: CustomizedButton?
+    var gameCenterButton: CustomizedButton?
     
     //MARK: - Inicializador
-    init(infoButtonAction: @escaping () -> Void) {
+    init(infoButtonAction: @escaping () -> Void, view: SKView) {
         super.init()
     
         //Criando os botões de configuração do menu
         self.menuToCreateButtonInfo(infoButtonAction: infoButtonAction)
         self.menuToCreateButtonOn()
         self.menuToCreateButtonOff()
+        self.menuToCreateButtonGameCenter(view: view)
+        
+        //Chamando função que acha e atribui view controller atual à variável currentViewController
+        self.findingCurrentViewController(for: view)
         
         //Setando icone de som mutado escondido na tela por padrão
         audioButtonOff?.isHidden = true
@@ -77,10 +86,40 @@ class Menu: SKNode {
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
         self.audioButtonOff!.zPosition = 5
         self.addChild(self.audioButtonOff!)
+        
+        self.menuGameCenterButtonToSetProperties(sizeView: sizeView)
+        self.gameCenterButton?.zPosition = 5
+        self.addChild(self.gameCenterButton!)
 
         self.menuStartTextToSetProperties(sizeView: sizeView)
         self.startText.zPosition = 5
         self.addChild(self.startText)
+    }
+    
+    func menuToCreateButtonGameCenter(view: SKView) {
+        self.gameCenterButton = {
+            let buttonGameCenter = CustomizedButton(
+                imageName: "",
+                buttonAction: {
+                    //Mostrando plataforma do game center
+                    let player = GKLocalPlayer.local
+
+                    player.authenticateHandler = { vc, error in
+                        guard error == nil else {
+                            print(error?.localizedDescription ?? "")
+                            return
+                        }
+                        if let vc = vc {
+                            self.currentViewController!.present(vc, animated: true, completion: nil)
+                        } else {
+                            let vc = GKGameCenterViewController(state: .leaderboards)
+                            vc.gameCenterDelegate = self.currentViewController! as GameViewController
+                            self.currentViewController?.present(vc, animated: true)
+                        }
+                    }
+                })
+            return buttonGameCenter
+        }()
     }
     
     //Criação do botão de informações
@@ -143,8 +182,8 @@ class Menu: SKNode {
     }
     
     func menuInfoButtonToSetProperties(sizeView: CGSize) {
-        self.infoButton!.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
-        self.infoButton?.buttonView.setScale(0.25)
+        self.gameCenterButton!.position = CGPoint(x: 80, y: sizeView.height - 40)
+        self.gameCenterButton!.buttonView.setScale(0.25)
     }
     
     func menuHighScoreToSetProperties(sizeView: CGSize) {
@@ -160,6 +199,11 @@ class Menu: SKNode {
         self.highScoreText.position = CGPoint(x: sizeView.width - 120, y: sizeView.height - 50)
     }
     
+    func menuGameCenterButtonToSetProperties(sizeView: CGSize) {
+        self.infoButton!.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
+        self.infoButton?.buttonView.setScale(0.25)
+    }
+    
     func tapToRestart() {
         self.isHidden = false
         startGame = false
@@ -171,5 +215,28 @@ class Menu: SKNode {
         startGame = true
         Score.shared.scoreLabel.isHidden = false
     }
+    
+    //Buscando a view controller atual
+    func findingCurrentViewController(for view: SKView) {
+        
+        var upstreamResponder: UIResponder? = view
+        var found = false
+        
+        while (found != true){
+            
+            upstreamResponder = upstreamResponder!.next
+            
+            if let viewController = upstreamResponder as? GameViewController {
+                self.currentViewController = viewController
+                found = true
+            }
+            
+            if upstreamResponder == nil {
+                print("Não foi possível identificar a view controller")
+                break
+            }
+        }
+    }
+
     
 }

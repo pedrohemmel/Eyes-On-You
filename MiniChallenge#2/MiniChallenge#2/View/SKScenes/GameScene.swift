@@ -11,27 +11,33 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private var menu: Menu? = nil
-    private var pausedGameScreen: PausedGame? = nil
-    private var gameOverScreen: GameOver? = nil
     
+        
+    //Criando o personagem e o vulto que segue o mesmo
     private let character = Character.character
     private let bulk = AnimatedObject("vulto")
+    
+    private var menu: Menu? = nil
+    private var pausedButton: CustomizedButton? = nil
+    private var pausedGameScreen: PausedGame? = nil
+    private var gameOverScreen: GameOver? = nil
     
     private var gameStarted = false
     private var gameOver = false
     private var pausedGame = false
     private var givedUpGame = false
-    private var colisionAllowed = true
     
+    //Variáveis para lógica de sons
     private var timeToWaitForMusic: Date = .now
     private var timeMusicPlayed = false
     
     //Sprites do ambiente de jogo
-    private var pausedButton: CustomizedButton? = nil
     private var ground: SKSpriteNode = SKSpriteNode()
     private var ceiling = SKSpriteNode()
     
+    let gameSKNode = SKNode()
+    
+    //Variáveis de background
     private var day = true
     private var transitionDay = false
     private var startedTransitionDay = false
@@ -48,18 +54,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var timeEndedPause: Date? = nil
     private var timeOfChangingBackground: Date = .now
     
-    let gameSKNode = SKNode()
-    let animationOfBackground = SKNode()
-    
     //Variável utilizada para auxiliar na lógica de movimento dos objetos
     private var movedActionOfObstacles = SKAction()
     private var obstaclesInAction = SKNode()
     
+    //Variável que auxilia na invencibilidade momentânea do personagem após colidir com um obstaculo
+    private var colisionAllowed = true
+    
     override func didMove(to view: SKView) {
+        
+        
+        
         //Relacionando o SKPhysicsContactDelegate à classe self
         self.physicsWorld.contactDelegate = self
 
-        self.menu = Menu() {
+        self.menu = Menu(infoButtonAction: {
             let telaInfo = Info(size: self.frame.size)
             telaInfo.scaleMode = .aspectFill
             
@@ -69,7 +78,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.character.characterToRemoveLifesFromParent()
             
             self.view?.presentScene(telaInfo, transition: SKTransition.fade(with: .black, duration: 1))
-        }
+        }, view: self.view!)
+        
         //Chamando a função que estrutura o menu principal
         self.menu!.menuToStruct(sizeView: self.size)
         
@@ -122,7 +132,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameSKNode.addChild(self.bulk)
         self.gameSKNode.addChild(self.ceiling)
         self.gameSKNode.addChild(self.ground)
-        self.gameSKNode.addChild(self.animationOfBackground)
         
         self.gameSKNode.addChild(self.pausedButton!)
         for life in self.character.characterLife {
@@ -440,6 +449,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         }
                     } else {
                         if !gameOver {
+                            
+                            Score.shared.trySaveHighScore(saveGameCenter: true)
 
                             if menu!.audioStatus {
                                 AVAudio.sharedInstance().playSoundEffect("gameover.mp3")
@@ -476,10 +487,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    
-
-    
-    
     
     func touchDown(atPoint pos : CGPoint) {
         
@@ -853,6 +860,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if !gameOver && !pausedGame {
                 if currentTime > Score.shared.renderTime{
                     Score.shared.addScore()
+                    //Salvando novo highScore se tiver alcançado um novo
                     Score.shared.trySaveHighScore()
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
                     menu!.highScoreText.text = "\(Score.shared.highScore)"
@@ -867,7 +875,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if self.gameStarted {
             
-            //Lógica para ajudar nas transmissões
+            //Lógica para ajudar nas transições de background
             if self.day {
                 if .now >= self.timeOfChangingBackground {
                     self.transitionDay = true
@@ -879,15 +887,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.transitionNight = true
                 }
             }
-            
-            
-            
         }
         
         self.verifyAndMoveBackground()
-        
-        
-        
         
     }
 }

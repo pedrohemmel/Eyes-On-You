@@ -71,6 +71,7 @@
 		BB03AF6129422D19002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB03AF682947E97A002662DD /* StoryAnimationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAnimationScene.swift; sourceTree = "<group>"; };
 		BB03AF6A2947F9BA002662DD /* GateObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateObstacle.swift; sourceTree = "<group>"; };
+		BB706D20295348A700A98AD6 /* MiniChallenge#2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MiniChallenge#2.entitlements"; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +117,7 @@
 		161959C529256BFC00E2CC45 /* MiniChallenge#2 */ = {
 			isa = PBXGroup;
 			children = (
+				BB706D20295348A700A98AD6 /* MiniChallenge#2.entitlements */,
 				161959E029256C8100E2CC45 /* Utils */,
 				161959DD29256C0900E2CC45 /* Model */,
 				161959DE29256C1100E2CC45 /* View */,
@@ -202,7 +204,6 @@
 		B98E203E292824D10022E94F /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
-
 				BB03AF682947E97A002662DD /* StoryAnimationScene.swift */,
 				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
 				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
@@ -239,7 +240,6 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-
 		BB03AF6C294A6014002662DD /* SKSpriteNodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,9 +535,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MiniChallenge#2/MiniChallenge#2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K9PSK8562;
+				DEVELOPMENT_TEAM = UFS93RKF34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes on You";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
@@ -570,9 +571,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MiniChallenge#2/MiniChallenge#2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K9PSK8562;
+				DEVELOPMENT_TEAM = UFS93RKF34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes on You";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
