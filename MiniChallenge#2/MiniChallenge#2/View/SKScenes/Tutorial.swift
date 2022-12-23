@@ -72,7 +72,7 @@ extension Tutorial {
         
         previousButton.setScale(0.8)
         previousButton.zPosition = 3
-        previousButton.position = CGPoint(x: self.frame.width / 4, y: 100)
+        previousButton.position = CGPoint(x: self.frame.width / 4.75, y: 100)
         addChild(previousButton)
     }
     

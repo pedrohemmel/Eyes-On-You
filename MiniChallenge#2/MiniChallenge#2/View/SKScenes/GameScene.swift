@@ -29,7 +29,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var gameOver = false
     private var pausedGame = false
     private var givedUpGame = false
+    
     private var colisionAllowed = true
+    private var colisionCoinAllowed = true
     
     private var timeToWaitForMusic: Date = .now
     private var timeMusicPlayed = false
@@ -567,6 +569,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    //Função que aguarda um tempo determinado para permitir com que o personagem possa colidir com os obstaculos
+    func settingTimeOfInvincibilityWithCoin() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.colisionCoinAllowed = true
+        }
+    }
+    
     //Função que detecta o contato dos corpos
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
@@ -579,8 +588,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 
                 
-                if self.colisionAllowed {
+                if self.colisionCoinAllowed {
+                    
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    if menu!.audioStatus {
+                        AVAudio.sharedInstance().playSecondarySoundEffect("coinsound.wav")
+                    }
                     
                     firstBody.categoryBitMask == PhysicsCategory.prize ? firstBody.node?.removeFromParent() : secondBody.node?.removeFromParent()
                     self.prizeIsRemoved = true
@@ -589,9 +602,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     SavePrize.shared.addcCoin()
                     self.menu?.menuToUpdateCountOfCoin()
                     
-                    self.colisionAllowed = false
+                    self.colisionCoinAllowed = false
                 }
-                self.settingTimeOfInvincibility()
+                self.settingTimeOfInvincibilityWithCoin()
                 
                 
             }

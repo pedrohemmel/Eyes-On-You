@@ -105,6 +105,7 @@ class Menu: SKNode {
         self.audioButtonOn = {
             let buttonOn = CustomizedButton(imageName: "volumeBtOn", buttonAction: {
                 AVAudio.sharedInstance().pauseBackgroundMusic()
+                self.audioStatus = false
                 self.audioButtonOff!.isHidden = false
                 self.audioButtonOn!.isHidden = true
             })
@@ -117,6 +118,7 @@ class Menu: SKNode {
         self.audioButtonOff = {
             let buttonOff = CustomizedButton(imageName: "volumeBtOff", buttonAction: {
                 AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
+                self.audioStatus = true
                 self.audioButtonOff!.isHidden = true
                 self.audioButtonOn!.isHidden = false
             })
@@ -160,8 +162,8 @@ class Menu: SKNode {
         self.coinText.fontSize = CGFloat(25)
         self.coinText.position = CGPoint(x: sizeView.width - 280, y: sizeView.height - 50)
         
-        self.imageCoinText = SKSpriteNode(imageNamed: "coin")
-        self.imageCoinText.setScale(0.15)
+        self.imageCoinText = SKSpriteNode(imageNamed: "moedaCContraste")
+        self.imageCoinText.setScale(0.07)
         self.imageCoinText.position = CGPoint(x: sizeView.width - 340, y: sizeView.height - 38)
     }
     func menuToUpdateCountOfCoin() {

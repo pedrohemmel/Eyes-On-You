@@ -13,6 +13,7 @@ open class AVAudio {
 
     open var backgroundMusicPlayer: AVAudioPlayer?
     open var soundEffectPlayer: AVAudioPlayer?
+    open var secondarySoundEffectPlayer: AVAudioPlayer?
 
     open class func sharedInstance() -> AVAudio {
         return AVAudioInstance
@@ -71,12 +72,36 @@ open class AVAudio {
         }
         var error: NSError? = nil
         do {
-            soundEffectPlayer = try AVAudioPlayer(contentsOf: url!)
+            self.soundEffectPlayer = try AVAudioPlayer(contentsOf: url!)
         } catch let undefinedSoundEffect as NSError {
             error = undefinedSoundEffect
-            soundEffectPlayer = nil
+            self.soundEffectPlayer = nil
         }
-        if let player = soundEffectPlayer {
+        if let player = self.soundEffectPlayer {
+            player.numberOfLoops = 0
+            player.prepareToPlay()
+            player.play()
+        } else {
+            print("Could not create audio player: \(error!)")
+        }
+    }
+    
+    //Função criada para caso tenha algum som de efeito que tenha que tocar ao mesmo tempo que outro sem dar conflito
+    open func playSecondarySoundEffect(_ filename: String) {
+        let url = Bundle.main.url(forResource: filename,
+                                  withExtension: nil)
+        if (url == nil) {
+            print("Could not find file: \(filename)")
+            return
+        }
+        var error: NSError? = nil
+        do {
+            self.secondarySoundEffectPlayer = try AVAudioPlayer(contentsOf: url!)
+        } catch let undefinedSoundEffect as NSError {
+            error = undefinedSoundEffect
+            self.secondarySoundEffectPlayer = nil
+        }
+        if let player = self.secondarySoundEffectPlayer {
             player.numberOfLoops = 0
             player.prepareToPlay()
             player.play()
