@@ -360,7 +360,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //
     func sortObstacle() -> Obstacle {
-        let obstacleSorted = Int.random(in: 0...3)
+        let obstacleSorted = self.sorteiaObstaculoMaisProvavel()
         
         //Criando os objetos do tipo do obstaculo sorteado e setando as devidas propriedades
         switch obstacleSorted {
@@ -662,6 +662,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
+    }
+    
+    //MARK: - Algoritmo para sortear o obstaculo mais provável de acertar o jogador
+    
+    func sorteiaObstaculoMaisProvavel() -> Int {
+        if self.character.characterView.position.y <= self.size.height / 2 {
+            return Int.random(in: 0...1)
+        } else {
+            return Int.random(in: 2...3)
+        }
     }
     
     //MARK: - FUNÇÕES DE BACKGROUND DO JOGO JUNTAMENTE COM TRANSIÇÃO DE DIA E NOITE
