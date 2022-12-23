@@ -360,7 +360,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //
     func sortObstacle() -> Obstacle {
-        let obstacleSorted = Int.random(in: 0...2)
+        let obstacleSorted = Int.random(in: 0...3)
         
         //Criando os objetos do tipo do obstaculo sorteado e setando as devidas propriedades
         switch obstacleSorted {
@@ -411,7 +411,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return ghostObstacle
             
         case 3:
-            //MARK: - Aranha
+            let spiderObstacle = SpiderObstacle()
+            spiderObstacle.obstacleView = SKSpriteNode(imageNamed: "aranha")
+            spiderObstacle.obstacleView.size = CGSize(width: 100, height: 140)
+            spiderObstacle.obstacleView = settingPropertiesObstacle(obstacle: spiderObstacle, obstacleView: spiderObstacle.obstacleView)
+            
+            spiderObstacle.obstacleView.position.y = self.size.height - (spiderObstacle.obstacleView.frame.height / 2)
+            return spiderObstacle
     
         default:
             //Obstaculo poadrão

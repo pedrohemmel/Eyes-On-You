@@ -38,6 +38,7 @@
 		BB03AF6229422D19002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF6129422D19002662DD /* gameover.mp3 */; };
 		BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF682947E97A002662DD /* StoryAnimationScene.swift */; };
 		BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF6A2947F9BA002662DD /* GateObstacle.swift */; };
+		BB706D232955F57C00A98AD6 /* SpiderObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		BB03AF6129422D19002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB03AF682947E97A002662DD /* StoryAnimationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAnimationScene.swift; sourceTree = "<group>"; };
 		BB03AF6A2947F9BA002662DD /* GateObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateObstacle.swift; sourceTree = "<group>"; };
+		BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderObstacle.swift; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +200,7 @@
 				9569606F2926B11C00CF81EA /* TombstoneObstacle.swift */,
 				956960742926B63D00CF81EA /* HandObstacle.swift */,
 				BB03AF6A2947F9BA002662DD /* GateObstacle.swift */,
+				BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */,
 			);
 			path = Obstacle;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */,
 				B98E203B292806CB0022E94F /* Score.swift in Sources */,
 				161959C729256BFC00E2CC45 /* AppDelegate.swift in Sources */,
+				BB706D232955F57C00A98AD6 /* SpiderObstacle.swift in Sources */,
 				95ADC8C42938105500F9B9C5 /* ScreenInfoChoosed.swift in Sources */,
 				956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */,
 				956960752926B63D00CF81EA /* HandObstacle.swift in Sources */,
