@@ -459,7 +459,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setPropertiesOfPrize() -> Void {
         self.prize.setScale(0.065)
         
-        let randomPrize = Float.random(in: (Float(prize.frame.height))...(Float(self.size.height) - Float(prize.frame.height))) //random de Y
+        let randomPrize = Float.random(in: (Float(prize.frame.height / 2) + Float(self.ground.frame.height))...(Float(self.size.height) - Float(prize.frame.height))) //random de Y
         
         self.prize.position = CGPoint(x:self.size.width + 100, y: CGFloat(randomPrize))
         self.prize.zPosition = 2
