@@ -37,6 +37,8 @@
 		BB03AF6229422D19002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF6129422D19002662DD /* gameover.mp3 */; };
 		BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF682947E97A002662DD /* StoryAnimationScene.swift */; };
 		BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF6A2947F9BA002662DD /* GateObstacle.swift */; };
+		EBC4251D2954DF4900EF84D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC4251F2954DF4900EF84D0 /* Localizable.strings */; };
+		EBC42522295504E100EF84D0 /* LocalizableLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC42521295504E100EF84D0 /* LocalizableLanguage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,10 @@
 		BB03AF682947E97A002662DD /* StoryAnimationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAnimationScene.swift; sourceTree = "<group>"; };
 		BB03AF6A2947F9BA002662DD /* GateObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateObstacle.swift; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC425192954DBB700EF84D0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		EBC4251E2954DF4900EF84D0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		EBC425202955004200EF84D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBC42521295504E100EF84D0 /* LocalizableLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableLanguage.swift; sourceTree = "<group>"; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +133,7 @@
 		161959DD29256C0900E2CC45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EBC4251C2954DCBC00EF84D0 /* LocalizableLanguage */,
 				956960712926B3A200CF81EA /* Obstacle */,
 				161959E32925782E00E2CC45 /* Character.swift */,
 				161959E72926B5A200E2CC45 /* PhysicsCategory.swift */,
@@ -137,6 +144,7 @@
 		161959DE29256C1100E2CC45 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EBC42523295504E800EF84D0 /* Localizable */,
 				BB03AF6C294A6014002662DD /* SKSpriteNodes */,
 				B98E203E292824D10022E94F /* SKScenes */,
 				6172C3CF2926C71E003C21FE /* SKNodes */,
@@ -202,7 +210,6 @@
 		B98E203E292824D10022E94F /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
-
 				BB03AF682947E97A002662DD /* StoryAnimationScene.swift */,
 				95ADC8C12937E13F00F9B9C5 /* Info.swift */,
 				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
@@ -239,13 +246,28 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-
 		BB03AF6C294A6014002662DD /* SKSpriteNodes */ = {
 			isa = PBXGroup;
 			children = (
 				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
 			);
 			path = SKSpriteNodes;
+			sourceTree = "<group>";
+		};
+		EBC4251C2954DCBC00EF84D0 /* LocalizableLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				EBC4251F2954DF4900EF84D0 /* Localizable.strings */,
+			);
+			path = LocalizableLanguage;
+			sourceTree = "<group>";
+		};
+		EBC42523295504E800EF84D0 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				EBC42521295504E100EF84D0 /* LocalizableLanguage.swift */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +314,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 161959BA29256BFC00E2CC45;
 			productRefGroup = 161959C429256BFC00E2CC45 /* Products */;
@@ -311,6 +334,7 @@
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				BB03AF6229422D19002662DD /* gameover.mp3 in Resources */,
+				EBC4251D2954DF4900EF84D0 /* Localizable.strings in Resources */,
 				BB03AF37293E8916002662DD /* noite.mp3 in Resources */,
 				BB03AF6029422BD1002662DD /* impacto.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
@@ -382,6 +406,7 @@
 				956960732926B56D00CF81EA /* GhostObstacle.swift in Sources */,
 				956960752926B63D00CF81EA /* HandObstacle.swift in Sources */,
 				956960702926B11C00CF81EA /* TombstoneObstacle.swift in Sources */,
+				EBC42522295504E100EF84D0 /* LocalizableLanguage.swift in Sources */,
 				95686808294BA00400182C77 /* Tutorial.swift in Sources */,
 				9524E9D0292589A8007AFBB2 /* BirdObstacle.swift in Sources */,
 				161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */,
@@ -400,6 +425,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D129256BFC00E2CC45 /* Base */,
+				EBC425192954DBB700EF84D0 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -412,6 +438,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		EBC4251F2954DF4900EF84D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBC4251E2954DF4900EF84D0 /* pt-BR */,
+				EBC425202955004200EF84D0 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -419,6 +454,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -479,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -537,7 +574,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K9PSK8562;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes on You";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
@@ -572,7 +609,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5K9PSK8562;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes on You";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";

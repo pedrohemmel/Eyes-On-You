@@ -12,8 +12,8 @@ import GameplayKit
 class GameViewController: UIViewController {
     
     private var obstacle: Obstacle = BirdObstacle()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //test
@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
         let myView: SKView = SKView(frame: self.view.frame)
         self.view = myView
         
-//        let gameScene = GameScene(size: myView.frame.size)
+        //        let gameScene = GameScene(size: myView.frame.size)
         let gameScene = StoryAnimationScene(size: myView.frame.size)
         
         // Set the scale mode to scale to fit the window
@@ -30,18 +30,18 @@ class GameViewController: UIViewController {
         myView.presentScene(gameScene)
         
         myView.ignoresSiblingOrder = true
-            
-//        myView.showsPhysics = true
-//        myView.showsFPS = true
-//        myView.showsNodeCount = true
+        
+        //        myView.showsPhysics = true
+        //        myView.showsFPS = true
+        //        myView.showsNodeCount = true
         
         
     }
-
+    
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -68,3 +68,5 @@ struct AppUtility {
         UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
     }
 }
+
+
