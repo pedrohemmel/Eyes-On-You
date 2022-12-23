@@ -22,6 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let character = Character.character
     private let bulk = AnimatedObject("vulto")
+    private var bulkAppeared = false
     
     private var gameStarted = false
     private var gameOver = false
@@ -135,6 +136,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                self.bulk.zPosition = 0
 //            }
 //        }
+        self.bulk.setScale(0.22)
+        self.bulk.zPosition = 2
+        if night {
+            self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
+        } else {
+            self.bulk.position = CGPoint(x: -190, y: self.frame.height / 3)
+        }
+        
+
      
         //Escondendo imagens do jogo antes de começar
         self.hideLifeScoreAndPauseButton()
@@ -159,16 +169,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //Vulto atrás do personagem
-    func monsterAppear(night: Bool) {
-        
-        self.bulk.setScale(0.22)
-        self.bulk.position = CGPoint(x: 10, y: self.frame.height / 3)
+    func monsterAppear() {
 
-        if night {
-            self.bulk.zPosition = 2
+        if !self.bulkAppeared {
+            if self.day {
+                if self.transitionDay {
+                    self.bulk.run(SKAction.moveBy(x: 200, y: 0, duration: 25))
+                    self.bulkAppeared = true
+                }
+            }
         } else {
-            self.bulk.zPosition = 0
+            if self.night {
+                if self.transitionNight {
+                    self.bulk.run(SKAction.moveBy(x: -200, y: 0, duration: 25))
+                    self.bulkAppeared = false
+                }
+            }
         }
+        
+        
     }
     
     //MARK: - Criando objetos da cena principal
@@ -684,7 +703,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.night = true
             
             //Setando tempo de transição de background para o tempo atual
-            self.timeOfChangingBackground = .now + 5
+            self.timeOfChangingBackground = .now + 15
         } else {
             //setando transitionDay a day como false para fazer a transição para noite
             self.night = false
@@ -694,7 +713,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.day = true
 
             //Setando tempo de transição de background para o tempo atual
-            self.timeOfChangingBackground = .now + 5
+            self.timeOfChangingBackground = .now + 8
 
         }
     }
@@ -982,7 +1001,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if self.night {
                 if .now >= self.timeOfChangingBackground {
-                    
                     self.transitionNight = true
                 }
             }
@@ -991,8 +1009,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.verifyAndMoveBackground()
         
-        self.monsterAppear(night: night)
-//        print("noite esta atualmente => \(night)")
+        self.monsterAppear()
 
     }
 }
