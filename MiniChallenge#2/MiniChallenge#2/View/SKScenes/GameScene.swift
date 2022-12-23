@@ -409,6 +409,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             ghostObstacle.obstacleView.position.y = self.frame.height
             return ghostObstacle
+            
+        case 3:
+            //MARK: - Aranha
     
         default:
             //Obstaculo poadrão
@@ -419,7 +422,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setPropertiesOfPrize() -> Void {
-        self.prize.setScale(0.1)
+        self.prize.setScale(0.065)
         
         let randomPrize = Float.random(in: (Float(prize.frame.height))...(Float(self.size.height) - Float(prize.frame.height))) //random de Y
         
