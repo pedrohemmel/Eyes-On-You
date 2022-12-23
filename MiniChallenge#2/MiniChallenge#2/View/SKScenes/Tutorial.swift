@@ -11,7 +11,7 @@ import SpriteKit
 class Tutorial: SKScene {
     
     var image: SKSpriteNode = SKSpriteNode(imageNamed: "tutorial_tela1")
-    
+    var numImg = 1
 
     //MARK: - Systems
 
@@ -27,7 +27,7 @@ extension Tutorial {
         closeButton()
         setupImage()
         nextImage()
-        
+        previousImage()
     }
 
     func closeButton(){
@@ -37,32 +37,68 @@ extension Tutorial {
             self.view?.presentScene(screenInfo, transition: SKTransition.fade(with: .black, duration: 1))
         })
         
-        closeButton.setScale(0.3)
-        closeButton.zPosition = 10.0
-        closeButton.position = CGPoint(x: frame.midX, y: frame.maxY - 50)
+        closeButton.setScale(0.6)
+        closeButton.zPosition = 3
+        closeButton.position = CGPoint(x: 42, y: self.frame.height - 35)
         addChild(closeButton)
     }
     
     
     func setupImage() {
-        self.image.zPosition = 5.0
+        self.image.zPosition = 2.0
         self.image.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(self.image)
     }
     
+    func previousImage() {
+        
+        
+        
+        let previousButton = CustomizedButton(imageName: "left") {
+            
+            let screenInfo = Info(size: self.frame.size)
+            screenInfo.scaleMode = .aspectFill
+            
+            var num = self.numImg
+            
+            num -= 1
+            if num >= 1 {
+                self.numImg -= 1
+                self.image.texture = SKTexture(imageNamed: "tutorial_tela\(self.numImg)")
+            } else {
+                self.view?.presentScene(screenInfo, transition: SKTransition.fade(with: .black, duration: 1))
+            }
+        }
+        
+        previousButton.setScale(0.8)
+        previousButton.zPosition = 3
+        previousButton.position = CGPoint(x: self.frame.width / 4, y: 100)
+        addChild(previousButton)
+    }
+    
     func nextImage() {
-        var numImg = 1
+    
         let nextButton = CustomizedButton(imageName: "right") {
             
             let screenInfo = Info(size: self.frame.size)
             screenInfo.scaleMode = .aspectFill
-            numImg += 1
-            numImg <= 4 ?  self.image.texture = SKTexture(imageNamed: "tutorial_tela\(numImg)") : self.view?.presentScene(screenInfo, transition: SKTransition.fade(with: .black, duration: 1))
+            
+            var num = self.numImg
+            
+            num += 1
+            if num <= 4 {
+                self.numImg += 1
+                self.image.texture = SKTexture(imageNamed: "tutorial_tela\(self.numImg)")
+            } else {
+                self.view?.presentScene(screenInfo, transition: SKTransition.fade(with: .black, duration: 1))
+            }
+            
+            
         }
         
-        nextButton.setScale(0.4)
-        nextButton.zPosition = 10.0
-        nextButton.position = CGPoint(x: frame.maxX - 30, y: frame.midY - 100)
+        nextButton.setScale(0.8)
+        nextButton.zPosition = 3
+        nextButton.position = CGPoint(x: self.frame.width / 1.25, y: 100)
         addChild(nextButton)
     }
 }
