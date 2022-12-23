@@ -50,7 +50,7 @@ public class Character {
     func characterToFly(character: SKSpriteNode) -> SKSpriteNode {
         
         character.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        character.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 80))
+        character.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 65))
         
         return character
     }
