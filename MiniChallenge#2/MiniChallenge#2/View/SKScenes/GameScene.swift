@@ -457,7 +457,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return birdObstacle
         }
     }
+
+    //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
+    func generatingNewObstacle() {
+        if !givedUpGame && !pausedGame {
+            self.obstaclesInAction = SKNode()
+            let sortedObstacle = self.sortObstacle()
+           
+                        
+            sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
+                    
+            sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
+            sortedObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
+            sortedObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
+            sortedObstacle.obstacleView.physicsBody?.affectedByGravity = false
+            sortedObstacle.obstacleView.physicsBody?.isDynamic = false
+                    
+            sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
+            self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
+            
+            self.obstaclesInAction.zPosition = 2
+            self.obstaclesInAction.run(self.movedActionOfObstacles)
+            self.gameSKNode.addChild(obstaclesInAction)
+        }
+    }
     
+    func creatingMoveOfObstacle(tempo: Double, duration: Double) {
+        let spawn = SKAction.run({ () in
+            self.generatingNewObstacle()
+            
+        })
+        
+        let delay = SKAction.wait(forDuration: tempo)
+        let spawnDelay = SKAction.sequence([spawn, delay])
+        let spawnDelayForever = SKAction.repeatForever(spawnDelay)
+        self.run(spawnDelayForever)
+        
+        let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
+        let movePipes = SKAction.moveBy(x: -distance - 300, y: 0, duration: duration * distance)
+        let removePipes = SKAction.removeFromParent()
+        self.movedActionOfObstacles = SKAction.sequence([movePipes, removePipes])
+        
+    }
+    
+    //MARK: - Moedas
     func setPropertiesOfPrize() -> Void {
         self.prize.setScale(0.065)
         
@@ -518,48 +561,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.prizeIsRemoved = false
             }
         }
-    }
-
-    //Função que chama a função que gera os obstáculos, seta as propriedades dos mesmos e adiciona na cena
-    func generatingNewObstacle() {
-        if !givedUpGame && !pausedGame {
-            self.obstaclesInAction = SKNode()
-            let sortedObstacle = self.sortObstacle()
-           
-                        
-            sortedObstacle.obstacleView.position.x = self.frame.width + (self.frame.width / 4)
-                    
-            sortedObstacle.obstacleView.physicsBody?.categoryBitMask = PhysicsCategory.obstacle
-            sortedObstacle.obstacleView.physicsBody?.collisionBitMask = PhysicsCategory.character
-            sortedObstacle.obstacleView.physicsBody?.contactTestBitMask = PhysicsCategory.character
-            sortedObstacle.obstacleView.physicsBody?.affectedByGravity = false
-            sortedObstacle.obstacleView.physicsBody?.isDynamic = false
-                    
-            sortedObstacle.obstacleView.run(sortedObstacle.actionObstacle)
-            self.obstaclesInAction.addChild(sortedObstacle.obstacleView)
-            
-            self.obstaclesInAction.zPosition = 2
-            self.obstaclesInAction.run(self.movedActionOfObstacles)
-            self.gameSKNode.addChild(obstaclesInAction)
-        }
-    }
-    
-    func creatingMoveOfObstacle(tempo: Double, duration: Double) {
-        let spawn = SKAction.run({ () in
-            self.generatingNewObstacle()
-            
-        })
-        
-        let delay = SKAction.wait(forDuration: tempo)
-        let spawnDelay = SKAction.sequence([spawn, delay])
-        let spawnDelayForever = SKAction.repeatForever(spawnDelay)
-        self.run(spawnDelayForever)
-        
-        let distance = CGFloat(self.frame.width + self.obstaclesInAction.frame.width)
-        let movePipes = SKAction.moveBy(x: -distance - 300, y: 0, duration: duration * distance)
-        let removePipes = SKAction.removeFromParent()
-        self.movedActionOfObstacles = SKAction.sequence([movePipes, removePipes])
-        
     }
     
     //Função que aguarda um tempo determinado para permitir com que o personagem possa colidir com os obstaculos
@@ -1036,7 +1037,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if !gameOver && !pausedGame {
                 
                 self.verifyPrize()
-                
                 prizeLblGame.text = "\(prizeGame)"
                 
                 if currentTime > Score.shared.renderTime{
@@ -1044,7 +1044,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     Score.shared.trySaveHighScore()
                     Score.shared.scoreLabel.text = "\(Score.shared.gameScore)"
                     Score.shared.renderTime = currentTime + Score.shared.changeTime
-                    
+
                     menu!.highScoreText.text = "\(Score.shared.highScore)"
                     
                     self.increasingLevel()
