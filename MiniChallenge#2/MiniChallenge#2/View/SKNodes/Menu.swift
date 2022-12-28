@@ -11,34 +11,36 @@ import SpriteKit
 class Menu: SKNode {
     
     //MARK: - Criando as variáveis principais
-    var audioStatus: Bool = true
-    var startGame: Bool = false
-    var endGame: Bool = false
-    var restartGame: Bool = false
+    public var audioStatus: Bool = true
+    public var startGame: Bool = false
+    private var endGame: Bool = false
+    private var restartGame: Bool = false
+
+    private var testeBg: Int = 1
     
-    var testeBg: Int = 1
+    private let backgroundMenu = SKSpriteNode()
     
-    let backgroundMenu = SKSpriteNode()
-    
-    let startText = SKLabelNode(fontNamed: "")
-    let highScoreText = SKLabelNode(fontNamed: "")
-    
-    let coinText = SKLabelNode(fontNamed: "")
-    var imageCoinText = SKSpriteNode()
-    
-    var imageHighScoreText = SKSpriteNode()
-    
-    var infoButton: CustomizedButton? = nil
-    
-    var audioButtonOn: CustomizedButton?
-    var audioButtonOff: CustomizedButton?
+    private let startText = SKLabelNode(fontNamed: "")
+    public let highScoreText = SKLabelNode(fontNamed: "")
+ 
+    private let coinText = SKLabelNode(fontNamed: "")
+    private var imageCoinText = SKSpriteNode()
+   
+    private var imageHighScoreText = SKSpriteNode()
+
+    private var infoButton: CustomizedButton? = nil
+    private var storeButton: CustomizedButton? = nil
+
+    private var audioButtonOn: CustomizedButton?
+    private var audioButtonOff: CustomizedButton?
     
     //MARK: - Inicializador
-    init(infoButtonAction: @escaping () -> Void) {
+    init(infoButtonAction: @escaping () -> Void, storeButtonAction: @escaping () -> Void) {
         super.init()
     
         //Criando os botões de configuração do menu
         self.menuToCreateButtonInfo(infoButtonAction: infoButtonAction)
+        self.menuToCreateButtonStore(storeButtonAction: storeButtonAction)
         self.menuToCreateButtonOn()
         self.menuToCreateButtonOff()
         
@@ -73,10 +75,6 @@ class Menu: SKNode {
         self.addChild(self.imageHighScoreText)
         self.addChild(self.highScoreText)
         
-        self.menuInfoButtonToSetProperties(sizeView: sizeView)
-        self.infoButton!.zPosition = 5
-        self.addChild(self.infoButton!)
-
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
         self.audioButtonOn!.zPosition = 5
         self.addChild(self.audioButtonOn!)
@@ -84,6 +82,12 @@ class Menu: SKNode {
         self.menuAudioButtonToSetProperties(sizeView: sizeView)
         self.audioButtonOff!.zPosition = 5
         self.addChild(self.audioButtonOff!)
+        
+        self.menuInfoButtonToSetProperties(sizeView: sizeView)
+        self.addChild(self.infoButton!)
+        
+        self.menuStoreButtonToSetProperties(sizeView: sizeView)
+        self.addChild(self.storeButton!)
 
         self.menuStartTextToSetProperties(sizeView: sizeView)
         self.startText.zPosition = 5
@@ -91,10 +95,20 @@ class Menu: SKNode {
     }
     
     //Criação do botão de informações
-    func menuToCreateButtonInfo(infoButtonAction: @escaping () -> Void) {
+    func menuToCreateButtonInfo(infoButtonAction: @escaping () -> Void) -> Void {
         self.infoButton = {
             let button = CustomizedButton(imageName: "exclamation", buttonAction: {
                 infoButtonAction()
+            })
+            return button
+        }()
+    }
+    
+    //Botão que direciona para a loja de personagens
+    func menuToCreateButtonStore(storeButtonAction: @escaping () -> Void) -> Void {
+        self.storeButton = {
+            let button = CustomizedButton(imageName: "cart.black", buttonAction: {
+                storeButtonAction()
             })
             return button
         }()
@@ -153,6 +167,13 @@ class Menu: SKNode {
     func menuInfoButtonToSetProperties(sizeView: CGSize) {
         self.infoButton!.position = CGPoint(x: sizeView.width - 40, y: sizeView.height - 40)
         self.infoButton?.buttonView.setScale(0.25)
+        self.infoButton!.zPosition = 5
+    }
+    
+    func menuStoreButtonToSetProperties(sizeView: CGSize) -> Void {
+        self.storeButton?.position = CGPoint(x: 100 + self.audioButtonOn!.frame.width, y: sizeView.height - 40)
+        self.storeButton?.setScale(0.3)
+        self.storeButton?.zPosition = 5
     }
     
     func menuCoinToSetProperties(sizeView:CGSize) {

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Pedro Henrique",
+        "price": 700,
+        "imageName": "personagemExemplo"
+    },
+    {
+        "id": 2,
+        "name": "Marcelo",
+        "price": 900,
+        "imageName": "personagemExemplo"
+    },
+    {
+        "id": 3,
+        "name": "Hygor",
+        "price": 700,
+        "imageName": "personagemExemplo"
+    },
+    {
+        "id": 4,
+        "name": "Gustavo",
+        "price": 500,
+        "imageName": "personagemExemplo"
+    },
+    {
+        "id": 5,
+        "name": "Aline",
+        "price": 300,
+        "imageName": "personagemExemplo"
+    }
+]
