@@ -41,13 +41,13 @@ class GameOver: SKNode {
         self.gameOverEscope.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
         self.gameOverEscope.zPosition = 4
         
-        self.titleGameOver.text = "Game Over"
+        self.titleGameOver.text = "Fim do Jogo".localizedLanguage()
         self.titleGameOver.fontName = "AvenirNext-Bold"
         self.titleGameOver.fontColor = UIColor.white
         self.titleGameOver.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
         self.titleGameOver.zPosition = 5
         
-        self.lblFinalScore.text = "Pontuação 0"
+        self.lblFinalScore.text = "Pontuação 0".localizedLanguage()
         self.lblFinalScore.fontName = "AvenirNext-Bold"
         self.lblFinalScore.fontColor = UIColor.white
         self.lblFinalScore.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
@@ -70,8 +70,10 @@ class GameOver: SKNode {
         self.addChild(self.btnRestart!)
     }
     
+    //Não consegui fazer esse que tem que interpolar
     func updatingFinalScore(newFinalScore: Int) {
-        self.lblFinalScore.text = "Score: \(newFinalScore)"
+        self.lblFinalScore.text = "Pontuação: \(newFinalScore)"
+        
     }
     
 

@@ -80,11 +80,10 @@
 		BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderObstacle.swift; sourceTree = "<group>"; };
 		BB706D2429562A6A00A98AD6 /* coinsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coinsound.wav; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB1579BE29679791001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		EB1579BF29679791001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		EB1579C429679851001D7D67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EB1579C629679854001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EB1579C829679893001D7D67 /* LocalizableLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLanguage.swift; sourceTree = "<group>"; };
+		EB69A77E2968CBAA009EA317 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		EB69A77F2968CBAA009EA317 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -437,7 +436,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D129256BFC00E2CC45 /* Base */,
-				EB1579BF29679791001D7D67 /* pt-BR */,
+				EB69A77F2968CBAA009EA317 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -446,7 +445,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D629256BFF00E2CC45 /* Base */,
-				EB1579BE29679791001D7D67 /* pt-BR */,
+				EB69A77E2968CBAA009EA317 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -455,7 +454,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				EB1579C429679851001D7D67 /* en */,
-				EB1579C629679854001D7D67 /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
