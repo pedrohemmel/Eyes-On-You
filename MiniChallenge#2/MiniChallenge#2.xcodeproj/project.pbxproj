@@ -140,7 +140,6 @@
 		161959DD29256C0900E2CC45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB1579C0296797D6001D7D67 /* LocalizableLanguage */,
 				956960712926B3A200CF81EA /* Obstacle */,
 				161959E32925782E00E2CC45 /* Character.swift */,
 				161959E72926B5A200E2CC45 /* PhysicsCategory.swift */,
@@ -151,7 +150,6 @@
 		161959DE29256C1100E2CC45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EB1579C72967987D001D7D67 /* Localizable */,
 				BB03AF6C294A6014002662DD /* SKSpriteNodes */,
 				B98E203E292824D10022E94F /* SKScenes */,
 				6172C3CF2926C71E003C21FE /* SKNodes */,
@@ -163,6 +161,7 @@
 		161959DF29256C1600E2CC45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EB1579C72967987D001D7D67 /* Localizable */,
 				B98E2041292827A90022E94F /* AVAudio */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
 			);
@@ -172,6 +171,7 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EB1579C0296797D6001D7D67 /* LocalizableLanguage */,
 				BB03AF32293E8902002662DD /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
