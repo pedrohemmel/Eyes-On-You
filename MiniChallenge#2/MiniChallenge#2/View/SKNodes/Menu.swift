@@ -132,7 +132,7 @@ class Menu: SKNode {
     }
     
     func menuStartTextToSetProperties(sizeView: CGSize) {
-        self.startText.text = "TOQUE NA TELA PARA INICIAR"
+        self.startText.text = "TOQUE NA TELA PARA INICIAR".localizedLanguage()
         self.startText.fontName = "AvenirNext-Bold"
 //        self.startText.fontColor = UIColor(displayP3Red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         self.startText.fontColor = .black

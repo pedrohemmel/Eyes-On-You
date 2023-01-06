@@ -40,6 +40,8 @@
 		BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF6A2947F9BA002662DD /* GateObstacle.swift */; };
 		BB706D232955F57C00A98AD6 /* SpiderObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */; };
 		BB706D2529562A6A00A98AD6 /* coinsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB706D2429562A6A00A98AD6 /* coinsound.wav */; };
+		EB1579C329679851001D7D67 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB1579C529679851001D7D67 /* Localizable.strings */; };
+		EB1579C929679893001D7D67 /* LocalizableLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1579C829679893001D7D67 /* LocalizableLanguage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,11 @@
 		BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderObstacle.swift; sourceTree = "<group>"; };
 		BB706D2429562A6A00A98AD6 /* coinsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coinsound.wav; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB1579BE29679791001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		EB1579BF29679791001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		EB1579C429679851001D7D67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EB1579C629679854001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		EB1579C829679893001D7D67 /* LocalizableLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLanguage.swift; sourceTree = "<group>"; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +140,7 @@
 		161959DD29256C0900E2CC45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EB1579C0296797D6001D7D67 /* LocalizableLanguage */,
 				956960712926B3A200CF81EA /* Obstacle */,
 				161959E32925782E00E2CC45 /* Character.swift */,
 				161959E72926B5A200E2CC45 /* PhysicsCategory.swift */,
@@ -143,6 +151,7 @@
 		161959DE29256C1100E2CC45 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EB1579C72967987D001D7D67 /* Localizable */,
 				BB03AF6C294A6014002662DD /* SKSpriteNodes */,
 				B98E203E292824D10022E94F /* SKScenes */,
 				6172C3CF2926C71E003C21FE /* SKNodes */,
@@ -255,6 +264,22 @@
 			path = SKSpriteNodes;
 			sourceTree = "<group>";
 		};
+		EB1579C0296797D6001D7D67 /* LocalizableLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				EB1579C529679851001D7D67 /* Localizable.strings */,
+			);
+			path = LocalizableLanguage;
+			sourceTree = "<group>";
+		};
+		EB1579C72967987D001D7D67 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				EB1579C829679893001D7D67 /* LocalizableLanguage.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,6 +324,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 161959BA29256BFC00E2CC45;
 			productRefGroup = 161959C429256BFC00E2CC45 /* Products */;
@@ -320,6 +346,7 @@
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				BB03AF6229422D19002662DD /* gameover.mp3 in Resources */,
 				BB03AF37293E8916002662DD /* noite.mp3 in Resources */,
+				EB1579C329679851001D7D67 /* Localizable.strings in Resources */,
 				BB03AF6029422BD1002662DD /* impacto.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -396,6 +423,7 @@
 				161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */,
 				B91DADD6295128D8006E036D /* SavePrize.swift in Sources */,
 				161959E42925782E00E2CC45 /* Character.swift in Sources */,
+				EB1579C929679893001D7D67 /* LocalizableLanguage.swift in Sources */,
 				BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */,
 				161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */,
 				95ADC8C22937E13F00F9B9C5 /* Info.swift in Sources */,
@@ -409,6 +437,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D129256BFC00E2CC45 /* Base */,
+				EB1579BF29679791001D7D67 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -417,8 +446,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D629256BFF00E2CC45 /* Base */,
+				EB1579BE29679791001D7D67 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EB1579C529679851001D7D67 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB1579C429679851001D7D67 /* en */,
+				EB1579C629679854001D7D67 /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -428,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -488,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
