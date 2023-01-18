@@ -9,6 +9,7 @@ import SpriteKit
 
 class Info: SKScene {
     
+   
     //MARK: - Systems
     override func didMove(to view: SKView) {
         
@@ -59,8 +60,9 @@ extension Info {
         })
         
         tutorial.zPosition = 10.0
-        tutorial.position = CGPoint(x: size.width/2.8, y: frame.midY + tutorial.frame.height + 34)
+        tutorial.position = CGPoint(x: size.width/2.85, y: frame.midY + tutorial.frame.height + 34)
         tutorial.setScale(0.45)
+        
         addChild(tutorial)
         
         
@@ -71,7 +73,7 @@ extension Info {
         })
 
         credits.zPosition = 10.0
-        credits.position = CGPoint(x: size.width/1.55, y: frame.midY + credits.frame.height + 34)
+        credits.position = CGPoint(x: size.width/1.45, y: frame.midY + credits.frame.height + 34)
         credits.setScale(0.45)
         addChild(credits)
         
@@ -83,7 +85,7 @@ extension Info {
         })
 
         politcs.zPosition = 10.0
-        politcs.position = CGPoint(x: size.width/2.8, y: frame.midY + politcs.frame.height - 90 )
+        politcs.position = CGPoint(x: size.width/2.85, y: frame.midY + politcs.frame.height - 90 )
         politcs.setScale(0.45)
         addChild(politcs)
         
@@ -95,7 +97,7 @@ extension Info {
         })
 
         terms.zPosition = 10.0
-        terms.position = CGPoint(x: size.width/1.55, y: frame.midY + terms.frame.height - 90 )
+        terms.position = CGPoint(x: size.width/1.45, y: frame.midY + terms.frame.height - 90 )
         terms.setScale(0.45)
         addChild(terms)
                 
