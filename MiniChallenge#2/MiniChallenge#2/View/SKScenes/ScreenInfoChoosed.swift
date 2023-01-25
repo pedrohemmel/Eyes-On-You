@@ -55,7 +55,7 @@ class ScreenInfoChoosed : SKScene {
         
         func setupNodes() {
             
-            let back = CustomizedButton(imageName: "back", buttonAction: {
+            let back = CustomizedButton(imageName: "back", lblText: nil, buttonAction: {
                 self.scrollView?.isDisabled = true
                 let info = Info(size: self.frame.size)
                 info.scaleMode = .aspectFill

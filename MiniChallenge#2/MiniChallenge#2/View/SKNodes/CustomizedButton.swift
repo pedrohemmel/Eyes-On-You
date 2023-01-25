@@ -2,13 +2,21 @@ import SpriteKit
 
 public class CustomizedButton: SKNode {
     var buttonView: SKSpriteNode
+    var lblView: SKLabelNode
     private var mask: SKSpriteNode
     private var cropNode:  SKCropNode
     private var action: () -> Void
     var enable = true
     
-    init(imageName: String, buttonAction: @escaping () -> Void) {
+    init(imageName: String, lblText: String?, buttonAction: @escaping () -> Void) {
         self.buttonView = SKSpriteNode(imageNamed: imageName)
+        let lblView = SKLabelNode()
+        if lblText != nil {
+            lblView.text = lblText!.localizedLanguage()
+        }
+        lblView.fontName = "AvenirNext-Bold"
+        lblView.fontColor = UIColor.black
+        self.lblView = lblView
         
         self.mask = SKSpriteNode(color: SKColor.black, size: buttonView.size)
         self.mask.alpha = 0
@@ -33,12 +41,17 @@ public class CustomizedButton: SKNode {
     }
     
     func setupNodes() {
+        self.lblView.position = CGPoint(x: self.frame.width / 2, y: (self.frame.height / 2) - (self.lblView.frame.height / 2))
+        self.lblView.zPosition = 2
+        
+        self.buttonView.zPosition = 1
         buttonView.setScale(2.2)
     }
     
     func addNodes() {
-        self.addChild(buttonView)
-        self.addChild(cropNode)
+        self.addChild(self.lblView)
+        self.addChild(self.buttonView)
+        self.addChild(self.cropNode)
     }
     
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

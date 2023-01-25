@@ -251,7 +251,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func pauseButtonToCreate() -> Void {
-        self.pausedButton = CustomizedButton(imageName: "pause.fill", buttonAction: {
+        self.pausedButton = CustomizedButton(imageName: "pause.fill", lblText: nil, buttonAction: {
             if !self.pausedGame {
                 self.pausedGame = true
                 self.pauseGameSKNode()

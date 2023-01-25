@@ -41,7 +41,7 @@ extension Info {
         addChild(icon)
         
         
-        let back = CustomizedButton(imageName: "back", buttonAction: {
+        let back = CustomizedButton(imageName: "back", lblText: nil, buttonAction: {
             let telaGameScene = GameScene(size: self.frame.size)
             telaGameScene.scaleMode = .aspectFill
             self.view?.presentScene(telaGameScene, transition: SKTransition.fade(with: .black, duration: 1))
@@ -52,7 +52,7 @@ extension Info {
         addChild(back)
         
         
-        let tutorial = CustomizedButton(imageName: "tutorial", buttonAction: {
+        let tutorial = CustomizedButton(imageName: "background_button", lblText: "Tutorial", buttonAction: {
             let tutorialScreen = Tutorial(size: self.frame.size)
             tutorialScreen.scaleMode = .aspectFill
             self.view?.presentScene(tutorialScreen, transition: SKTransition.fade(with: .black, duration: 1))
@@ -64,7 +64,7 @@ extension Info {
         addChild(tutorial)
         
         
-        let credits = CustomizedButton(imageName: "creditos", buttonAction: {
+        let credits = CustomizedButton(imageName: "background_button", lblText: "Créditos", buttonAction: {
             let screenChoosed = ScreenInfoChoosed(tela: 2, size: self.frame.size)
             screenChoosed.scaleMode = .aspectFill
             self.view?.presentScene(screenChoosed, transition: SKTransition.fade(with: .black, duration: 1))
@@ -76,7 +76,7 @@ extension Info {
         addChild(credits)
         
         
-        let politcs = CustomizedButton(imageName: "politicasdepriv", buttonAction: {
+        let politcs = CustomizedButton(imageName: "background_button", lblText: "Políticas de privacidade", buttonAction: {
             let screenChoosed = ScreenInfoChoosed(tela: 3, size: self.frame.size)
             screenChoosed.scaleMode = .aspectFill
             self.view?.presentScene(screenChoosed, transition: SKTransition.fade(with: .black, duration: 1))
@@ -88,7 +88,7 @@ extension Info {
         addChild(politcs)
         
         
-        let terms = CustomizedButton(imageName: "termosdeuso", buttonAction: {
+        let terms = CustomizedButton(imageName: "background_button", lblText: "Termos de uso", buttonAction: {
             let screenChoosed = ScreenInfoChoosed(tela: 4, size: self.frame.size)
             screenChoosed.scaleMode = .aspectFill
             self.view?.presentScene(screenChoosed, transition: SKTransition.fade(with: .black, duration: 1))

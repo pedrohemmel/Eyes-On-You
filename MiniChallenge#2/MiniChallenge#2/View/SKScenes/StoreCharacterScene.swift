@@ -58,7 +58,7 @@ class StoreCharacterScene: SKScene {
     
     //Função para criar botão juntamente à sua ação
     private func creatingCloseStoreButton() -> CustomizedButton {
-        let button = CustomizedButton(imageName: "back", buttonAction: {
+        let button = CustomizedButton(imageName: "back", lblText: nil, buttonAction: {
             let gameScene = GameScene(size: self.frame.size)
             gameScene.scaleMode = .aspectFill
             self.view?.presentScene(gameScene, transition: SKTransition.fade(with: .black, duration: 1))
@@ -213,7 +213,7 @@ class StoreCharacterScene: SKScene {
     }
     
     private func creatingAndSettingPropertiesOfBuyButtonOfCharacter() -> CustomizedButton {
-        let buyBtnOfCharacter = CustomizedButton(imageName: "btnComprar", buttonAction: {
+        let buyBtnOfCharacter = CustomizedButton(imageName: "background_button", lblText: "Comprar", buttonAction: {
             //Code here
         })
         buyBtnOfCharacter.setScale(0.5)
@@ -225,7 +225,7 @@ class StoreCharacterScene: SKScene {
     
     private func settingPropertiesOfPreviousBtn() -> CustomizedButton {
         
-        let btn = CustomizedButton(imageName: "previousBtnStore", buttonAction: {
+        let btn = CustomizedButton(imageName: "previousBtnStore", lblText: nil, buttonAction: {
             self.trocaDePersonagem(nextOrPrevious: "previous")
         })
         btn.setScale(1)
@@ -242,7 +242,7 @@ class StoreCharacterScene: SKScene {
     
     private func settingPropertiesOfNextBtn() -> CustomizedButton {
         
-        let btn = CustomizedButton(imageName: "nextBtnStore", buttonAction: {
+        let btn = CustomizedButton(imageName: "nextBtnStore", lblText: nil, buttonAction: {
             self.trocaDePersonagem(nextOrPrevious: "next")
         })
         btn.setScale(1)
