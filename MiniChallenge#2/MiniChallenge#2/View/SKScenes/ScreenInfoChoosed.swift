@@ -21,7 +21,7 @@ class ScreenInfoChoosed : SKScene {
     override func didMove(to view: SKView) {
         addChild(moveableNode)
         scrollView = SwiftySKScrollView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height), moveableNode: moveableNode, direction: .vertical)
-        scrollView?.contentSize = CGSize(width: scrollView!.frame.width, height: scrollView!.frame.height * 3.5)
+        scrollView?.contentSize = CGSize(width: scrollView!.frame.width, height: scrollView!.frame.height * 4.8)
         view.addSubview(scrollView!)
     }
     

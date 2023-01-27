@@ -198,7 +198,7 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
             //Removendo também das vidas do personagem
             self.character.characterToRemoveLifesFromParent()
             
-            let telaGameScene = GameScene(size: self.frame.size)
+            let telaGameScene = GameScene(size: self.view!.bounds.size)
             telaGameScene.scaleMode = .aspectFill
             self.view?.presentScene(telaGameScene, transition: SKTransition.fade(with: .black, duration: 0))
         }

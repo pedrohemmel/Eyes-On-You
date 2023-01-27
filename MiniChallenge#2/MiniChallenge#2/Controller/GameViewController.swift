@@ -15,17 +15,18 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         //test
         AppUtility.lockOrientation(.landscape)
-        let myView: SKView = SKView(frame: self.view.frame)
+        let myView: SKView = SKView(frame: self.view.bounds)
         self.view = myView
-        
-//        let gameScene = GameScene(size: myView.frame.size)
-        let gameScene = StoryAnimationScene(size: myView.frame.size)
+        myView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        myView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        myView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        myView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         // Set the scale mode to scale to fit the window
-        myView.contentMode = .scaleAspectFill
+        let gameScene = StoryAnimationScene(size: myView.bounds.size)
         // Present the scene
+        gameScene.scaleMode = .resizeFill
         myView.presentScene(gameScene)
-        
         myView.ignoresSiblingOrder = true
             
 //        myView.showsPhysics = true
