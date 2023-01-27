@@ -60,7 +60,7 @@ class PausedGame: SKNode {
         self.pausedGameEscope.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
         self.pausedGameEscope.zPosition = 4
         
-        self.titlePaused.text = "Pausado"
+        self.titlePaused.text = "Pausado".localizedLanguage()
         self.titlePaused.fontName = "AvenirNext-Bold"
         self.titlePaused.fontColor = UIColor.white
         self.titlePaused.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)

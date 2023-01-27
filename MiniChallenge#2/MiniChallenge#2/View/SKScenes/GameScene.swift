@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    //MARK: Global Variables
     private var prize = AnimatedObject("moeda")
     private var prizeIsRemoved = false
     private var prizeGame = 0
@@ -911,54 +912,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //Função que será acionada no update para verificar a posicao dos backgrounds e continuar a animação
-    
     func verifyAndMoveBackground() {
-        
         let moveBackground = SKAction.moveBy(x: -self.size.width * 2, y: 0, duration: 10)
         
         if self.day {
             if !self.transitionDay { //Condição de geração de backgrounds antes de começar a transição
                 if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 1, at: "day", action: moveBackground)
-
                 } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                    
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 2, at: "day", action: moveBackground)
-                    
                 }
             } else { // Else para começar a transição
                 if !self.startedTransitionDay { //Enquanto não começou a transição ele ve qual foi o background escolhido para fazer o swap e faz tal ação (swap)
                     if self.backgroundChoosedToTransition!.position.x <= -self.size.width * 2 + 1 {
-                        
                         self.removeActionsAndParentsOfBackgrounds()
                         self.swappingBeforeStartingTransitionDependingOnTheBackGroundChoosed(at: "day", action: moveBackground)
-                        
                     }
                 } else { // Else para o começo da transição
                     if self.backgroundChoosedToTransition == self.backgroundDia1 { //Se o background escolhido é o 1, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 1, at: "day", action: moveBackground)
-                            
                         } else if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "night")
-                            
                         }
                     } else if self.backgroundChoosedToTransition == self.backgroundDia2 { //Se o background escolhido é o 2, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 2, at: "day", action: moveBackground)
-                            
                         } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "night")
-                            
                         }
                     }
                 }
@@ -966,46 +951,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if self.night {
             if !self.transitionNight {//Condição de geração de backgrounds antes de começar a transição
                 if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                    
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 1, at: "night", action: moveBackground)
-                    
                 } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                    
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 2, at: "night", action: moveBackground)
-                    
                 }
             } else { // Else para começar a transição
                 if !self.startedTransitionNight { //Enquanto não começou a transição ele ve qual foi o background escolhido para fazer o swap e faz tal ação (swap)
                     if self.backgroundChoosedToTransition!.position.x <= -self.size.width * 2 + 1 {
-                        
                         self.removeActionsAndParentsOfBackgrounds()
                         self.swappingBeforeStartingTransitionDependingOnTheBackGroundChoosed(at: "night", action: moveBackground)
-                        
                     }
                 } else { // Else para o começo da transição
                     if self.backgroundChoosedToTransition == self.backgroundDia1 {//Se o background escolhido é o 1, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 1, at: "night", action: moveBackground)
-                            
                         } else if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "day")
-                            
                         }
                     } else if self.backgroundChoosedToTransition == self.backgroundDia2 { //Se o background escolhido é o 2, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 2, at: "night", action: moveBackground)
-                            
                         } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "day")
-                            
                         }
                     }
                 }

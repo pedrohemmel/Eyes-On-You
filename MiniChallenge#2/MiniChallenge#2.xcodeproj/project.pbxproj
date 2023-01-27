@@ -170,9 +170,6 @@
 		161959DF29256C1600E2CC45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EB1579C72967987D001D7D67 /* Localizable */,
-				BB27EFF0295B8CA1004D0C0F /* DataLoader */,
-				B98E2041292827A90022E94F /* AVAudio */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
 			);
 			path = Controller;
@@ -181,6 +178,9 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EB1579C72967987D001D7D67 /* Localizable */,
+				BB27EFF0295B8CA1004D0C0F /* DataLoader */,
+				B98E2041292827A90022E94F /* AVAudio */,
 				EB1579C0296797D6001D7D67 /* LocalizableLanguage */,
 				BB03AF32293E8902002662DD /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
@@ -244,7 +244,8 @@
 			children = (
 				B9B3C84A29272E4100403187 /* AVAudio.swift */,
 			);
-			path = AVAudio;
+			name = AVAudio;
+			path = LocalizableLanguage/AVAudio;
 			sourceTree = "<group>";
 		};
 		B9B3C84C2927306900403187 /* Storyboard */ = {
@@ -275,22 +276,6 @@
 			path = SKSpriteNodes;
 			sourceTree = "<group>";
 		};
-		EB1579C0296797D6001D7D67 /* LocalizableLanguage */ = {
-			isa = PBXGroup;
-			children = (
-				EB1579C529679851001D7D67 /* Localizable.strings */,
-			);
-			path = LocalizableLanguage;
-			sourceTree = "<group>";
-		};
-		EB1579C72967987D001D7D67 /* Localizable */ = {
-			isa = PBXGroup;
-			children = (
-				EB1579C829679893001D7D67 /* LocalizableLanguage.swift */,
-			);
-			path = Localizable;
-            sourceTree = "<group>";
-        };
 		BB27EFEC295B8A16004D0C0F /* CharactersToSell */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +290,25 @@
 			children = (
 				BB27EFF1295B8CC1004D0C0F /* DataLoaderOfCharacterToSell.swift */,
 			);
-			path = DataLoader;
+			name = DataLoader;
+			path = LocalizableLanguage/DataLoader;
+			sourceTree = "<group>";
+		};
+		EB1579C0296797D6001D7D67 /* LocalizableLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				EB1579C529679851001D7D67 /* Localizable.strings */,
+			);
+			path = LocalizableLanguage;
+			sourceTree = "<group>";
+		};
+		EB1579C72967987D001D7D67 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				EB1579C829679893001D7D67 /* LocalizableLanguage.swift */,
+			);
+			name = Localizable;
+			path = LocalizableLanguage/Localizable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

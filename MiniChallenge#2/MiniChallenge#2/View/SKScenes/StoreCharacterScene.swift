@@ -10,9 +10,8 @@ import SpriteKit
 
 class StoreCharacterScene: SKScene {
     
+    //MARK: - Global variables
     private var closeStoreBtn: CustomizedButton? = nil
-    
-//    private var titleOfStore: SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Bold")
     
     private var imageOfStore: SKSpriteNode = SKSpriteNode(imageNamed: "cart.white")
     
@@ -28,31 +27,41 @@ class StoreCharacterScene: SKScene {
     private var charactersToSell: [CharacterToSell] = DataLoaderOfCharacterToSell().charactersToSell
     private var indexOfCharacterToSell: Int? = nil
     
+    private var comingSoon = SKLabelNode(fontNamed: "AvenirNext-Bold")
+    
     override func didMove(to view: SKView) {
         
         //Setando o background da página
         self.backgroundColor = .black
         
-        //Setando indice do personagem para vender ao entrar na cena
-        self.indexOfCharacterToSell = 0
+        self.comingSoon.text = "Coming soon...".localizedLanguage()
+        self.comingSoon.fontColor = .white
+        self.comingSoon.position = CGPoint(x: frame.midX, y: frame.midY)
+        self.addChild(self.comingSoon)
         
         //Criando botão de fechar loja
         self.closeStoreBtn = creatingCloseStoreButton()
         self.closeStoreBtn = settingPropertiesOfCloseStoreButton(button: self.closeStoreBtn!)
-        
-        //Criando icone de compras da página
-        self.imageOfStore = self.creatingImageOfStore(image: self.imageOfStore)
-        
-        self.structuringCardOfCharacter(changedCharacter: false)
-        
-        self.insertingPreviousAndNextBtn(changedCharacter: false)
-                
-        //Adicionando objetos a cena
         self.addChild(self.closeStoreBtn!)
-        self.addChild(self.imageOfStore)
-        self.addChild(self.cardOfCharacterToSell)
-        self.addChild(self.previousBtn!)
-        self.addChild(self.nextBtn!)
+        
+//        //Setando indice do personagem para vender ao entrar na cena
+//        self.indexOfCharacterToSell = 0
+//
+//
+//
+//        //Criando icone de compras da página
+//        self.imageOfStore = self.creatingImageOfStore(image: self.imageOfStore)
+//
+//        self.structuringCardOfCharacter(changedCharacter: false)
+//
+//        self.insertingPreviousAndNextBtn(changedCharacter: false)
+//
+//        //Adicionando objetos a cena
+        
+//        self.addChild(self.imageOfStore)
+//        self.addChild(self.cardOfCharacterToSell)
+//        self.addChild(self.previousBtn!)
+//        self.addChild(self.nextBtn!)
     }
     
     
@@ -116,7 +125,7 @@ class StoreCharacterScene: SKScene {
         
         button.setScale(0.25)
         button.zPosition = 10
-        button.position = CGPoint(x: 40, y: self.size.height - 40)
+        button.position = CGPoint(x: frame.width / 12, y: frame.height - (frame.height / 7))
         
         return button
     }

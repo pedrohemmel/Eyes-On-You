@@ -71,7 +71,7 @@ class GameOver: SKNode {
     }
     
     func updatingFinalScore(newFinalScore: Int) {
-        self.lblFinalScore.text = "Score: \(newFinalScore)"
+        self.lblFinalScore.text = "Score".localizedLanguage() + ": \(newFinalScore)"
     }
     
 
