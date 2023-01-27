@@ -31,7 +31,7 @@ extension Tutorial {
     }
 
     func closeButton(){
-        let closeButton = CustomizedButton(imageName: "close", buttonAction: {
+        let closeButton = CustomizedButton(imageName: "close", lblText: nil, buttonAction: {
             let screenInfo = Info(size: self.frame.size)
             screenInfo.scaleMode = .aspectFill
             self.view?.presentScene(screenInfo, transition: SKTransition.fade(with: .black, duration: 1))
@@ -54,7 +54,7 @@ extension Tutorial {
         
         
         
-        let previousButton = CustomizedButton(imageName: "left") {
+        let previousButton = CustomizedButton(imageName: "left", lblText: nil) {
             
             let screenInfo = Info(size: self.frame.size)
             screenInfo.scaleMode = .aspectFill
@@ -78,7 +78,7 @@ extension Tutorial {
     
     func nextImage() {
     
-        let nextButton = CustomizedButton(imageName: "right") {
+        let nextButton = CustomizedButton(imageName: "right", lblText: nil) {
             
             let screenInfo = Info(size: self.frame.size)
             screenInfo.scaleMode = .aspectFill

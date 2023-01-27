@@ -97,7 +97,7 @@ class Menu: SKNode {
     //Criação do botão de informações
     func menuToCreateButtonInfo(infoButtonAction: @escaping () -> Void) -> Void {
         self.infoButton = {
-            let button = CustomizedButton(imageName: "exclamation", buttonAction: {
+            let button = CustomizedButton(imageName: "exclamation", lblText: nil, buttonAction: {
                 infoButtonAction()
             })
             return button
@@ -107,7 +107,7 @@ class Menu: SKNode {
     //Botão que direciona para a loja de personagens
     func menuToCreateButtonStore(storeButtonAction: @escaping () -> Void) -> Void {
         self.storeButton = {
-            let button = CustomizedButton(imageName: "cart.black", buttonAction: {
+            let button = CustomizedButton(imageName: "cart.black", lblText: nil, buttonAction: {
                 storeButtonAction()
             })
             return button
@@ -117,7 +117,7 @@ class Menu: SKNode {
     //Criação do botão de som ativo
     func menuToCreateButtonOn() {
         self.audioButtonOn = {
-            let buttonOn = CustomizedButton(imageName: "volumeBtOn", buttonAction: {
+            let buttonOn = CustomizedButton(imageName: "volumeBtOn", lblText: nil, buttonAction: {
                 AVAudio.sharedInstance().pauseBackgroundMusic()
                 self.audioStatus = false
                 self.audioButtonOff!.isHidden = false
@@ -130,7 +130,7 @@ class Menu: SKNode {
     //Criação do botão de som desativado
     func menuToCreateButtonOff() {
         self.audioButtonOff = {
-            let buttonOff = CustomizedButton(imageName: "volumeBtOff", buttonAction: {
+            let buttonOff = CustomizedButton(imageName: "volumeBtOff", lblText: nil, buttonAction: {
                 AVAudio.sharedInstance().playBackgroundMusic("noite.mp3")
                 self.audioStatus = true
                 self.audioButtonOff!.isHidden = true
