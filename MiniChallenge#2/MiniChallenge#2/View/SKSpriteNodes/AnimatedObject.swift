@@ -61,7 +61,6 @@ class AnimatedObject: SKSpriteNode {
         
         if countRepeat != nil {
             self.run(SKAction.repeat(animation, count: countRepeat!))
-            
             self.animationFinished = true
         } else {
             self.run(SKAction.repeatForever(animation))

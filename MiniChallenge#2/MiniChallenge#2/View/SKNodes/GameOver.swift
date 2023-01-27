@@ -60,7 +60,7 @@ class GameOver: SKNode {
     }
     
     func creatingRestartButton(view: SKScene, actionOfBtnRestart: @escaping() -> Void) -> Void {
-        self.btnRestart = CustomizedButton(imageName: "btnReiniciar", buttonAction: {
+        self.btnRestart = CustomizedButton(imageName: "background_button", lblText: "Reiniciar", buttonAction: {
             actionOfBtnRestart()
         })
         self.btnRestart!.setScale(0.5)
@@ -71,7 +71,7 @@ class GameOver: SKNode {
     }
     
     func updatingFinalScore(newFinalScore: Int) {
-        self.lblFinalScore.text = "Score: \(newFinalScore)"
+        self.lblFinalScore.text = "Score".localizedLanguage() + ": \(newFinalScore)"
     }
     
 

@@ -31,7 +31,7 @@ class PausedGame: SKNode {
     
     
     var infoButton: CustomizedButton = {
-        var button = CustomizedButton(imageName: "exclamation", buttonAction: {
+        var button = CustomizedButton(imageName: "exclamation", lblText: nil, buttonAction: {
             
             
         })
@@ -60,7 +60,7 @@ class PausedGame: SKNode {
         self.pausedGameEscope.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
         self.pausedGameEscope.zPosition = 4
         
-        self.titlePaused.text = "Pausado"
+        self.titlePaused.text = "Pausado".localizedLanguage()
         self.titlePaused.fontName = "AvenirNext-Bold"
         self.titlePaused.fontColor = UIColor.white
         self.titlePaused.position = CGPoint(x: view.frame.width / 2, y: view.frame.height / 1.5)
@@ -72,14 +72,14 @@ class PausedGame: SKNode {
     }
     
     func creatingAllButtons(view: SKScene, actionOfBtnGiveUp: @escaping() -> Void, actionOfBtnContinue: @escaping() -> Void) -> Void {
-        self.btnGiveUp = CustomizedButton(imageName: "btnDesistir", buttonAction: {
+        self.btnGiveUp = CustomizedButton(imageName: "background_button", lblText: "Desistir", buttonAction: {
             actionOfBtnGiveUp()
         })
         self.btnGiveUp!.setScale(0.5)
         self.btnGiveUp!.position = CGPoint(x: view.frame.width / 3, y: view.frame.height / 3)
         self.btnGiveUp!.zPosition = 5
         
-        self.btnContinue = CustomizedButton(imageName: "btnRetomar", buttonAction: {
+        self.btnContinue = CustomizedButton(imageName: "background_button", lblText: "Continuar", buttonAction: {
             actionOfBtnContinue()
         })
         self.btnContinue!.setScale(0.5)

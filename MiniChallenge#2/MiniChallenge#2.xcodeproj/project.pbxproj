@@ -38,8 +38,14 @@
 		BB03AF6229422D19002662DD /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB03AF6129422D19002662DD /* gameover.mp3 */; };
 		BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF682947E97A002662DD /* StoryAnimationScene.swift */; };
 		BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03AF6A2947F9BA002662DD /* GateObstacle.swift */; };
+		BB27EFEB295B8000004D0C0F /* StoreCharacterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB27EFEA295B8000004D0C0F /* StoreCharacterScene.swift */; };
+		BB27EFEF295B8BB5004D0C0F /* CharacterToSell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB27EFEE295B8BB5004D0C0F /* CharacterToSell.swift */; };
+		BB27EFF2295B8CC1004D0C0F /* DataLoaderOfCharacterToSell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB27EFF1295B8CC1004D0C0F /* DataLoaderOfCharacterToSell.swift */; };
+		BB27EFF3295B9889004D0C0F /* CharactersToSell.json in Resources */ = {isa = PBXBuildFile; fileRef = BB27EFED295B8A42004D0C0F /* CharactersToSell.json */; };
 		BB706D232955F57C00A98AD6 /* SpiderObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */; };
 		BB706D2529562A6A00A98AD6 /* coinsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB706D2429562A6A00A98AD6 /* coinsound.wav */; };
+		EB1579C329679851001D7D67 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB1579C529679851001D7D67 /* Localizable.strings */; };
+		EB1579C929679893001D7D67 /* LocalizableLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1579C829679893001D7D67 /* LocalizableLanguage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,9 +81,18 @@
 		BB03AF6129422D19002662DD /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		BB03AF682947E97A002662DD /* StoryAnimationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAnimationScene.swift; sourceTree = "<group>"; };
 		BB03AF6A2947F9BA002662DD /* GateObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateObstacle.swift; sourceTree = "<group>"; };
+		BB27EFEA295B8000004D0C0F /* StoreCharacterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCharacterScene.swift; sourceTree = "<group>"; };
+		BB27EFED295B8A42004D0C0F /* CharactersToSell.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharactersToSell.json; sourceTree = "<group>"; };
+		BB27EFEE295B8BB5004D0C0F /* CharacterToSell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterToSell.swift; sourceTree = "<group>"; };
+		BB27EFF1295B8CC1004D0C0F /* DataLoaderOfCharacterToSell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderOfCharacterToSell.swift; sourceTree = "<group>"; };
 		BB706D222955F57C00A98AD6 /* SpiderObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderObstacle.swift; sourceTree = "<group>"; };
 		BB706D2429562A6A00A98AD6 /* coinsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coinsound.wav; sourceTree = "<group>"; };
 		D0AC88FAAB32188664C9C898 /* Pods_MiniChallenge_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniChallenge_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB1579BE29679791001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		EB1579BF29679791001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		EB1579C429679851001D7D67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EB1579C629679854001D7D67 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		EB1579C829679893001D7D67 /* LocalizableLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLanguage.swift; sourceTree = "<group>"; };
 		F0A5B888494192F019C8731E /* Pods-MiniChallenge#2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniChallenge#2.debug.xcconfig"; path = "Target Support Files/Pods-MiniChallenge#2/Pods-MiniChallenge#2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +148,7 @@
 		161959DD29256C0900E2CC45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BB27EFEC295B8A16004D0C0F /* CharactersToSell */,
 				956960712926B3A200CF81EA /* Obstacle */,
 				161959E32925782E00E2CC45 /* Character.swift */,
 				161959E72926B5A200E2CC45 /* PhysicsCategory.swift */,
@@ -154,7 +170,6 @@
 		161959DF29256C1600E2CC45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B98E2041292827A90022E94F /* AVAudio */,
 				161959CE29256BFC00E2CC45 /* GameViewController.swift */,
 			);
 			path = Controller;
@@ -163,6 +178,10 @@
 		161959E029256C8100E2CC45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EB1579C72967987D001D7D67 /* Localizable */,
+				BB27EFF0295B8CA1004D0C0F /* DataLoader */,
+				B98E2041292827A90022E94F /* AVAudio */,
+				EB1579C0296797D6001D7D67 /* LocalizableLanguage */,
 				BB03AF32293E8902002662DD /* Sounds */,
 				161959D329256BFF00E2CC45 /* Assets.xcassets */,
 				161959C629256BFC00E2CC45 /* AppDelegate.swift */,
@@ -215,6 +234,7 @@
 				95ADC8C32938105500F9B9C5 /* ScreenInfoChoosed.swift */,
 				161959CC29256BFC00E2CC45 /* GameScene.swift */,
 				95686807294BA00400182C77 /* Tutorial.swift */,
+				BB27EFEA295B8000004D0C0F /* StoreCharacterScene.swift */,
 			);
 			path = SKScenes;
 			sourceTree = "<group>";
@@ -224,7 +244,8 @@
 			children = (
 				B9B3C84A29272E4100403187 /* AVAudio.swift */,
 			);
-			path = AVAudio;
+			name = AVAudio;
+			path = LocalizableLanguage/AVAudio;
 			sourceTree = "<group>";
 		};
 		B9B3C84C2927306900403187 /* Storyboard */ = {
@@ -253,6 +274,41 @@
 				161959EB2926C80300E2CC45 /* AnimatedObject.swift */,
 			);
 			path = SKSpriteNodes;
+			sourceTree = "<group>";
+		};
+		BB27EFEC295B8A16004D0C0F /* CharactersToSell */ = {
+			isa = PBXGroup;
+			children = (
+				BB27EFED295B8A42004D0C0F /* CharactersToSell.json */,
+				BB27EFEE295B8BB5004D0C0F /* CharacterToSell.swift */,
+			);
+			path = CharactersToSell;
+			sourceTree = "<group>";
+		};
+		BB27EFF0295B8CA1004D0C0F /* DataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				BB27EFF1295B8CC1004D0C0F /* DataLoaderOfCharacterToSell.swift */,
+			);
+			name = DataLoader;
+			path = LocalizableLanguage/DataLoader;
+			sourceTree = "<group>";
+		};
+		EB1579C0296797D6001D7D67 /* LocalizableLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				EB1579C529679851001D7D67 /* Localizable.strings */,
+			);
+			path = LocalizableLanguage;
+			sourceTree = "<group>";
+		};
+		EB1579C72967987D001D7D67 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				EB1579C829679893001D7D67 /* LocalizableLanguage.swift */,
+			);
+			name = Localizable;
+			path = LocalizableLanguage/Localizable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +355,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 161959BA29256BFC00E2CC45;
 			productRefGroup = 161959C429256BFC00E2CC45 /* Products */;
@@ -315,11 +372,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB27EFF3295B9889004D0C0F /* CharactersToSell.json in Resources */,
 				BB706D2529562A6A00A98AD6 /* coinsound.wav in Resources */,
 				161959D229256BFC00E2CC45 /* Main.storyboard in Resources */,
 				161959D429256BFF00E2CC45 /* Assets.xcassets in Resources */,
 				BB03AF6229422D19002662DD /* gameover.mp3 in Resources */,
 				BB03AF37293E8916002662DD /* noite.mp3 in Resources */,
+				EB1579C329679851001D7D67 /* Localizable.strings in Resources */,
 				BB03AF6029422BD1002662DD /* impacto.mp3 in Resources */,
 				161959D729256BFF00E2CC45 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -374,6 +433,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB27EFEB295B8000004D0C0F /* StoreCharacterScene.swift in Sources */,
+				BB27EFEF295B8BB5004D0C0F /* CharacterToSell.swift in Sources */,
 				6172C3D12926CFBA003C21FE /* CustomizedButton.swift in Sources */,
 				BB03AF6B2947F9BA002662DD /* GateObstacle.swift in Sources */,
 				95ADC8C629381D4900F9B9C5 /* SKButtonNode.swift in Sources */,
@@ -382,6 +443,7 @@
 				BB03AEDF2939CE7B002662DD /* GameOver.swift in Sources */,
 				161959CF29256BFC00E2CC45 /* GameViewController.swift in Sources */,
 				9524E9CE29257D4E007AFBB2 /* Obstacle.swift in Sources */,
+				BB27EFF2295B8CC1004D0C0F /* DataLoaderOfCharacterToSell.swift in Sources */,
 				B9B3C84B29272E4100403187 /* AVAudio.swift in Sources */,
 				BB03AEDD29397CD0002662DD /* PausedGame.swift in Sources */,
 				B98E203B292806CB0022E94F /* Score.swift in Sources */,
@@ -396,6 +458,7 @@
 				161959E82926B5A200E2CC45 /* PhysicsCategory.swift in Sources */,
 				B91DADD6295128D8006E036D /* SavePrize.swift in Sources */,
 				161959E42925782E00E2CC45 /* Character.swift in Sources */,
+				EB1579C929679893001D7D67 /* LocalizableLanguage.swift in Sources */,
 				BB03AF692947E97A002662DD /* StoryAnimationScene.swift in Sources */,
 				161959EC2926C80300E2CC45 /* AnimatedObject.swift in Sources */,
 				95ADC8C22937E13F00F9B9C5 /* Info.swift in Sources */,
@@ -409,6 +472,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D129256BFC00E2CC45 /* Base */,
+				EB1579BF29679791001D7D67 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -417,8 +481,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				161959D629256BFF00E2CC45 /* Base */,
+				EB1579BE29679791001D7D67 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EB1579C529679851001D7D67 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB1579C429679851001D7D67 /* en */,
+				EB1579C629679854001D7D67 /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -428,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -488,6 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    //MARK: Global Variables
     private var prize = AnimatedObject("moeda")
     private var prizeIsRemoved = false
     private var prizeGame = 0
@@ -73,17 +74,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
 
         //Menu
-        self.menu = Menu() {
-            let telaInfo = Info(size: self.frame.size)
-            telaInfo.scaleMode = .aspectFill
+        self.menu = Menu(infoButtonAction: {
+            let infoScreen = Info(size: self.frame.size)
+            infoScreen.scaleMode = .aspectFill
             
             //removendo pai do HighScore pois se não, quando voltar para essa tela, vai dar erro ao tentar adicionar um pai no HighScore ja que ele ja teria um
             Score.shared.scoreLabel.removeFromParent()
             //Removendo também das vidas do personagem
             self.character.characterToRemoveLifesFromParent()
             
-            self.view?.presentScene(telaInfo, transition: SKTransition.fade(with: .black, duration: 1))
-        }
+            self.view?.presentScene(infoScreen, transition: SKTransition.fade(with: .black, duration: 1))
+        }, storeButtonAction: {
+            let storeScreen = StoreCharacterScene(size: self.frame.size)
+            
+            storeScreen.scaleMode = .aspectFill
+            
+            //removendo pai do HighScore pois se não, quando voltar para essa tela, vai dar erro ao tentar adicionar um pai no HighScore ja que ele ja teria um
+            Score.shared.scoreLabel.removeFromParent()
+            //Removendo também das vidas do personagem
+            self.character.characterToRemoveLifesFromParent()
+            
+            self.view!.presentScene(storeScreen, transition: SKTransition.fade(with: .black, duration: 1))
+        })
+        
         //Chamando a função que estrutura o menu principal
         self.menu!.menuToStruct(sizeView: self.size)
         
@@ -141,8 +154,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.bulk.position = CGPoint(x: -190, y: self.frame.height / 3)
         }
         
-
-     
         //Escondendo imagens do jogo antes de começar
         self.hideLifeScoreAndPauseButton()
         
@@ -241,7 +252,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func pauseButtonToCreate() -> Void {
-        self.pausedButton = CustomizedButton(imageName: "pause.fill", buttonAction: {
+        self.pausedButton = CustomizedButton(imageName: "pause.fill", lblText: nil, buttonAction: {
             if !self.pausedGame {
                 self.pausedGame = true
                 self.pauseGameSKNode()
@@ -901,54 +912,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //Função que será acionada no update para verificar a posicao dos backgrounds e continuar a animação
-    
     func verifyAndMoveBackground() {
-        
         let moveBackground = SKAction.moveBy(x: -self.size.width * 2, y: 0, duration: 10)
         
         if self.day {
             if !self.transitionDay { //Condição de geração de backgrounds antes de começar a transição
                 if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 1, at: "day", action: moveBackground)
-
                 } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                    
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 2, at: "day", action: moveBackground)
-                    
                 }
             } else { // Else para começar a transição
                 if !self.startedTransitionDay { //Enquanto não começou a transição ele ve qual foi o background escolhido para fazer o swap e faz tal ação (swap)
                     if self.backgroundChoosedToTransition!.position.x <= -self.size.width * 2 + 1 {
-                        
                         self.removeActionsAndParentsOfBackgrounds()
                         self.swappingBeforeStartingTransitionDependingOnTheBackGroundChoosed(at: "day", action: moveBackground)
-                        
                     }
                 } else { // Else para o começo da transição
                     if self.backgroundChoosedToTransition == self.backgroundDia1 { //Se o background escolhido é o 1, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 1, at: "day", action: moveBackground)
-                            
                         } else if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "night")
-                            
                         }
                     } else if self.backgroundChoosedToTransition == self.backgroundDia2 { //Se o background escolhido é o 2, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 2, at: "day", action: moveBackground)
-                            
                         } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "night")
-                            
                         }
                     }
                 }
@@ -956,46 +951,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if self.night {
             if !self.transitionNight {//Condição de geração de backgrounds antes de começar a transição
                 if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                    
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 1, at: "night", action: moveBackground)
-                    
                 } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                    
                     self.removeActionsAndParentsOfBackgrounds()
                     self.swapBackgroundsWithTransitionFalse(with: 2, at: "night", action: moveBackground)
-                    
                 }
             } else { // Else para começar a transição
                 if !self.startedTransitionNight { //Enquanto não começou a transição ele ve qual foi o background escolhido para fazer o swap e faz tal ação (swap)
                     if self.backgroundChoosedToTransition!.position.x <= -self.size.width * 2 + 1 {
-                        
                         self.removeActionsAndParentsOfBackgrounds()
                         self.swappingBeforeStartingTransitionDependingOnTheBackGroundChoosed(at: "night", action: moveBackground)
-                        
                     }
                 } else { // Else para o começo da transição
                     if self.backgroundChoosedToTransition == self.backgroundDia1 {//Se o background escolhido é o 1, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 1, at: "night", action: moveBackground)
-                            
                         } else if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "day")
-                            
                         }
                     } else if self.backgroundChoosedToTransition == self.backgroundDia2 { //Se o background escolhido é o 2, então vai fazer a transição verificando as posições dos backgorunds
                         if self.backgroundDia1.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.removeActionsAndParentsOfBackgrounds()
                             self.executingTheTransitionOfTheBackgrounds(with: 2, at: "night", action: moveBackground)
-                            
                         } else if self.backgroundDia2.position.x <= -self.size.width * 2 + 1 {
-                            
                             self.swappingBetweenDayAndNight(to: "day")
-                            
                         }
                     }
                 }

@@ -204,9 +204,6 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-            
-        
-    
     
     //Função que detecta o contato dos corpos
     func didBegin(_ contact: SKPhysicsContact) {
@@ -225,34 +222,5 @@ class StoryAnimationScene: SKScene, SKPhysicsContactDelegate {
             self.collisionAllowed = false
             
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        
-    }
-    
-  
-    
-    
-    override func update(_ currentTime: TimeInterval) {
-    
     }
 }

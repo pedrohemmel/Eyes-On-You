@@ -10,9 +10,6 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    
-    private var obstacle: Obstacle = BirdObstacle()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +31,6 @@ class GameViewController: UIViewController {
 //        myView.showsPhysics = true
 //        myView.showsFPS = true
 //        myView.showsNodeCount = true
-        
-        
     }
 
     override var shouldAutorotate: Bool {
@@ -56,7 +51,6 @@ class GameViewController: UIViewController {
 }
 
 struct AppUtility {
-    
     static func lockOrientation(_ orientation: UIInterfaceOrientationMask){
         if let delegate = UIApplication.shared.delegate as? AppDelegate{
             delegate.orientationLock = orientation
