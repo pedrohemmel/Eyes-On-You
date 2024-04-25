@@ -1,5 +1,11 @@
 # MiniChallenge-2
 
+## Eyes On You
+
+Eyes on You é um jogo infinity run com temática de terror, cujo objetivo é permanecer vivo pelo maior tempo possível.
+
+[Acesse o jogo na loja](https://apps.apple.com/br/app/eyes-on-you/id1658391751?l=en-GB)
+
 ## Padrão de estrutura do código
 
 ### Variáveis
